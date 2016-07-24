@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01801FDC-EEDB-46FF-9E42-81713C00AD76}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Practices.SharePoint</RootNamespace>
+    <AssemblyName>Practices.SharePoint.Apps</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TokenReplacementFileExtensions>svc</TokenReplacementFileExtensions>
+    <SandboxedSolution>False</SandboxedSolution>
+    <AssemblyDeploymentTarget>WebApplication</AssemblyDeploymentTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Signing.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SharePoint.Publishing, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Taxonomy, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Apps\CorporateCatalogBuiltInFields.cs" />
+    <Compile Include="Apps\AppPackageFactory.cs" />
+    <Compile Include="Apps\AppPartFactory.cs" />
+    <Compile Include="Apps\CorporateCatalogAccessor.cs" />
+    <Compile Include="ISAPI\IApps.cs" />
+    <Compile Include="ISAPI\Apps.svc.cs">
+      <DependentUpon>Apps.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\AppManifest.cs" />
+    <Compile Include="Apps\AppPartConfig.cs" />
+    <Compile Include="Layouts\Apps\IPackageView.cs" />
+    <Compile Include="Layouts\Apps\PackagePresenter.cs" />
+    <Compile Include="Layouts\Apps\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Apps\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Apps\AppManifest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CorporateCatalogCustomActions\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2bbee14b-1555-457c-9166-3e39b37c597f}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Practices.Apps\Practices.Apps.feature">
+      <FeatureId>{b7511ca7-b866-4752-b141-7c3a89450874}</FeatureId>
+    </None>
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6dd91d9f-b488-42cb-9feb-86cb2da3c60d}</SharePointProjectItemId>
+    </None>
+    <None Include="Layouts\1033\fonts\fontawesome-webfont.eot" />
+    <None Include="Layouts\1033\fonts\fontawesome-webfont.ttf" />
+    <None Include="Layouts\1033\fonts\fontawesome-webfont.woff" />
+    <None Include="Layouts\1033\fonts\fontawesome-webfont.woff2" />
+    <None Include="Layouts\1033\fonts\FontAwesome.otf" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{426b0802-f564-48e0-ab85-746a2b91a5d0}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{aed6b29f-0576-4e5c-96f3-64d8698d34d0}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Signing.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProvisionedUI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CorporateCatalogCustomActions\CorporateCatalogCustomActions.xml" />
+    <Content Include="Features\Practices.Apps\Practices.Apps.Template.xml">
+      <DependentUpon>Practices.Apps.feature</DependentUpon>
+    </Content>
+    <Content Include="ISAPI\Apps.svc" />
+    <Content Include="Layouts\1033\fonts\fontawesome-webfont.svg" />
+    <Content Include="Layouts\1033\Styles\Plugins\jquery.iconpicker.css" />
+    <Content Include="Layouts\Apps\Register.aspx" />
+    <Content Include="Layouts\Scripts\Apps.Ribbon.Actions.js" />
+    <Content Include="Layouts\Scripts\Apps.Ribbon.Loader.js" />
+    <Content Include="Layouts\Scripts\Apps.js" />
+    <Content Include="Layouts\Scripts\Apps\Register.js" />
+    <Content Include="Layouts\Scripts\jquery.js" />
+    <Content Include="Layouts\1033\Styles\Plugins\chosen-sprite2x.png" />
+    <Content Include="Layouts\1033\Styles\Plugins\chosen-sprite.png" />
+    <Content Include="Layouts\1033\Styles\Plugins\jquery.chosen.css" />
+    <Content Include="Layouts\Scripts\Plugins\jquery.chosen.js" />
+    <Content Include="Layouts\Scripts\Plugins\jquery.iconpicker.js" />
+    <Content Include="Layouts\Scripts\react-dom.js" />
+    <Content Include="Layouts\Scripts\react.js" />
+    <Content Include="Layouts\Scripts\underscore.js" />
+    <Content Include="Layouts\Scripts\UTest.js" />
+    <Content Include="Layouts\Scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Practices.SharePoint.Common\Practices.SharePoint.Common.csproj">
+      <Project>{ab0d1688-035d-4fb1-a2b8-316ca4a5c1ab}</Project>
+      <Name>Practices.SharePoint.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

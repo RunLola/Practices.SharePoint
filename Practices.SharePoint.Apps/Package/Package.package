@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="aed6b29f-0576-4e5c-96f3-64d8698d34d0" solutionId="aed6b29f-0576-4e5c-96f3-64d8698d34d0" resetWebServer="true" sharePointProductVersion="15.0" name="Practices.SharePoint.Apps" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <projectOutputAssembly location="Practices.SharePoint.Common.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\Practices.SharePoint.Common\Practices.SharePoint.Common.csproj" />
+  </assemblies>
+  <features>
+    <featureReference itemId="b7511ca7-b866-4752-b141-7c3a89450874" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="426b0802-f564-48e0-ab85-746a2b91a5d0" />
+    <projectItemReference itemId="6dd91d9f-b488-42cb-9feb-86cb2da3c60d" />
+  </projectItems>
+</package>
