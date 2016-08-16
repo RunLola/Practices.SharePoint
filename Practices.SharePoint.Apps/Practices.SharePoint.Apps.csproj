@@ -44,7 +44,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Signing.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Signing.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.SharePoint.Publishing, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -70,9 +70,9 @@
     <Compile Include="Apps\AppPackageFactory.cs" />
     <Compile Include="Apps\AppPartFactory.cs" />
     <Compile Include="Apps\CorporateCatalogAccessor.cs" />
-    <Compile Include="ISAPI\IApps.cs" />
-    <Compile Include="ISAPI\Apps.svc.cs">
-      <DependentUpon>Apps.svc</DependentUpon>
+    <Compile Include="ISAPI\ICorporateCatalog.cs" />
+    <Compile Include="ISAPI\CorporateCatalog.svc.cs">
+      <DependentUpon>CorporateCatalog.svc</DependentUpon>
     </Compile>
     <Compile Include="Apps\AppManifest.cs" />
     <Compile Include="Apps\AppPartConfig.cs" />
@@ -88,6 +88,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Signing.snk">
+      <Link>Signing.snk</Link>
+    </None>
     <None Include="Apps\AppManifest.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -114,7 +117,6 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
-    <None Include="Signing.snk" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ProvisionedUI\" />
@@ -124,7 +126,7 @@
     <Content Include="Features\Practices.Apps\Practices.Apps.Template.xml">
       <DependentUpon>Practices.Apps.feature</DependentUpon>
     </Content>
-    <Content Include="ISAPI\Apps.svc" />
+    <Content Include="ISAPI\CorporateCatalog.svc" />
     <Content Include="Layouts\1033\fonts\fontawesome-webfont.svg" />
     <Content Include="Layouts\1033\Styles\Plugins\jquery.iconpicker.css" />
     <Content Include="Layouts\Apps\Register.aspx" />

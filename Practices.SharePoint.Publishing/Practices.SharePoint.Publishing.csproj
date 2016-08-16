@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C293FE91-BE2A-4464-9338-14F31E3595FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Practices.SharePoint</RootNamespace>
+    <AssemblyName>Practices.SharePoint.Publishing</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SandboxedSolution>False</SandboxedSolution>
+    <IncludeAssemblyInPackage>True</IncludeAssemblyInPackage>
+    <TokenReplacementFileExtensions>svc</TokenReplacementFileExtensions>
+    <ActiveDeploymentConfiguration>Default</ActiveDeploymentConfiguration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\Signing.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.DocumentManagement, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.DocumentManagement.Pages">
+      <HintPath>..\..\..\..\inetpub\wwwroot\wss\VirtualDirectories\practices.contoso.com\_app_bin\Microsoft.Office.DocumentManagement.Pages.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Policy, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Server, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.Publishing, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Publishing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Security, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Taxonomy, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Features\Practices.Publishing\Practices.EventReceiver.cs">
+      <DependentUpon>Practices.Publishing.feature</DependentUpon>
+    </Compile>
+    <Compile Include="FriendlyUrlHttpModule.cs" />
+    <Compile Include="Layouts\Anonymous.aspx.cs">
+      <DependentUpon>Anonymous.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Anonymous.aspx.designer.cs">
+      <DependentUpon>Anonymous.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Signing.snk">
+      <Link>Signing.snk</Link>
+    </None>
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a201d83e-43f7-4a11-8140-4f4edf0d5e6a}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Practices.Publishing\Practices.Publishing.feature">
+      <FeatureId>{3345aafd-4ba6-4364-91bd-dff33dfc0195}</FeatureId>
+    </None>
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{12d8d36f-9fc9-4ed4-b9ac-48c2a4e347f2}</SharePointProjectItemId>
+    </None>
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{75ce5a0d-9f68-488a-8971-19f7a897e525}</SharePointProjectItemId>
+    </None>
+    <None Include="Layouts\1033\Styles\bootstrap.sharepoint.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_alerts.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_background-variant.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_border-radius.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_buttons.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_center-block.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_clearfix.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_forms.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_gradients.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_grid-framework.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_grid.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_hide-text.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_image.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_labels.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_list-group.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_nav-divider.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_nav-vertical-align.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_opacity.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_pagination.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_panels.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_progress-bar.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_reset-filter.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_reset-text.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_resize.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_responsive-visibility.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_size.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_tab-focus.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_table-row.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_text-emphasis.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_text-overflow.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\mixins\_vendor-prefixes.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_alerts.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_badges.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_breadcrumbs.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_button-groups.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_buttons.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_carousel.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_close.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_code.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_component-animations.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_dropdowns.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_forms.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_glyphicons.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_grid.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_input-groups.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_jumbotron.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_labels.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_list-group.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_media.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_mixins.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_modals.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_navbar.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_navs.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_normalize.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_pager.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_pagination.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_panels.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_popovers.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_print.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_progress-bars.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_responsive-embed.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_responsive-utilities.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_scaffolding.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_tables.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_theme.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_thumbnails.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_tooltip.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_type.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_utilities.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_variables.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap\_wells.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap.scss" />
+    <None Include="Layouts\1033\Fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <None Include="Layouts\1033\Fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <None Include="Layouts\1033\Fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <None Include="Layouts\1033\Fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <None Include="Layouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4bb77559-e033-4906-b40e-f143755a50d1}</SharePointProjectItemId>
+    </None>
+    <None Include="MasterPages\Site - Copy.Master" />
+    <None Include="MasterPages\Site.Master" />
+    <None Include="MasterPages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{67b3eed5-4e75-44eb-bc3b-c1e182b7791e}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{faa7ad87-64aa-4c43-b57e-c62f517fa52b}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="PageLayouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a83e12af-4e77-4fb8-80c5-9d080a05bf01}</SharePointProjectItemId>
+    </None>
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d6d80856-6a57-4862-a1b7-493c518b7d94}</SharePointProjectItemId>
+    </None>
+    <None Include="Styles\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8ceb2081-8868-4322-94a3-05eb1a43b150}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Layouts\1033\Styles\font-awesome\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Features\Practices.Publishing\Practices.Publishing.Template.xml">
+      <DependentUpon>Practices.Publishing.feature</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\bootstrap.css">
+      <DependentUpon>bootstrap.scss</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css">
+      <DependentUpon>bootstrap.sharepoint.scss</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
+      <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Anonymous.aspx" />
+    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.js" />
+    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.min.js">
+      <DependentUpon>html5shiv.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\respond.js\1.4.2\respond.js" />
+    <Content Include="Layouts\Scripts\respond.js\1.4.2\respond.min.js">
+      <DependentUpon>respond.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
+    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
+      <DependentUpon>underscore.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\_references.js" />
+    <Content Include="MasterPages\MasterPages.xml" />
+    <Content Include="PageLayouts\Home.aspx" />
+    <Content Include="PageLayouts\PageLayouts.xml" />
+    <Content Include="Pages\Pages.xml" />
+    <Content Include="Styles\Elements.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions />
+</Project>

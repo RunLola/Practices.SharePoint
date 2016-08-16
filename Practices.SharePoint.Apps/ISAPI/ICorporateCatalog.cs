@@ -6,7 +6,7 @@
     using System.ServiceModel.Web;
 
     [ServiceContract]
-    public interface IAppsService {
+    public interface ICorporateCatalogService {
         #region CRUD of App
 
         [OperationContract]

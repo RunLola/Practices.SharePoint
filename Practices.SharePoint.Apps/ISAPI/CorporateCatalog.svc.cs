@@ -9,7 +9,7 @@
     using System.ServiceModel.Activation;
 
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
-    public class AppsService : IAppsService {
+    public class CorporateCatalogService : ICorporateCatalogService {
         private SPWeb clientWeb;
 
         CorporateCatalogAccessor CatalogAccessor {
@@ -20,11 +20,11 @@
 
         #region Constructors
 
-        public AppsService()
+        public CorporateCatalogService()
             : this(SPContext.Current != null ? SPContext.Current.Web : null) {
         }
 
-        public AppsService(SPWeb clientWeb) {
+        public CorporateCatalogService(SPWeb clientWeb) {
             Validation.ArgumentNotNull(clientWeb, "clientWeb");
             this.clientWeb = clientWeb;
         }

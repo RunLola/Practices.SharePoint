@@ -13,7 +13,7 @@
     class PackagePresenter {
         private IPackageView view;
         private SPWeb clientWeb;
-        private AppsService service;
+        private ICorporateCatalogService service;
 
         protected bool RunWithElevatedPrivileges {
             get {
@@ -34,7 +34,7 @@
         public PackagePresenter(IPackageView view, SPWeb clientWeb) {
             this.view = view;
             this.clientWeb = clientWeb;
-            this.service = new AppsService(clientWeb);
+            this.service = new ICorporateCatalogService(clientWeb);
         }
         
         public void Init() {
