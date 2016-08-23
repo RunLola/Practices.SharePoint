@@ -133,7 +133,6 @@
     <Content Include="Layouts\Scripts\Apps.Ribbon.Actions.js" />
     <Content Include="Layouts\Scripts\Apps.Ribbon.Loader.js" />
     <Content Include="Layouts\Scripts\Apps.js" />
-    <Content Include="Layouts\Scripts\Apps\Register.js" />
     <Content Include="Layouts\Scripts\jquery.js" />
     <Content Include="Layouts\1033\Styles\Plugins\chosen-sprite2x.png" />
     <Content Include="Layouts\1033\Styles\Plugins\chosen-sprite.png" />

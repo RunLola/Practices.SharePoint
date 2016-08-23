@@ -38,26 +38,15 @@
         <SharePoint:ScriptLink language="javascript" name="suitelinks.js" OnDemand="true" runat="server" Localizable="false" />        
         <SharePoint:CustomJSUrl runat="server" />
 
-        <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="~/_layouts/15/Scripts/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="~/_layouts/15/Scripts/respond.js/1.4.2/respond.min.js"></script>
-        <!-- <![endif]-->
-
-        <!-- Underscore -->
-        <SharePoint:ScriptLink Language="javascript" Name="Scripts/underscore/1.8.3/underscore.js" runat="server" />
-        
-        <!-- jQuery -->
-        <!--[if lt IE 9]>
-            <script src="~/_layouts/15/Scripts/jquery/1.12.4/jquery.min.js"></script>
-        <!-- <![endif]-->
-        <!--[if (gte IE 9) | (!IE)]><!-->
-            <script src="~/_layouts/15/Scripts/jquery/3.1.0/jquery.min.js"></script>
-        <!--<![endif]-->
+        <!-- RequireJS -->
+        <SharePoint:ScriptLink Language="javascript" Name="Scripts/require.js" runat="server" />
+        <!-- React Components -->
+        <SharePoint:ScriptLink Language="javascript" Name="Scripts/Components.min.js" runat="server" /> 
 
         <!-- Bootstrap -->
         <SharePoint:CssRegistration Name="bootstrap.min.css" runat="server" />
-
+        <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />      
+        
         <SharePoint:SoapDiscoveryLink runat="server" />
         <SharePoint:AjaxDelta id="DeltaPlaceHolderAdditionalPageHead" Container="false" runat="server">
             <asp:ContentPlaceHolder ID="PlaceHolderAdditionalPageHead" runat="server" />

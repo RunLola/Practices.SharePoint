@@ -28,5 +28,65 @@
     "inputFiles": [
       "Layouts/Scripts/respond.js/1.4.2/respond.js"
     ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/15.3.0/react-dom.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/15.3.0/react-dom.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/15.3.0/react-with-addons.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/15.3.0/react-with-addons.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/15.3.0/react.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/15.3.0/react.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/es5-shim/4.5.9/es5-sham.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/es5-shim/4.5.9/es5-sham.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/es5-shim/4.5.9/es5-shim.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/es5-shim/4.5.9/es5-shim.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/0.14.8/react-dom.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/0.14.8/react-dom.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/0.14.8/react.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/0.14.8/react.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/0.14.8/react-with-addons.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/0.14.8/react-with-addons.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/bootstrap.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/require.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/require.js"
+    ]
   }
 ]
