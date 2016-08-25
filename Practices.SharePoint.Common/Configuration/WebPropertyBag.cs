@@ -18,9 +18,7 @@
                 return ConfigScope.Web;
             }
         }
-
         
-
         /// <summary>
         /// Initializes a new instance of the <see cref="WebPropertyBag"/> class.
         /// </summary>

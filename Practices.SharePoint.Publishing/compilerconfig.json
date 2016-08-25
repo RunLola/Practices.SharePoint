@@ -34,5 +34,9 @@
   {
     "outputFile": "Layouts/1033/Styles/bootstarp/3.3.7/bootstrap.css",
     "inputFile": "Layouts/1033/Styles/bootstarp/3.3.7/bootstrap.less"
+  },
+  {
+    "outputFile": "Layouts/1033/Styles/font-awesome.css",
+    "inputFile": "Layouts/1033/Styles/font-awesome.less"
   }
 ]

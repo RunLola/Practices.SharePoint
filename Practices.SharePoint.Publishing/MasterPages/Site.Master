@@ -39,13 +39,17 @@
         <SharePoint:CustomJSUrl runat="server" />
 
         <!-- RequireJS -->
-        <SharePoint:ScriptLink Language="javascript" Name="Scripts/require.js" runat="server" />
+        <SharePoint:ScriptLink Language="javascript" Name="Scripts/require.min.js" runat="server" />
+
         <!-- React Components -->
         <SharePoint:ScriptLink Language="javascript" Name="Scripts/Components.min.js" runat="server" /> 
 
+        <!-- Font Awesome -->
+        <SharePoint:CssRegistration name="font-awesome.min.css" runat="server" />
+
         <!-- Bootstrap -->
         <SharePoint:CssRegistration Name="bootstrap.min.css" runat="server" />
-        <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />      
+        <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />
         
         <SharePoint:SoapDiscoveryLink runat="server" />
         <SharePoint:AjaxDelta id="DeltaPlaceHolderAdditionalPageHead" Container="false" runat="server">

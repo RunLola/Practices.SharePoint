@@ -57,25 +57,24 @@ var SuiteLink = React.createClass({
     }
 });
 
-//ExecuteOrDelayUntilScriptLoaded(function () {
-//    var loginName = _.last(_spPageContextInfo.systemUserKey.split("|"));
-//    if (loginName.length == 8 && loginName.indexOf("T") == 0) {
-//        loginName = loginName.toUpperCase();
-//    }
-//    var suiteLinks = [];
-//    React.render(<SuiteLink title="待办"
-//                            icon="fa fa-tasks btn-warning"
-//                            loginName = {loginName}
-//                            serviceUrl =""
-//                            pollInterval="13"
-//                            pageUrl="" />,
-//                $(".ms-core-suiteLinkList").get(0));
-//    React.render(<SuiteLink title="提醒"
-//                            icon="fa fa-bell btn-danger"
-//                            loginName = {loginName}
-//                            serviceUrl =""
-//                            pollInterval="13"
-//                            pageUrl="" />,
-//                $(".ms-core-suiteLinkList").get(0));
-//}, "core.js");
+ExecuteOrDelayUntilScriptLoaded(function () {
+    var loginName = _.last(_spPageContextInfo.systemUserKey.split("|"));
+    if (loginName.length == 8 && loginName.indexOf("T") == 0) {
+        loginName = loginName.toUpperCase();
+    }
+    var links = [];
+    links.push(React.createElement(SuiteLink, { title: "待办",
+        icon: "fa fa-tasks btn-warning",
+        loginName: loginName,
+        serviceUrl: "",
+        pollInterval: "13",
+        pageUrl: "" }));
+    links.push(React.createElement(SuiteLink, { title: "待办",
+        icon: "fa fa-tasks btn-warning",
+        loginName: loginName,
+        serviceUrl: "",
+        pollInterval: "13",
+        pageUrl: "" }));
+    React.render(links, $(".ms-core-suiteLinkList").get(0));
+}, "core.js");
 

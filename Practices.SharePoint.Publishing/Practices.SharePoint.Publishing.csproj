@@ -111,6 +111,11 @@
     <None Include="ISAPI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{75ce5a0d-9f68-488a-8971-19f7a897e525}</SharePointProjectItemId>
     </None>
+    <None Include="Layouts\1033\Fonts\fontawesome-webfont.eot" />
+    <None Include="Layouts\1033\Fonts\fontawesome-webfont.ttf" />
+    <None Include="Layouts\1033\Fonts\fontawesome-webfont.woff" />
+    <None Include="Layouts\1033\Fonts\fontawesome-webfont.woff2" />
+    <None Include="Layouts\1033\Fonts\FontAwesome.otf" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.eot" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.woff" />
@@ -187,6 +192,20 @@
     <None Include="Layouts\1033\Styles\bootstarp\wells.less" />
     <None Include="Layouts\1033\Styles\bootstrap.less" />
     <None Include="Layouts\1033\Styles\bootstrap.sharepoint.scss" />
+    <None Include="Layouts\1033\Styles\font-awesome.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\animated.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\bordered-pulled.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\core.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\fixed-width.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\icons.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\larger.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\list.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\mixins.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\path.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\rotated-flipped.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\screen-reader.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\stacked.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\variables.less" />
     <None Include="Layouts\Scripts\Components.jsx" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4bb77559-e033-4906-b40e-f143755a50d1}</SharePointProjectItemId>
@@ -217,6 +236,7 @@
     <Content Include="Features\Practices.Publishing\Practices.Publishing.Template.xml">
       <DependentUpon>Practices.Publishing.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\1033\Fonts\fontawesome-webfont.svg" />
     <Content Include="Layouts\1033\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Layouts\1033\Styles\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
@@ -229,6 +249,12 @@
     </Content>
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
       <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\font-awesome.css">
+      <DependentUpon>font-awesome.less</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
     </Content>
     <Content Include="Layouts\Anonymous.aspx" />
     <Content Include="Layouts\Scripts\bootstarp\affix.js" />
