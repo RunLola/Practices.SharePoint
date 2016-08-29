@@ -38,5 +38,17 @@
   {
     "outputFile": "Layouts/1033/Styles/font-awesome.css",
     "inputFile": "Layouts/1033/Styles/font-awesome.less"
+  },
+  {
+    "outputFile": "Layouts/1033/Styles/Site1.css",
+    "inputFile": "Layouts/1033/Styles/Site1.less"
+  },
+  {
+    "outputFile": "Layouts/1033/Styles/bootstrap.sharepoint.css",
+    "inputFile": "Layouts/1033/Styles/bootstrap.sharepoint.less"
+  },
+  {
+    "outputFile": "Layouts/1033/Styles/Site.css",
+    "inputFile": "Layouts/1033/Styles/Site.less"
   }
 ]

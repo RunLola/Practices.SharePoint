@@ -1,0 +1,9 @@
+﻿body #suiteBar #suiteBarLeft .ms-tableCell:nth-child(2) {
+  width: 100%;
+}
+body #suiteBar #suiteBarRight {
+  vertical-align: middle;
+}
+body #DeltaTopNavigation {
+  display: block;
+}

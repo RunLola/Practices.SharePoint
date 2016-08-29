@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="MasterPages" Path="MasterPages" Url="_catalogs/masterpage" List="116" RootWebOnly="True">
-    <File Path="Site.Master" Url="Site.Master" Type="GhostableInLibrary">
+    <File Path="Site.Master" Url="MasterPages/Site.Master" Type="GhostableInLibrary">
       <Property Name="Title" Value="Haerbin" />
       <Property Name="ContentType" Value="$Resources:cmscore,contenttype_masterpage_name;" />      
       <Property Name="ContentTypeId" Value="0x010105" />
       <Property Name="UIVersion" Value="15" />      
     </File>
-    <File Path="Site - Copy.Master" Url="MasterPages/Site - Copy.Master" />
   </Module>
 </Elements>

@@ -191,7 +191,7 @@
     <None Include="Layouts\1033\Styles\bootstarp\variables.less" />
     <None Include="Layouts\1033\Styles\bootstarp\wells.less" />
     <None Include="Layouts\1033\Styles\bootstrap.less" />
-    <None Include="Layouts\1033\Styles\bootstrap.sharepoint.scss" />
+    <None Include="Layouts\1033\Styles\bootstrap.sharepoint.less" />
     <None Include="Layouts\1033\Styles\font-awesome.less" />
     <None Include="Layouts\1033\Styles\font-awesome\animated.less" />
     <None Include="Layouts\1033\Styles\font-awesome\bordered-pulled.less" />
@@ -206,11 +206,11 @@
     <None Include="Layouts\1033\Styles\font-awesome\screen-reader.less" />
     <None Include="Layouts\1033\Styles\font-awesome\stacked.less" />
     <None Include="Layouts\1033\Styles\font-awesome\variables.less" />
+    <None Include="Layouts\1033\Styles\Site.less" />
     <None Include="Layouts\Scripts\Components.jsx" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4bb77559-e033-4906-b40e-f143755a50d1}</SharePointProjectItemId>
     </None>
-    <None Include="MasterPages\Site - Copy.Master" />
     <None Include="MasterPages\Site.Master" />
     <None Include="MasterPages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{67b3eed5-4e75-44eb-bc3b-c1e182b7791e}</SharePointProjectItemId>
@@ -245,7 +245,7 @@
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css">
-      <DependentUpon>bootstrap.sharepoint.scss</DependentUpon>
+      <DependentUpon>bootstrap.sharepoint.less</DependentUpon>
     </Content>
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
       <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
@@ -255,6 +255,12 @@
     </Content>
     <Content Include="Layouts\1033\Styles\font-awesome.min.css">
       <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="Layouts\Anonymous.aspx" />
     <Content Include="Layouts\Scripts\bootstarp\affix.js" />
