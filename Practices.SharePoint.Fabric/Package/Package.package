@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="b8d5db52-31dd-4006-b457-1933df5a6f88" solutionId="b8d5db52-31dd-4006-b457-1933df5a6f88" resetWebServer="true" sharePointProductVersion="15.0" name="Practices.SharePoint.Fabric" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="0df4bbf9-b0af-4175-a210-52eb4f7da3bd" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="c579a93e-cebc-43c5-9b05-bcfabaafee56" />
+    <projectItemReference itemId="196d61ec-ea4d-47c7-827f-4c4b571e3cd4" />
+  </projectItems>
+</package>

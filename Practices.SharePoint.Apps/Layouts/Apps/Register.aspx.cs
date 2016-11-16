@@ -116,14 +116,8 @@
         public Dictionary<string, string> Fields {
             get {
                 var fields = new Dictionary<string, string>();
-                fields.Add(CorporateCatalogBuiltInFields.Type, AppType.SelectedValue);
                 fields.Add(CorporateCatalogBuiltInFields.IconUrl, AppThumbnailURL.Text.Trim());
                 
-                fields.Add(CorporateCatalogBuiltInFields.Recommend, AppRecommend.Checked.ToString());
-                fields.Add(CorporateCatalogBuiltInFields.OpenInNewWindow, AppOpenInNewWindow.Checked.ToString());
-                fields.Add(CorporateCatalogBuiltInFields.StyleClass, AppStyleClass.Text.Trim());
-                fields.Add(CorporateCatalogBuiltInFields.StyleColor, AppStyleColor.Text.Trim());
-
                 fields.Add(CorporateCatalogBuiltInFields.ShortDescription, AppShortDescription.Text.Trim());
                 fields.Add(CorporateCatalogBuiltInFields.Description, AppDescription.Text.Trim());
                 fields.Add(CorporateCatalogBuiltInFields.SupportURL, AppSupportURL.Text.Trim());
@@ -135,8 +129,7 @@
                 fields.Add(CorporateCatalogBuiltInFields.ImageURL5, AppImageURL5.Text.Trim());
                 return fields;
             }
-            set {
-                AppType.SelectedValue = value.ContainsKey(CorporateCatalogBuiltInFields.Type) ? value[CorporateCatalogBuiltInFields.Type] : string.Empty;
+            set {                
                 AppThumbnailURL.Text = value.ContainsKey(CorporateCatalogBuiltInFields.IconUrl) ? new SPFieldUrlValue(value[CorporateCatalogBuiltInFields.IconUrl]).Url : string.Empty;
                 AppShortDescription.Text = value.ContainsKey(CorporateCatalogBuiltInFields.ShortDescription) ? value[CorporateCatalogBuiltInFields.ShortDescription] : string.Empty;
                 AppDescription.Text = value.ContainsKey(CorporateCatalogBuiltInFields.Description) ? value[CorporateCatalogBuiltInFields.Description] : string.Empty;

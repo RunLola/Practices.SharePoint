@@ -34,7 +34,7 @@
         public PackagePresenter(IPackageView view, SPWeb clientWeb) {
             this.view = view;
             this.clientWeb = clientWeb;
-            this.service = new ICorporateCatalogService(clientWeb);
+            this.service = new CorporateCatalogService(clientWeb);
         }
         
         public void Init() {
@@ -45,7 +45,7 @@
                 string identifier;
                 string title;
                 string launchUrl;
-                var item = CatalogAccessor.GetByProductId(view.ProductId);
+                var item = CatalogAccessor.Get(view.ProductId);
                 using (Package package = Package.Open(item.File.OpenBinaryStream(), FileMode.Open)) {
                     package.ParseManifest(out identifier, out title, out launchUrl);
                 }

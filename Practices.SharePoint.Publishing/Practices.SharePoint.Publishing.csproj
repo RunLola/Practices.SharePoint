@@ -227,9 +227,13 @@
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d6d80856-6a57-4862-a1b7-493c518b7d94}</SharePointProjectItemId>
     </None>
+    <None Include="ProvisionedUI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{75fe2042-59b1-49be-a028-6b52b6fb3b6e}</SharePointProjectItemId>
+    </None>
     <None Include="Styles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8ceb2081-8868-4322-94a3-05eb1a43b150}</SharePointProjectItemId>
     </None>
+    <None Include="Styles\Site.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -351,15 +355,21 @@
     <Content Include="Layouts\Scripts\respond\1.4.2\respond.min.js">
       <DependentUpon>respond.js</DependentUpon>
     </Content>
+    <Content Include="Layouts\Scripts\sp.ui\sp.ui.discussions.js" />
+    <Content Include="Layouts\Scripts\sp.ui\sp.ui.discussions.min.js">
+      <DependentUpon>sp.ui.discussions.js</DependentUpon>
+    </Content>
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
       <DependentUpon>underscore.js</DependentUpon>
     </Content>
     <Content Include="Layouts\Scripts\_references.js" />
+    <None Include="MasterPages\seattle.master" />
     <Content Include="MasterPages\MasterPages.xml" />
     <Content Include="PageLayouts\Home.aspx" />
     <Content Include="PageLayouts\PageLayouts.xml" />
     <Content Include="Pages\Pages.xml" />
+    <Content Include="ProvisionedUI\ProvisionedUI.xml" />
     <Content Include="Styles\Elements.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,7 +10,7 @@
         }
 
         public ListRepository() {
-            
+
         }
 
         public IEnumerable<SPListItem> Get(string queryString) {
@@ -20,7 +20,7 @@
             return List.GetItems(query).Cast<SPListItem>();
         }
 
-        public IEnumerable<SPListItem> Get(uint startRow, uint maxRows, string queryString) {
+        public IEnumerable<SPListItem> Get(string queryString, uint startRow, uint maxRows) {
             SPQuery query = new SPQuery() {
                 Query = queryString
             };

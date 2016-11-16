@@ -6,6 +6,6 @@
 
         IEnumerable<TEntity> Get(string queryString);
 
-        IEnumerable<TEntity> Get(uint startRow, uint maxRows, string queryString);
+        IEnumerable<TEntity> Get(string queryString, uint startRow, uint maxRows);
     }
 }

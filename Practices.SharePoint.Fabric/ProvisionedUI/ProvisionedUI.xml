@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction Id="Practices.SharePoint.ListFabricSettings"
+               GroupId="GeneralSettings"
+               Location="Microsoft.SharePoint.ListEdit"
+               RequireSiteAdministrator="FALSE"
+               Sequence="1000"
+               Title="Fabric UI Settings">
+    <UrlAction Url="_layouts/15/Fabric/ListFabricSettings.aspx?List={ListId}" />
+  </CustomAction>
+</Elements>

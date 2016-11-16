@@ -88,5 +88,11 @@
     "inputFiles": [
       "Layouts/Scripts/require.js"
     ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/sp.ui/sp.ui.discussions.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/sp.ui/sp.ui.discussions.js"
+    ]
   }
 ]

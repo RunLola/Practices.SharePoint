@@ -5,6 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.IO.Packaging;
     using System.Linq;
     using System.Reflection;
     using System.Web.UI;
@@ -59,18 +60,26 @@
         #endregion
 
         #region CRUD Methods
+
         public string Create(string title, string launchUrl) {
-            Guid identifier = Guid.NewGuid();
-            using (Stream stream = AppPackageFactory.CreatePackage(identifier, title, launchUrl)) {
+            return Create(Guid.NewGuid(), title, launchUrl);
+        }
+
+        public string Create(Guid productId, string title, string launchUrl) {
+            var identifier = Guid.NewGuid();
+            using (Stream stream = AppPackageFactory.CreatePackage(productId, identifier, title, launchUrl)) {
                 string name = Guid.NewGuid().ToString() + ".app";
                 SPFile file = List.RootFolder.Files.Add(name, stream);
-                return file.Item[CorporateCatalogBuiltInFields.ProductID] != null ? 
-                    new Guid(file.Item[CorporateCatalogBuiltInFields.ProductID].ToString()).ToString() : null;
+                if (bool.Parse(file.Item[CorporateCatalogBuiltInFields.IsValid].ToString())) {
+                    return new Guid(file.Item[CorporateCatalogBuiltInFields.ProductID].ToString()).ToString();
+                } else {
+                    return null;
+                }
             }
         }
 
         public string Upgrade(string title, string launchUrl, Guid productId) {
-            SPListItem item = GetByProductId(productId);
+            SPListItem item = Get(productId);            
             using (Stream stream = AppPackageFactory.UpgradePackage(item.File.OpenBinaryStream(), title, launchUrl)) {
                 item.File.SaveBinary(stream);
                 return item[CorporateCatalogBuiltInFields.Version] as string;
@@ -78,7 +87,7 @@
         }
 
         public int Update(IDictionary<string, string> fields, Guid productId) {
-            SPListItem item = GetByProductId(productId);
+            SPListItem item = Get(productId);
             foreach (var field in fields) {
                 if (item.Fields.ContainsField(field.Key)) {
                     //item[field.Key] = field.Value;
@@ -90,19 +99,25 @@
         }
 
         public bool Delete(Guid productId) {
-            try {
-                SPListItem item = GetByProductId(productId);
-                item.Recycle();
-                return true;
-            } catch (Exception ex) {
-                return false;
-            }
+            SPListItem item = Get(productId);
+            item.Recycle();
+            return true;
+        }
+        
+        #endregion
+
+        public SPListItem Get(Guid productId) {
+            string queryString = new CAMLQueryBuilder()
+                .AddEqual(CorporateCatalogBuiltInFields.IsValid, true)
+                .AddEqual(CorporateCatalogBuiltInFields.ProductID, productId).Build();
+            var item = Get(queryString).FirstOrDefault();
+            Validation.ArgumentNotNull(item, "item");
+            return item;
         }
 
-        public SPListItem GetByProductId(Guid productId) {
-            string queryString = new CAMLQueryBuilder()
-                .AddEqual(CorporateCatalogBuiltInFields.ProductID, productId).Build();
-            return Get(queryString).FirstOrDefault();
+        public string GetAppLaunchUrl(Guid productId) {
+            var item = Get(productId);
+            return AppPackageFactory.ParseAppLaunchUrl(item.File.OpenBinaryStream());
         }
 
         public IEnumerable<Guid> GetAppProductIds(string queryString) {
@@ -112,11 +127,8 @@
                 ViewFieldsOnly = true,
             };
             var items = List.GetItems(query).Cast<SPListItem>();
-            return from item in items
-                   select new Guid(item[CorporateCatalogBuiltInFields.ProductID].ToString());
+            return items.Select(item => new Guid(item[CorporateCatalogBuiltInFields.ProductID].ToString()));
         }
-
-        #endregion
 
         public static SPList GetAppCatalog(SPWeb clientWeb) {
             Validation.ArgumentNotNull(clientWeb, "clientWeb");
@@ -134,6 +146,10 @@
             }
         }
 
+        public void Dispose() {
+            List.ParentWeb.AllowUnsafeUpdates = false;
+        }
+
         public static WebPartGalleryItemBase[] GetAppPartItems(Page page, SPWeb web) {
             Type t = typeof(WebPartAdder);
             Type type = t.GetNestedType("SPAppsWebPartGalleryProvider", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -143,10 +159,6 @@
             object result = methodInfo.Invoke(obj, null);
             WebPartGalleryItemBase[] items = result as WebPartGalleryItemBase[];
             return items;
-        }
-
-        public void Dispose() {
-            List.ParentWeb.AllowUnsafeUpdates = false;
         }
     }
 }

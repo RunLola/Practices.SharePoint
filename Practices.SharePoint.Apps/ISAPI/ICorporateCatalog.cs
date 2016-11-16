@@ -44,32 +44,5 @@
         bool Pull(string productId);
 
         #endregion
-
-        [OperationContract]
-        [WebGet(UriTemplate = "/WelcomePage",
-            BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        IEnumerable<WelcomePageConfig> GetWelcomePageConfigs();
-
-        [OperationContract]
-        [WebInvoke(UriTemplate = "/WelcomePage",
-            BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        bool SetWelcomePageConfigs(IEnumerable<WelcomePageConfig> configs);
-    }
-
-    public class WelcomePageConfig {
-        public string RoleId {
-            get;
-            set;
-        }
-
-        public string Category {
-            get;
-            set;
-        }
-
-        public string PageUrl {
-            get;
-            set;
-        }
     }
 }

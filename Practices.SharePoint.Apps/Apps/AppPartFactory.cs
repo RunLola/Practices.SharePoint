@@ -8,10 +8,10 @@
     using System.Xml.Serialization;
 
     public static class AppPartFactory {
-        public static PackagePart CreateAppManifest(this Package package, Guid identifier, string title, string launchUrl) {
+        public static PackagePart CreateAppManifest(this Package package, Guid productId, Guid identifier, string title, string launchUrl) {
             AppManifest o = new AppManifest() {
                 Name = Guid.NewGuid().ToString(),
-                ProductID = Guid.NewGuid(),
+                ProductID = productId,
                 Version = "1.0.0.0",
                 SharePointMinVersion = "15.0.0.0",
                 Properties = new AppManifest.AppProperties() {

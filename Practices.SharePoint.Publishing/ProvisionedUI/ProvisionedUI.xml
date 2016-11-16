@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction Id="site.sp.ui.discussions"
+              ScriptSrc="Scripts/sp.ui/sp.ui.discussions.min.js"
+              Location="ScriptLink"
+              Sequence="1000" />
+</Elements>

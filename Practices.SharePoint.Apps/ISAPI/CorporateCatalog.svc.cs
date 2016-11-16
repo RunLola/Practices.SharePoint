@@ -54,21 +54,19 @@
         #region Operations of AppInstance
 
         public string Push(string productId) {
-            using (var catalogAccessor = new CorporateCatalogAccessor(clientWeb, true)) {
-                SPListItem item = catalogAccessor.GetByProductId(new Guid(productId));
-                var instance = clientWeb.GetAppInstancesByProductId(new Guid(productId)).FirstOrDefault();
-                clientWeb.AllowUnsafeUpdates = true;
-                if (instance == null) {
-                    AppPackageFactory.RegisterPackage(item.File.OpenBinaryStream(), clientWeb);
-                    instance = clientWeb.LoadAndInstallApp(item.File.OpenBinaryStream());
-                } else {
-                    if (new Version(item[CorporateCatalogBuiltInFields.Version].ToString()) > new Version(instance.App.VersionString)) {
-                        instance.Upgrade(item.File.OpenBinaryStream());
-                    }
+            SPListItem item = CatalogAccessor.Get(new Guid(productId));
+            var instance = clientWeb.GetAppInstancesByProductId(new Guid(productId)).FirstOrDefault();
+            clientWeb.AllowUnsafeUpdates = true;
+            if (instance == null) {
+                AppPackageFactory.RegisterPackage(item.File.OpenBinaryStream(), clientWeb);
+                instance = clientWeb.LoadAndInstallApp(item.File.OpenBinaryStream());
+            } else {
+                if (new Version(item[CorporateCatalogBuiltInFields.Version].ToString()) > new Version(instance.App.VersionString)) {
+                    instance.Upgrade(item.File.OpenBinaryStream());
                 }
-                clientWeb.AllowUnsafeUpdates = false;
-                return instance.Id.ToString();
             }
+            clientWeb.AllowUnsafeUpdates = false;
+            return instance.Id.ToString();
         }
 
         public bool Pull(string productId) {
@@ -82,20 +80,5 @@
         }
 
         #endregion
-
-        public IEnumerable<WelcomePageConfig> GetWelcomePageConfigs() {
-            ConfigManager configManager = new ConfigManager();
-            IPropertyBag propertyBag = configManager.GetPropertyBag(ConfigScope.Web);
-            var configs = configManager.GetPropertyBag<Collection<WelcomePageConfig>>("WelcomePageConfigs", propertyBag);
-            return configs;
-        }
-
-        public bool SetWelcomePageConfigs(IEnumerable<WelcomePageConfig> configs) {
-            SPContext.Current.Web.AllowUnsafeUpdates = true;
-            ConfigManager configManager = new ConfigManager();
-            IPropertyBag propertyBag = configManager.GetPropertyBag(ConfigScope.Web);
-            configManager.SetPropertyBag("WelcomePageConfigs", configs, propertyBag);
-            return true;
-        }
     }
 }

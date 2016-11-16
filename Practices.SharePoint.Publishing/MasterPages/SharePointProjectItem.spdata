@@ -3,5 +3,6 @@
   <Files>
     <ProjectItemFile Source="MasterPages.xml" Type="ElementManifest" />
     <ProjectItemFile Source="Site.Master" Target="MasterPages\" Type="ElementFile" />
+    <ProjectItemFile Source="seattle.master" Target="MasterPages\" Type="ElementFile" />
   </Files>
 </ProjectItem>
