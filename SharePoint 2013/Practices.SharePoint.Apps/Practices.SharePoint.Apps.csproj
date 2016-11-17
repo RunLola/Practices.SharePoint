@@ -88,9 +88,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Signing.snk">
-      <Link>Signing.snk</Link>
-    </None>
     <None Include="Apps\AppManifest.xsd">
       <SubType>Designer</SubType>
     </None>

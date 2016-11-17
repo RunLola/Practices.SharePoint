@@ -72,9 +72,6 @@
     <Compile Include="Utilities\SPListExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Signing.snk">
-      <Link>Signing.snk</Link>
-    </None>
     <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c579a93e-cebc-43c5-9b05-bcfabaafee56}</SharePointProjectItemId>
     </None>
