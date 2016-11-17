@@ -38,7 +38,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\Signing.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\Signing.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.SharePoint.Security, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -72,6 +72,9 @@
     <Compile Include="Utilities\SPListExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Signing.snk">
+      <Link>Signing.snk</Link>
+    </None>
     <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c579a93e-cebc-43c5-9b05-bcfabaafee56}</SharePointProjectItemId>
     </None>
