@@ -8,4 +8,13 @@
                Title="Fabric UI Settings">
     <UrlAction Url="_layouts/15/Fabric/ListFabricSettings.aspx?List={ListId}" />
   </CustomAction>
+  <CustomAction Id="Practices.SharePoint.ContentTypeFabricSettings"
+              GroupId="General"
+              Location="Microsoft.SharePoint.ContentTypeSettings"
+              ShowInReadOnlyContentTypes="FALSE"
+              ShowInSealedContentTypes="TRUE"
+              Sequence="1000"
+              Title="Fabric UI Settings">
+    <UrlAction Url="_layouts/15/Fabric/FormTemplateSettings.aspx" />
+  </CustomAction>
 </Elements>

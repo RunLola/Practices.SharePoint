@@ -20,7 +20,7 @@
         <SharePoint:RobotsMetaTag runat="server" />
         <SharePoint:PageTitle runat="server">
             <asp:ContentPlaceHolder ID="PlaceHolderPageTitle" runat="server">
-                <SharePoint:ProjectProperty Property="Title" runat="server" />
+                <SharePoint:ProjectProperty Property="Title" runat="server"/>
             </asp:ContentPlaceHolder>
         </SharePoint:PageTitle>
         <SharePoint:SPShortcutIcon runat="server" IconUrl="/_layouts/15/images/favicon.ico?rev=23" />
