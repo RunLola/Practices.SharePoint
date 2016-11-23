@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Layouts/1033/Styles/FormTemplateSettings.css",
+    "inputFile": "Layouts/1033/Styles/FormTemplateSettings.less"
+  },
+  {
+    "outputFile": "Layouts/Scripts/FormTemplateSettings.js",
+    "inputFile": "Layouts/Scripts/FormTemplateSettings.jsx"
+  }
+]

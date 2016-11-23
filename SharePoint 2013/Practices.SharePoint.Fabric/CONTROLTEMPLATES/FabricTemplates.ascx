@@ -14,12 +14,12 @@
 
 <SharePoint:RenderingTemplate ID="FabricCompositeField" runat="server">
     <Template>
-        <label class="col-sm-2 control-label ms-formlabel">
+        <label class="ms-formlabel control-label col-sm-2">
             <h3 class="ms-standardheader">
                 <SharePoint:FieldLabel runat="server" />
             </h3>
         </label>
-        <div class="col-sm-10 ms-formbody">
+        <div class="ms-formbody col-sm-10">
             <!-- 
                 FieldName="<SharePoint:FieldProperty PropertyName="Title" runat="server"/>"
 			    FieldInternalName="<SharePoint:FieldProperty PropertyName="InternalName" runat="server"/>"
@@ -34,12 +34,12 @@
 
 <SharePoint:RenderingTemplate ID="DisplayFabricCompositeField" runat="server">
     <Template>
-        <label class="col-sm-2 control-label ms-formlabel">
+        <label class="ms-formlabel control-label col-sm-2">
             <h3 class="ms-standardheader">
                 <SharePoint:FieldLabel runat="server" />
             </h3>
         </label>
-        <div class="col-sm-10 ms-formbody" id="SPField<SharePoint:FieldProperty PropertyName='Type' runat='server'/>">
+        <div class="ms-formbody col-sm-10" id="SPField<SharePoint:FieldProperty PropertyName='Type' runat='server'/>">
             <!-- 
                 FieldName="<SharePoint:FieldProperty PropertyName="Title" runat="server"/>"
 			    FieldInternalName="<SharePoint:FieldProperty PropertyName="InternalName" runat="server"/>"
@@ -63,7 +63,12 @@
 
 <SharePoint:RenderingTemplate ID="FabricListForm" runat="server">
     <Template>
-        <table>
+        <style>
+            .ms-core-tableNoSpace {
+                width: 100%;
+            }
+        </style>
+        <table style="width: 100%">
             <tr>
                 <td>
                     <span id='part1'>

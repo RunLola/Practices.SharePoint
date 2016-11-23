@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SandboxedSolution>False</SandboxedSolution>
+    <TokenReplacementFileExtensions>svc</TokenReplacementFileExtensions>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,7 +50,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -57,23 +61,30 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layouts\Fabric\FormTemplateSettings.aspx.cs">
+      <DependentUpon>FormTemplateSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Fabric\FormTemplateSettings.aspx.designer.cs">
+      <DependentUpon>FormTemplateSettings.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\JsonHelper.cs" />
     <Compile Include="WebControls\FabricCompositeField.cs" />
     <Compile Include="WebControls\FabricListFieldIterator.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Layouts\Fabric\ListFabricSettings.aspx.cs">
-      <DependentUpon>ListFabricSettings.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Layouts\Fabric\ListFabricSettings.aspx.designer.cs">
-      <DependentUpon>ListFabricSettings.aspx.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\SPListExtensions.cs" />
+    <Compile Include="Utilities\FabricExtensions.cs" />
+    <Compile Include="WebControls\FabricPageLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Signing.snk">
       <Link>Signing.snk</Link>
+    </None>
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c579a93e-cebc-43c5-9b05-bcfabaafee56}</SharePointProjectItemId>
@@ -81,6 +92,11 @@
     <None Include="Features\Practices.FabricSite\Practices.FabricSite.feature">
       <FeatureId>{0df4bbf9-b0af-4175-a210-52eb4f7da3bd}</FeatureId>
     </None>
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6dd66b5b-37d0-435b-9912-61195a4f9dd5}</SharePointProjectItemId>
+    </None>
+    <None Include="Layouts\1033\Styles\FormTemplateSettings.less" />
+    <None Include="Layouts\Scripts\FormTemplateSettings.jsx" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{196d61ec-ea4d-47c7-827f-4c4b571e3cd4}</SharePointProjectItemId>
     </None>
@@ -100,7 +116,91 @@
     <Content Include="Features\Practices.FabricSite\Practices.FabricSite.Template.xml">
       <DependentUpon>Practices.FabricSite.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\Fabric\ListFabricSettings.aspx" />
+    <Content Include="Layouts\1033\Styles\bootstrap.css" />
+    <Content Include="Layouts\1033\Styles\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css" />
+    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
+      <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\FormTemplateSettings.css">
+      <DependentUpon>FormTemplateSettings.less</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\FormTemplateSettings.min.css">
+      <DependentUpon>FormTemplateSettings.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\jquery.ui.css" />
+    <Content Include="Layouts\1033\Styles\jquery.ui.min.css">
+      <DependentUpon>jquery.ui.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Fabric\FormTemplateSettings.aspx" />
+    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.js" />
+    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.min.js">
+      <DependentUpon>es5-sham.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.js" />
+    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.min.js">
+      <DependentUpon>es5-shim.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\FormTemplateSettings.js">
+      <DependentUpon>FormTemplateSettings.jsx</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\FormTemplateSettings.min.js">
+      <DependentUpon>FormTemplateSettings.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.js" />
+    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.min.js">
+      <DependentUpon>html5shiv.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\jquery.ui\1.12.1\jquery.ui.js" />
+    <Content Include="Layouts\Scripts\jquery.ui\1.12.1\jquery.ui.min.js">
+      <DependentUpon>jquery.ui.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\react\0.14.8\react-dom.js" />
+    <Content Include="Layouts\Scripts\react\0.14.8\react-dom.min.js">
+      <DependentUpon>react-dom.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\react\0.14.8\react-with-addons.js" />
+    <Content Include="Layouts\Scripts\react\0.14.8\react.js" />
+    <Content Include="Layouts\Scripts\react\0.14.8\react.min.js">
+      <DependentUpon>react.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.js" />
+    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.min.js">
+      <DependentUpon>react-dom.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\react\15.3.0\react-with-addons.js" />
+    <Content Include="Layouts\Scripts\react\15.3.0\react-with-addons.min.js">
+      <DependentUpon>react-with-addons.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\react\15.3.0\react.js" />
+    <Content Include="Layouts\Scripts\react\15.3.0\react.min.js">
+      <DependentUpon>react.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\RegisterSod.js" />
+    <Content Include="Layouts\Scripts\RegisterSod.min.js">
+      <DependentUpon>RegisterSod.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\respond\1.4.2\respond.js" />
+    <Content Include="Layouts\Scripts\respond\1.4.2\respond.min.js">
+      <DependentUpon>respond.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
+    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
+      <DependentUpon>underscore.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\_references.js" />
     <Content Include="ProvisionedUI\ProvisionedUI.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

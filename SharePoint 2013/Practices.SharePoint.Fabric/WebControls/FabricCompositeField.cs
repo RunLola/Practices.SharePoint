@@ -15,9 +15,9 @@
     /// </summary>
     [ParseChildren(true), PersistChildren(false)]
     [SharePointPermission(SecurityAction.LinkDemand, ObjectModel = true),
-     SharePointPermission(SecurityAction.InheritanceDemand, ObjectModel = true),
-     AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal),
-     AspNetHostingPermission(SecurityAction.InheritanceDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+        SharePointPermission(SecurityAction.InheritanceDemand, ObjectModel = true),
+        AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal),
+        AspNetHostingPermission(SecurityAction.InheritanceDemand, Level = AspNetHostingPermissionLevel.Minimal)]
     public class FabricCompositeField : CompositeField {
         /// <summary>
         /// Gets the name of the default rendering template for CompositeField controls.
