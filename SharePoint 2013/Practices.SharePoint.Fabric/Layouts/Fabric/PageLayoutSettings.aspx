@@ -25,6 +25,7 @@
 </asp:Content>
 
 <asp:Content ID="PageHead" ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
+    <SharePoint:CssRegistration Name="forms.css" runat="server" />
     <SharePoint:CssRegistration Name="bootstarp/3.3.7/bootstrap.min.css" runat="server" />
     <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />
     <SharePoint:CssRegistration Name="jquery.ui/1.12.1/jquery.ui.min.css" runat="server" />

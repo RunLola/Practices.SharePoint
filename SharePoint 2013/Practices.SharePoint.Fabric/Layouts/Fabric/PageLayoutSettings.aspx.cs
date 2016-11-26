@@ -130,7 +130,7 @@
             }
         }
 
-        protected virtual void Set(SPControlMode controlMode, FabricPageLayout pageLayout) {
+        protected virtual void Set(SPControlMode controlMode, FabricPageLayout pageLayout) {            
             ConfigManager configManager = new ConfigManager();
             if (List != null && ContentType != null) {
                 ContentType.SetFormTempalteName(controlMode, "FabricListForm");
