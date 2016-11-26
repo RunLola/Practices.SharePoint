@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint.Apps {
+﻿namespace Practices.SharePoint.Services {
     using Practices.SharePoint.Configuration;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

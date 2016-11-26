@@ -14,7 +14,7 @@ using System.Threading.Tasks;
             set;
         }
 
-        public IEnumerable<IEnumerable<Field>> Rows {
+        public List<List<Field>> Rows {
             get;
             set;
         }

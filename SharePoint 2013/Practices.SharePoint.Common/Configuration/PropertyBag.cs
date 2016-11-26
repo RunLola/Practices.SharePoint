@@ -2,16 +2,16 @@
 
     public abstract class PropertyBag : IPropertyBag {
         /// <summary>
+        /// The config scope this PropertyBag represents. 
+        /// </summary>
+        public abstract ConfigScope Scope { get; }
+
+        /// <summary>
         /// The prefix that's used by the PropertyBag to differentiate key's between other settings.
         /// </summary>
         protected abstract string KeyPrefix {
             get;
         }
-
-        /// <summary>
-        /// The config scope this PropertyBag represents. 
-        /// </summary>
-        public abstract ConfigScope Scope { get; }
 
         /// <summary>
         /// Checks if a specific key exist in the PropertyBag. 

@@ -7,21 +7,26 @@ namespace Practices.SharePoint.Configuration {
         /// <summary>
         /// Store config information in the SPFarm property bag
         /// </summary>
-        Farm = 3,
+        Farm = 0,
 
         /// <summary>
         /// Store config information in the SPWebApplication property bag
         /// </summary>
-        WebApplication = 2,
+        WebApplication = 1,
 
         /// <summary>
         /// Store config information in the SPSite property bag
         /// </summary>
-        Site = 1,
+        Site = 2,
 
         /// <summary>
         /// Store config information in the SPWeb property bag
         /// </summary>
-        Web = 0
+        Web = 3,
+
+        /// <summary>
+        /// Store config information in the SPWeb property bag
+        /// </summary>
+        List = 4,
     }
 }

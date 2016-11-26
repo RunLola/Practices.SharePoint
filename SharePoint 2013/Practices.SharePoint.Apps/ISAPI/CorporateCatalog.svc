@@ -1,4 +1,4 @@
 ﻿<%@ ServiceHost Language="C#" Debug="true" 
-    Service="Practices.SharePoint.Apps.CorporateCatalogService, $SharePoint.Project.AssemblyFullName$" 
+    Service="Practices.SharePoint.Services.CorporateCatalogService, $SharePoint.Project.AssemblyFullName$" 
     Factory="Microsoft.SharePoint.Client.Services.MultipleBaseAddressWebServiceHostFactory, 
              Microsoft.SharePoint.Client.ServerRuntime, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>

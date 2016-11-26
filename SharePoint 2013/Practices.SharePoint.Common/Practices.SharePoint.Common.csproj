@@ -71,6 +71,7 @@
     <Compile Include="Configuration\IPropertyBag.cs" />
     <Compile Include="Configuration\ConfigScope.cs" />
     <Compile Include="Configuration\IPropertyBagHierarchy.cs" />
+    <Compile Include="Configuration\ListPropertyBag.cs" />
     <Compile Include="Configuration\PropertyBag.cs" />
     <Compile Include="Configuration\PropertyBagHierarchy.cs" />
     <Compile Include="Configuration\SitePropertyBag.cs" />

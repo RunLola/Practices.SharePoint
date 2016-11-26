@@ -4,10 +4,11 @@
 LoadSodByKey("jquery.ui.js", function () {
     // Require React & ReactDOM
     LoadSodByKey("react-dom.js", function () {
+
         // React Components
         var Grid = React.createClass({
             getInitialState: function () {
-                return { data: [] };
+                return { data: this.props.data };
             },
             componentDidMount: function () {
                 $(ReactDOM.findDOMNode(this)).droppable({
@@ -17,7 +18,7 @@ LoadSodByKey("jquery.ui.js", function () {
                     },
                     drop: function (event, ui) {
                         var $item = $(ui.draggable);
-                        this.state.data.push({});
+                        this.state.data.push([]);
                         this.setState({ data: this.state.data });
                     }.bind(this)
                 });
@@ -32,7 +33,7 @@ LoadSodByKey("jquery.ui.js", function () {
                 //    gridRows.push(<GridRow />);
                 //});
                 var gridRows = this.state.data.map(function (gridRow) {
-                    return (<GridRow />);
+                    return (<GridRow data={gridRow} />);
                 });
                 return (
                     <div className="form-horizontal">
@@ -44,7 +45,7 @@ LoadSodByKey("jquery.ui.js", function () {
 
         var GridRow = React.createClass({
             getInitialState: function () {
-                return { data: [] };
+                return { data: this.props.data };
             },
             componentDidMount: function () {
                 $(ReactDOM.findDOMNode(this)).droppable({
@@ -53,18 +54,18 @@ LoadSodByKey("jquery.ui.js", function () {
                         "ui-droppable-active": "ui-state-highlight"
                     },
                     drop: function (event, ui) {
-                        var $item = $(ui.draggable);                        
+                        var $item = $(ui.draggable);
                         this.state.data.push({
                             Title: $item.hasClass("gridCol") ? $item.text() : $item.find("h3").text(),
                             InternalName: $item.hasClass("gridCol") ? $item.attr("id") : $item.find(".form-group").attr("id")
                         });
                         $item.remove();
-                        this.setState({ data: this.state.data });                        
+                        this.setState({ data: this.state.data });
                     }.bind(this)
                 });
                 $(ReactDOM.findDOMNode(this)).sortable({
                     handle: '.col-sm-12',
-                    revert: true,      
+                    revert: true,
                     placeholder: "ui-state-highlight"
                 });
             },
@@ -98,6 +99,9 @@ LoadSodByKey("jquery.ui.js", function () {
                     },
                     cursor: "move"
                 });
+                $(ReactDOM.findDOMNode(this)).dblclick(function () {
+                    $(this).removeClass("col-md-6").addClass("col-md-12");
+                });
             },
             render: function () {
                 return (
@@ -116,36 +120,40 @@ LoadSodByKey("jquery.ui.js", function () {
                 );
             }
         });
-
-        $(".gridRow").draggable({
-            //connectToSortable: ".container-fluid",
-            revert: "invalid",
-            containment: "document",
-            helper: function () {
-                return $("<div class='row'></div>");
-            },
-            drag: function (e, t) {
-                t.helper.width(350).css("z-index", 1);
-            },
-            cursor: "move"
-        });
-        $(".gridCol").draggable({
-            // when not dropped, the item will revert back to its initial position
-            revert: "invalid",
-            containment: "document",
-            helper: function () {
-                return $("<div class='form-group'></div>");
-            },
-            drag: function (e, t) {
-                t.helper.width(350).css("z-index", 1);
-            },
-            cursor: "move"
-        });
-        ReactDOM.render(<Grid />, $(".container-fluid").get(0));
+        $(function () {
+            $(".gridRow").draggable({
+                revert: "invalid",
+                containment: "document",
+                helper: function () {
+                    return $("<div class='row'></div>");
+                },
+                drag: function (e, t) {
+                    t.helper.width(350).css("z-index", 1);
+                },
+                cursor: "move"
+            });
+            $(".gridCol").draggable({
+                // when not dropped, the item will revert back to its initial position
+                revert: "invalid",
+                containment: "document",
+                helper: function () {
+                    return $("<div class='form-group'></div>");
+                },
+                drag: function (e, t) {
+                    t.helper.width(350).css("z-index", 1);
+                },
+                cursor: "move"
+            });
+            var grids = JSON.parse($("input[id*='json'").val());
+            var grid = grids[0] != null ? grids[0] : { Rows: [] };
+            ReactDOM.render(<Grid data={ grid.Rows } />, $(".container-fluid").get(0));
+        })
+        
     })
 });
 
 function CollectData() {
+    var result = [];
     var layout = { ControlMode: 0, Rows: [] };
     var $rows = $(".form-horizontal").find(".row");
     $rows.each(function () {
@@ -161,8 +169,10 @@ function CollectData() {
         });
         layout.Rows.push(row);
     });
-    $("input[id*='json'").val(JSON.stringify(layout));
+    result.push(layout);
+    $("input[id*='json'").val(JSON.stringify(result));
 }
+
 //// Require jQuery & jQuery UI
 //ExecuteOrDelayUntilScriptLoaded(function () {
 //    // Require React & ReactDOM

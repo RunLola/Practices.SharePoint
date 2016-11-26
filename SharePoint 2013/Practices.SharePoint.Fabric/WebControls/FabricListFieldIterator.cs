@@ -1,4 +1,5 @@
 ﻿namespace Practices.SharePoint.WebControls {
+    using Configuration;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Security;
     using Microsoft.SharePoint.WebControls;
@@ -33,40 +34,20 @@
             this.Controls.Clear();
             if (ControlTemplate == null)
                 throw new ArgumentException("Could not find FabricListFieldIterator control template.");
-            FabricPageLayout layout = new FabricPageLayout() {
-                Rows = new List<List<FabricPageLayout.Field>>() { 
-                    new List<FabricPageLayout.Field>(){
-                        new FabricPageLayout.Field(){
-                            ClassName="col-sm-12 col-md-12",
-                            Title="Title",
-                            InternalName ="Title"
-                        }
-                    },
-                    new List<FabricPageLayout.Field>(){
-                        new FabricPageLayout.Field(){
-                            ClassName="col-sm-12 col-md-6",
-                            Title="组织者",
-                            InternalName ="组织者"
-                        },
-                        new FabricPageLayout.Field(){
-                            ClassName="col-sm-12 col-md-6",
-                            Title="分分",
-                            InternalName ="分分"
-                        }
-                    },
-                    new List<FabricPageLayout.Field>(){
-                    },
-                    new List<FabricPageLayout.Field>(){
-                        new FabricPageLayout.Field(){
-                            ClassName="col-sm-12 col-md-12",
-                            Title="久久",
-                            InternalName ="HeiHei"
-                        }
-                    }
+            var pageLayout = new FabricPageLayout();
+            SPControlMode controlMode = SPControlMode.New;
+            ConfigManager configManager = new ConfigManager();
+            IPropertyBag propertyBag = configManager.GetPropertyBag(ConfigScope.Web);
+            if (!this.List.ContentTypesEnabled) {
+                pageLayout = configManager.GetPropertyBag<FabricPageLayout>("List" + List.ID.ToString() + controlMode, propertyBag);
+            } else {
+                pageLayout = configManager.GetPropertyBag<FabricPageLayout>("ListContentType" + List.ID.ToString() + this.ListItem.ContentTypeId + controlMode, propertyBag);
+                if (pageLayout != null) {
+                    pageLayout = configManager.GetPropertyBag<FabricPageLayout>("SiteContentType" + this.ListItem.ContentTypeId + controlMode, propertyBag);
                 }
-            };
-            if (layout != null && layout.Rows.Count() > 0) {
-                foreach (var row in layout.Rows) {
+            }
+            if (pageLayout != null && pageLayout.Rows.Count() > 0) {
+                foreach (var row in pageLayout.Rows) {
                     var gridRow = new HtmlGenericControl("div");
                     gridRow.Attributes.Add("class", "row");
                     this.Controls.Add(gridRow);

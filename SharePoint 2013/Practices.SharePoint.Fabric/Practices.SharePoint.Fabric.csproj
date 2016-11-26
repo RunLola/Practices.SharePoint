@@ -61,12 +61,12 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Layouts\Fabric\FormTemplateSettings.aspx.cs">
-      <DependentUpon>FormTemplateSettings.aspx</DependentUpon>
+    <Compile Include="Layouts\Fabric\PageLayoutSettings.aspx.cs">
+      <DependentUpon>PageLayoutSettings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layouts\Fabric\FormTemplateSettings.aspx.designer.cs">
-      <DependentUpon>FormTemplateSettings.aspx.cs</DependentUpon>
+    <Compile Include="Layouts\Fabric\PageLayoutSettings.aspx.designer.cs">
+      <DependentUpon>PageLayoutSettings.aspx.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\JsonHelper.cs" />
     <Compile Include="WebControls\FabricCompositeField.cs" />
@@ -95,6 +95,7 @@
     <None Include="ISAPI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6dd66b5b-37d0-435b-9912-61195a4f9dd5}</SharePointProjectItemId>
     </None>
+    <None Include="Layouts\1033\Styles\bootstrap.sharepoint.less" />
     <None Include="Layouts\1033\Styles\FormTemplateSettings.less" />
     <None Include="Layouts\Scripts\FormTemplateSettings.jsx" />
     <None Include="Layouts\SharePointProjectItem.spdata">
@@ -110,17 +111,24 @@
       <SharePointProjectItemId>{f5deab10-bb02-4693-b6d0-8137e7c1fee2}</SharePointProjectItemId>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Practices.SharePoint.Common\Practices.SharePoint.Common.csproj">
+      <Project>{ab0d1688-035d-4fb1-a2b8-316ca4a5c1ab}</Project>
+      <Name>Practices.SharePoint.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="CONTROLTEMPLATES\FabricTemplates.ascx" />
     <Content Include="Features\Practices.FabricSite\Practices.FabricSite.Template.xml">
       <DependentUpon>Practices.FabricSite.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Styles\bootstrap.css" />
-    <Content Include="Layouts\1033\Styles\bootstrap.min.css">
+    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.css" />
+    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css" />
+    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css">
+      <DependentUpon>bootstrap.sharepoint.less</DependentUpon>
+    </Content>
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
       <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
     </Content>
@@ -130,11 +138,12 @@
     <Content Include="Layouts\1033\Styles\FormTemplateSettings.min.css">
       <DependentUpon>FormTemplateSettings.css</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Styles\jquery.ui.css" />
-    <Content Include="Layouts\1033\Styles\jquery.ui.min.css">
+    <Content Include="Layouts\1033\Styles\jquery.ui\1.12.1\jquery.ui.css" />
+    <Content Include="Layouts\1033\Styles\jquery.ui\1.12.1\jquery.ui.min.css">
       <DependentUpon>jquery.ui.css</DependentUpon>
     </Content>
-    <Content Include="Layouts\Fabric\FormTemplateSettings.aspx" />
+    <Content Include="Layouts\Fabric\PageLayoutSettings.aspx" />
+    <Content Include="Layouts\Scripts\bootstarp\3.3.7\bootstrap.js" />
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.js" />
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.min.js">
       <DependentUpon>es5-sham.js</DependentUpon>

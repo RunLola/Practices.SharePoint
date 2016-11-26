@@ -6,20 +6,20 @@
                 RequireSiteAdministrator="FALSE"
                 Sequence="1000"
                 Title="Fabric UI Settings">
-    <UrlAction Url="_layouts/15/Fabric/FormTemplateSettings.aspx?List={ListId}" />
+    <UrlAction Url="_layouts/15/Fabric/PageLayoutSettings.aspx?List={ListId}" />
   </CustomAction>
   <CustomAction Id="Fabric.ListContentTypeSettings"
                 GroupId="General"
                 Location="Microsoft.SharePoint.ContentTypeSettings"
                 Sequence="1000"
                 Title="Fabric UI Settings">
-    <UrlAction Url="_layouts/15/Fabric/FormTemplateSettings.aspx" />
+    <UrlAction Url="_layouts/15/Fabric/PageLayoutSettings.aspx" />
   </CustomAction>
   <CustomAction Id="Fabric.SiteContentTypeSettings"
                 GroupId="General"
                 Location="Microsoft.SharePoint.ContentTypeTemplateSettings"
                 Sequence="1000"
                 Title="Fabric UI Settings">
-    <UrlAction Url="_layouts/15/Fabric/FormTemplateSettings.aspx" />
+    <UrlAction Url="_layouts/15/Fabric/PageLayoutSettings.aspx" />
   </CustomAction>
 </Elements>

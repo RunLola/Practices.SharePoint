@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint.Apps {
+﻿namespace Practices.SharePoint.ApplicationPages {
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.Taxonomy;
     using Microsoft.SharePoint.WebControls;

@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint.Apps {
+﻿namespace Practices.SharePoint.Services {
     using Microsoft.SharePoint;
     using Practices.SharePoint.Configuration;
     using System;

@@ -1,5 +1,7 @@
-﻿/*bootstrap 3 resets for SharePoint*/
-/*border-box causes many issues with SP*/
+﻿/*!
+ * Bootstrap v3 resets for SharePoint
+ */
+/* border-box causes many issues with SharePoint*/
 *,
 *:before,
 *:after {
@@ -7,21 +9,26 @@
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-/*reset elements that B3 is expecting to be border-box*/
+/*reset bootstarp 3 elements expecting to be border-box*/
 * [class^="col-"],
 * [class^="col-"]:before,
 * [class^="col-"]:after,
 .container,
 .container:before,
 .container:after,
+.container-fluid,
+.container-fluid:before,
+.container-fluid:after,
 .row,
 .row:before,
 .row:after,
+.form-group,
+.control-lable,
+.form-control,
 .nav *,
 .navbar-toggle,
 .table,
 .table-responsive,
-.form-control,
 .btn-block,
 .caret,
 .dropdown-menu,

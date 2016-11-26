@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint.Apps {
+﻿namespace Practices.SharePoint.ApplicationPages {
     using System;
     using System.Collections.Generic;
     using System.Linq;

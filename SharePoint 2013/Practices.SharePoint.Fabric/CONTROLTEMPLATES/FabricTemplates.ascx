@@ -68,6 +68,8 @@
                 width: 100%;
             }
         </style>
+        <SharePoint:CssRegistration Name="bootstarp/3.3.7/bootstrap.min.css" runat="server" />
+        <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />
         <table style="width: 100%">
             <tr>
                 <td>
@@ -87,11 +89,15 @@
                         <table class="ms-formtable" style="margin-top: 8px;" border="0" cellpadding="0" cellspacing="0" width="100%">
                             <SharePoint:ChangeContentType runat="server" />
                             <SharePoint:FolderFormFields runat="server" />
-                            <Practices:FabricListFieldIterator runat="server" />
+                            <div class="container-fluid">
+                                <div class="form-horizontal">
+                                    <Practices:FabricListFieldIterator runat="server" />
+                                </div>
+                            </div>
                             <SharePoint:ApprovalStatus runat="server" />
                             <SharePoint:FormComponent TemplateName="AttachmentRows" ComponentRequiresPostback="false" runat="server" />
                         </table>
-                        <table cellpadding="0" cellspacing="0" width="100%" style="padding-top: 7px">
+                        <table cellpadding="0" cellspacing="0" width="100%" style="padding-top:7px">
                             <tr>
                                 <td width="100%">
                                     <SharePoint:ItemHiddenVersion runat="server" />
