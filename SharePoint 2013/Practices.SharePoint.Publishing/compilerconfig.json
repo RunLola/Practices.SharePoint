@@ -1,47 +1,7 @@
 ﻿[
   {
-    "outputFile": "Layouts/1033/_bootstrap.css",
-    "inputFile": "Layouts/1033/_bootstrap.scss"
-  },
-  {
-    "outputFile": "Layouts/1033/Styles/_bootstrap.css",
-    "inputFile": "Layouts/1033/Styles/_bootstrap.scss"
-  },
-  {
-    "outputFile": "Layouts/1033/Styles/bootstrap.css",
-    "inputFile": "Layouts/1033/Styles/bootstrap.scss"
-  },
-  {
-    "outputFile": "Layouts/1033/Styles/bootstrap.sharepoint.css",
-    "inputFile": "Layouts/1033/Styles/bootstrap.sharepoint.scss"
-  },
-  {
-    "outputFile": "Layouts/Scripts/react/15.3.0/react.es5.js",
-    "inputFile": "Layouts/Scripts/react/15.3.0/react.js"
-  },
-  {
-    "outputFile": "Layouts/Scripts/react/15.3.0/react-dom.es5.js",
-    "inputFile": "Layouts/Scripts/react/15.3.0/react-dom.js"
-  },
-  {
-    "outputFile": "Layouts/1033/Styles/bootstrap.css",
-    "inputFile": "Layouts/1033/Styles/bootstrap.less"
-  },
-  {
-    "outputFile": "Layouts/Scripts/Components.js",
-    "inputFile": "Layouts/Scripts/Components.jsx"
-  },
-  {
     "outputFile": "Layouts/1033/Styles/bootstarp/3.3.7/bootstrap.css",
     "inputFile": "Layouts/1033/Styles/bootstarp/3.3.7/bootstrap.less"
-  },
-  {
-    "outputFile": "Layouts/1033/Styles/font-awesome.css",
-    "inputFile": "Layouts/1033/Styles/font-awesome.less"
-  },
-  {
-    "outputFile": "Layouts/1033/Styles/Site1.css",
-    "inputFile": "Layouts/1033/Styles/Site1.less"
   },
   {
     "outputFile": "Layouts/1033/Styles/bootstrap.sharepoint.css",
@@ -50,5 +10,13 @@
   {
     "outputFile": "Layouts/1033/Styles/Site.css",
     "inputFile": "Layouts/1033/Styles/Site.less"
+  },
+  {
+    "outputFile": "Styles/Site.css",
+    "inputFile": "Styles/Site.less"
+  },
+  {
+    "outputFile": "Scripts/Site.js",
+    "inputFile": "Scripts/Site.jsx"
   }
 ]

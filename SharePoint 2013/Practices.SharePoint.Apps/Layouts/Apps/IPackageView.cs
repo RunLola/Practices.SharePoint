@@ -8,7 +8,7 @@
     using Microsoft.SharePoint.Taxonomy;
     using System.Web.UI.WebControls;
 
-    interface IPackageView {
+    public interface IPackageView {
         Guid ProductId {
             get;
         }

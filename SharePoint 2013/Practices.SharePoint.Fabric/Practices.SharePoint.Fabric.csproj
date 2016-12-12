@@ -95,7 +95,6 @@
     <None Include="ISAPI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6dd66b5b-37d0-435b-9912-61195a4f9dd5}</SharePointProjectItemId>
     </None>
-    <None Include="Layouts\1033\Styles\bootstrap.sharepoint.less" />
     <None Include="Layouts\1033\Styles\FormTemplateSettings.less" />
     <None Include="Layouts\Scripts\FormTemplateSettings.jsx" />
     <None Include="Layouts\SharePointProjectItem.spdata">
@@ -122,16 +121,6 @@
     <Content Include="Features\Practices.FabricSite\Practices.FabricSite.Template.xml">
       <DependentUpon>Practices.FabricSite.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.css" />
-    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.min.css">
-      <DependentUpon>bootstrap.css</DependentUpon>
-    </Content>
-    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css">
-      <DependentUpon>bootstrap.sharepoint.less</DependentUpon>
-    </Content>
-    <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
-      <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
-    </Content>
     <Content Include="Layouts\1033\Styles\FormTemplateSettings.css">
       <DependentUpon>FormTemplateSettings.less</DependentUpon>
     </Content>
@@ -143,71 +132,11 @@
       <DependentUpon>jquery.ui.css</DependentUpon>
     </Content>
     <Content Include="Layouts\Fabric\PageLayoutSettings.aspx" />
-    <Content Include="Layouts\Scripts\bootstarp\3.3.7\bootstrap.js" />
-    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.js" />
-    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.min.js">
-      <DependentUpon>es5-sham.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.js" />
-    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.min.js">
-      <DependentUpon>es5-shim.js</DependentUpon>
-    </Content>
     <Content Include="Layouts\Scripts\FormTemplateSettings.js">
       <DependentUpon>FormTemplateSettings.jsx</DependentUpon>
     </Content>
     <Content Include="Layouts\Scripts\FormTemplateSettings.min.js">
       <DependentUpon>FormTemplateSettings.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.js" />
-    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.min.js">
-      <DependentUpon>html5shiv.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\jquery.ui\1.12.1\jquery.ui.js" />
-    <Content Include="Layouts\Scripts\jquery.ui\1.12.1\jquery.ui.min.js">
-      <DependentUpon>jquery.ui.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.intellisense.js" />
-    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.js" />
-    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.min.js">
-      <DependentUpon>jquery.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.intellisense.js" />
-    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.js" />
-    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.min.js">
-      <DependentUpon>jquery.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\0.14.8\react-dom.js" />
-    <Content Include="Layouts\Scripts\react\0.14.8\react-dom.min.js">
-      <DependentUpon>react-dom.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\0.14.8\react-with-addons.js" />
-    <Content Include="Layouts\Scripts\react\0.14.8\react.js" />
-    <Content Include="Layouts\Scripts\react\0.14.8\react.min.js">
-      <DependentUpon>react.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.js" />
-    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.min.js">
-      <DependentUpon>react-dom.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react-with-addons.js" />
-    <Content Include="Layouts\Scripts\react\15.3.0\react-with-addons.min.js">
-      <DependentUpon>react-with-addons.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react.js" />
-    <Content Include="Layouts\Scripts\react\15.3.0\react.min.js">
-      <DependentUpon>react.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\RegisterSod.js" />
-    <Content Include="Layouts\Scripts\RegisterSod.min.js">
-      <DependentUpon>RegisterSod.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\respond\1.4.2\respond.js" />
-    <Content Include="Layouts\Scripts\respond\1.4.2\respond.min.js">
-      <DependentUpon>respond.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
-    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
-      <DependentUpon>underscore.js</DependentUpon>
     </Content>
     <Content Include="Layouts\Scripts\_references.js" />
     <Content Include="ProvisionedUI\ProvisionedUI.xml" />

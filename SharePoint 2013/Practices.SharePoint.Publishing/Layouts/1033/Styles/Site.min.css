@@ -1,1 +1,1 @@
-﻿body #suiteBar #suiteBarLeft .ms-tableCell:nth-child(2){width:100%;}body #suiteBar #suiteBarRight{vertical-align:middle;}body #DeltaTopNavigation{display:block;}
+﻿body #suiteBar #suiteBarLeft #siteIcon{margin-left:30px;margin-right:0;}body #suiteBar #suiteBarLeft .ms-tableCell:nth-child(2){width:100%;}body #suiteBar #suiteBarLeft .ms-tableCell:nth-child(2) .ms-core-brandingText{padding-left:5px;font-size:2em;}body #suiteBar #suiteBarRight{vertical-align:middle;}body #DeltaPlaceHolderMain{margin:10px;}body.ms-fullscreenmode #contentBox{margin-left:20px;}

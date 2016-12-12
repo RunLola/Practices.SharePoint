@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint.Publishing {
+﻿namespace Practices.SharePoint.ApplicationPages {
     using System;
     using Microsoft.SharePoint;
     using Microsoft.SharePoint.WebControls;
@@ -9,7 +9,7 @@
                 return true;
             }
         }
-
+        
         protected void Page_Load(object sender, EventArgs e) {
 
         }

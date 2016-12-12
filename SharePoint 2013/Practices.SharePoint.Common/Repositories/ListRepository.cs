@@ -9,21 +9,15 @@
             get;
         }
 
-        public ListRepository() {
+        public abstract IEnumerable<SPListItem> Get(string queryString);
 
-        }
+        public abstract IEnumerable<SPListItem> Get(string queryString, uint startRow, uint maxRows);
 
-        public IEnumerable<SPListItem> Get(string queryString) {
-            SPQuery query = new SPQuery() {
-                Query = queryString
-            };
+        protected IEnumerable<SPListItem> Get(SPQuery query) {
             return List.GetItems(query).Cast<SPListItem>();
         }
 
-        public IEnumerable<SPListItem> Get(string queryString, uint startRow, uint maxRows) {
-            SPQuery query = new SPQuery() {
-                Query = queryString
-            };
+        protected IEnumerable<SPListItem> Get(SPQuery query, uint startRow, uint maxRows) {
             if (startRow > 0) {
                 query.RowLimit = startRow;
                 query.ListItemCollectionPosition = List.GetItems(query).ListItemCollectionPosition;

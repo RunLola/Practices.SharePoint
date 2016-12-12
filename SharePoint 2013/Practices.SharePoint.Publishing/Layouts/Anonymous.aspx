@@ -1,8 +1,8 @@
-﻿<%@ Assembly Name="$SharePoint.Project.AssemblyFullName$" %>
-<%@ Assembly Name="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
-
-<%@ Import Namespace="Microsoft.SharePoint" %>
+﻿<%@ Import Namespace="Microsoft.SharePoint" %>
 <%@ Import Namespace="Microsoft.SharePoint.ApplicationPages" %>
+
+<%@ Assembly Name="$SharePoint.Project.AssemblyFullName$" %>
+<%@ Assembly Name="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 
 <%@ Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" 
     Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
@@ -12,7 +12,7 @@
     Assembly="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" %>
 
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Anonymous.aspx.cs" 
-    Inherits="Practices.SharePoint.Publishing.AnonymousPage" MasterPageFile="~/_layouts/15/simple.master" %>
+    Inherits="Practices.SharePoint.ApplicationPages.AnonymousPage" MasterPageFile="~/_layouts/15/simple.master" %>
 
 <asp:Content ID="PageTitle" ContentPlaceHolderID="PlaceHolderPageTitle" runat="server">
     Anonymous Access Page

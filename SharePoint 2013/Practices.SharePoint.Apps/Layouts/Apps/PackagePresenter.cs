@@ -9,8 +9,10 @@
     using System.IO;
     using Microsoft.SharePoint.Taxonomy;
     using System.Web.UI.WebControls;
+    using Services;
+    using Apps;
 
-    class PackagePresenter {
+    public class PackagePresenter {
         private IPackageView view;
         private SPWeb clientWeb;
         private ICorporateCatalogService service;

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Scripts" RootWebOnly="True">
+    <File Path="Scripts\Site.js" Url="Scripts/Site.js" />
+  </Module>
+</Elements>

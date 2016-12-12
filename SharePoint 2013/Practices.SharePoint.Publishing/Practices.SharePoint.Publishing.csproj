@@ -21,6 +21,7 @@
     <IncludeAssemblyInPackage>True</IncludeAssemblyInPackage>
     <TokenReplacementFileExtensions>svc</TokenReplacementFileExtensions>
     <ActiveDeploymentConfiguration>Default</ActiveDeploymentConfiguration>
+    <AssemblyDeploymentTarget>GlobalAssemblyCache</AssemblyDeploymentTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,6 +64,7 @@
       <HintPath>..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SharePoint.Taxonomy, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.CommandUI, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -77,9 +79,6 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\Practices.Publishing\Practices.EventReceiver.cs">
-      <DependentUpon>Practices.Publishing.feature</DependentUpon>
-    </Compile>
     <Compile Include="FriendlyUrlHttpModule.cs" />
     <Compile Include="Layouts\Anonymous.aspx.cs">
       <DependentUpon>Anonymous.aspx</DependentUpon>
@@ -102,8 +101,8 @@
     <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a201d83e-43f7-4a11-8140-4f4edf0d5e6a}</SharePointProjectItemId>
     </None>
-    <None Include="Features\Practices.Publishing\Practices.Publishing.feature">
-      <FeatureId>{3345aafd-4ba6-4364-91bd-dff33dfc0195}</FeatureId>
+    <None Include="Features\Feature1\Feature1.feature">
+      <FeatureId>{00361879-82af-4387-a8bc-7ce75a3c37af}</FeatureId>
     </None>
     <None Include="Images\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{12d8d36f-9fc9-4ed4-b9ac-48c2a4e347f2}</SharePointProjectItemId>
@@ -111,107 +110,88 @@
     <None Include="ISAPI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{75ce5a0d-9f68-488a-8971-19f7a897e525}</SharePointProjectItemId>
     </None>
-    <None Include="Layouts\1033\Fonts\fontawesome-webfont.eot" />
-    <None Include="Layouts\1033\Fonts\fontawesome-webfont.ttf" />
-    <None Include="Layouts\1033\Fonts\fontawesome-webfont.woff" />
-    <None Include="Layouts\1033\Fonts\fontawesome-webfont.woff2" />
-    <None Include="Layouts\1033\Fonts\FontAwesome.otf" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.eot" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.ttf" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.woff" />
     <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Layouts\1033\Styles\bootstarp\alerts.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\badges.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\breadcrumbs.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\button-groups.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\buttons.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\carousel.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\close.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\code.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\component-animations.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\dropdowns.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\forms.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\glyphicons.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\grid.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\input-groups.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\jumbotron.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\labels.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\list-group.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\media.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\alerts.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\background-variant.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\border-radius.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\buttons.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\center-block.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\clearfix.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\forms.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\gradients.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\grid-framework.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\grid.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\hide-text.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\image.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\labels.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\list-group.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\nav-divider.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\nav-vertical-align.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\opacity.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\pagination.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\panels.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\progress-bar.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\reset-filter.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\reset-text.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\resize.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\responsive-visibility.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\size.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\tab-focus.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\table-row.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\text-emphasis.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\text-overflow.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\mixins\vendor-prefixes.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\modals.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\navbar.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\navs.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\normalize.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\pager.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\pagination.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\panels.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\popovers.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\print.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\progress-bars.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\responsive-embed.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\responsive-utilities.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\scaffolding.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\tables.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\theme.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\thumbnails.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\tooltip.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\type.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\utilities.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\variables.less" />
-    <None Include="Layouts\1033\Styles\bootstarp\wells.less" />
-    <None Include="Layouts\1033\Styles\bootstrap.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\alerts.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\badges.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\breadcrumbs.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\button-groups.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\buttons.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\carousel.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\close.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\code.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\component-animations.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\dropdowns.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\forms.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\glyphicons.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\grid.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\input-groups.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\jumbotron.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\labels.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\list-group.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\media.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\alerts.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\background-variant.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\border-radius.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\buttons.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\center-block.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\clearfix.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\forms.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\gradients.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\grid-framework.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\grid.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\hide-text.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\image.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\labels.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\list-group.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\nav-divider.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\nav-vertical-align.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\opacity.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\pagination.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\panels.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\progress-bar.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\reset-filter.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\reset-text.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\resize.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\responsive-visibility.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\size.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\tab-focus.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\table-row.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\text-emphasis.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\text-overflow.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\mixins\vendor-prefixes.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\modals.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\navbar.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\navs.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\normalize.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\pager.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\pagination.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\panels.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\popovers.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\print.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\progress-bars.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\responsive-embed.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\responsive-utilities.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\scaffolding.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\tables.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\theme.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\thumbnails.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\tooltip.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\type.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\utilities.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\variables.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\wells.less" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.less" />
     <None Include="Layouts\1033\Styles\bootstrap.sharepoint.less" />
-    <None Include="Layouts\1033\Styles\font-awesome.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\animated.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\bordered-pulled.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\core.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\fixed-width.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\icons.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\larger.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\list.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\mixins.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\path.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\rotated-flipped.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\screen-reader.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\stacked.less" />
-    <None Include="Layouts\1033\Styles\font-awesome\variables.less" />
     <None Include="Layouts\1033\Styles\Site.less" />
-    <None Include="Layouts\Scripts\Components.jsx" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4bb77559-e033-4906-b40e-f143755a50d1}</SharePointProjectItemId>
     </None>
-    <None Include="MasterPages\Site.Master" />
+    <None Include="MasterPages\Site.master" />
+    <None Include="MasterPages\hunan.Master" />
     <None Include="MasterPages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{67b3eed5-4e75-44eb-bc3b-c1e182b7791e}</SharePointProjectItemId>
     </None>
@@ -230,22 +210,29 @@
     <None Include="ProvisionedUI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{75fe2042-59b1-49be-a028-6b52b6fb3b6e}</SharePointProjectItemId>
     </None>
+    <None Include="Scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5085e8d6-4e69-4ec1-80ea-329aeac27a59}</SharePointProjectItemId>
+    </None>
     <None Include="Styles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8ceb2081-8868-4322-94a3-05eb1a43b150}</SharePointProjectItemId>
     </None>
     <None Include="Styles\Site.less" />
+    <None Include="SuiteDelegateControls\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{80155244-5bcc-491d-8713-4e5f8e40e4f2}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Features\Practices.Publishing\Practices.Publishing.Template.xml">
-      <DependentUpon>Practices.Publishing.feature</DependentUpon>
+    <Content Include="CONTROLTEMPLATES\SiteSuiteLinks.ascx" />
+    <Content Include="CONTROLTEMPLATES\SiteSuiteBarBranding.ascx" />
+    <Content Include="Features\Feature1\Feature1.Template.xml">
+      <DependentUpon>Feature1.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Fonts\fontawesome-webfont.svg" />
     <Content Include="Layouts\1033\Fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Layouts\1033\Styles\bootstrap.css">
+    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Styles\bootstrap.min.css">
+    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css">
@@ -254,12 +241,6 @@
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
       <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Styles\font-awesome.css">
-      <DependentUpon>font-awesome.less</DependentUpon>
-    </Content>
-    <Content Include="Layouts\1033\Styles\font-awesome.min.css">
-      <DependentUpon>font-awesome.css</DependentUpon>
-    </Content>
     <Content Include="Layouts\1033\Styles\Site.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>
@@ -267,111 +248,70 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="Layouts\Anonymous.aspx" />
-    <Content Include="Layouts\Scripts\bootstarp\affix.js" />
-    <Content Include="Layouts\Scripts\bootstarp\alert.js" />
-    <Content Include="Layouts\Scripts\bootstarp\button.js" />
-    <Content Include="Layouts\Scripts\bootstarp\carousel.js" />
-    <Content Include="Layouts\Scripts\bootstarp\collapse.js" />
-    <Content Include="Layouts\Scripts\bootstarp\dropdown.js" />
-    <Content Include="Layouts\Scripts\bootstarp\modal.js" />
-    <Content Include="Layouts\Scripts\bootstarp\popover.js" />
-    <Content Include="Layouts\Scripts\bootstarp\scrollspy.js" />
-    <Content Include="Layouts\Scripts\bootstarp\tab.js" />
-    <Content Include="Layouts\Scripts\bootstarp\tooltip.js" />
-    <Content Include="Layouts\Scripts\bootstarp\transition.js" />
-    <Content Include="Layouts\Scripts\bootstrap.js" />
-    <Content Include="Layouts\Scripts\bootstrap.min.js">
+    <Content Include="Layouts\Scripts\bootstarp\3.3.7\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\Components.js">
-      <DependentUpon>Components.jsx</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\Components.min.js">
-      <DependentUpon>Components.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.js" />
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.min.js">
       <DependentUpon>es5-sham.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.js" />
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.min.js">
       <DependentUpon>es5-shim.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.js" />
     <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.min.js">
       <DependentUpon>html5shiv.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\jquery.ui\1.10.4\jquery.ui.js" />
-    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.intellisense.js" />
-    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.js" />
     <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.min.js">
       <DependentUpon>jquery.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.intellisense.js" />
-    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.js" />
-    <Content Include="Layouts\Scripts\jquery\3.1.0\jquery.min.js">
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.min.js">
       <DependentUpon>jquery.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\react\0.14.8\react-dom.js" />
-    <Content Include="Layouts\Scripts\react\0.14.8\react-dom.min.js">
-      <DependentUpon>react-dom.js</DependentUpon>
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.slim.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.slim.min.js">
+      <DependentUpon>jquery.slim.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\react\0.14.8\react-with-addons.js" />
-    <Content Include="Layouts\Scripts\react\0.14.8\react-with-addons.min.js">
-      <DependentUpon>react-with-addons.js</DependentUpon>
+    <Content Include="Layouts\Scripts\RegisterSod.min.js">
+      <DependentUpon>RegisterSod.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\react\0.14.8\react.js" />
-    <Content Include="Layouts\Scripts\react\0.14.8\react.min.js">
-      <DependentUpon>react.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.es5.js">
-      <DependentUpon>react-dom.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.es5.min.js">
-      <DependentUpon>react-dom.es5.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.js" />
-    <Content Include="Layouts\Scripts\react\15.3.0\react-dom.min.js">
-      <DependentUpon>react-dom.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react-with-addons.js" />
-    <Content Include="Layouts\Scripts\react\15.3.0\react-with-addons.min.js">
-      <DependentUpon>react-with-addons.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react.es5.js">
-      <DependentUpon>react.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react.es5.min.js">
-      <DependentUpon>react.es5.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\react\15.3.0\react.js" />
-    <Content Include="Layouts\Scripts\react\15.3.0\react.min.js">
-      <DependentUpon>react.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\require.js" />
-    <Content Include="Layouts\Scripts\require.min.js">
-      <DependentUpon>require.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\respond\1.4.2\respond.js" />
     <Content Include="Layouts\Scripts\respond\1.4.2\respond.min.js">
       <DependentUpon>respond.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\sp.ui\sp.ui.discussions.js" />
-    <Content Include="Layouts\Scripts\sp.ui\sp.ui.discussions.min.js">
-      <DependentUpon>sp.ui.discussions.js</DependentUpon>
-    </Content>
-    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
       <DependentUpon>underscore.js</DependentUpon>
     </Content>
-    <Content Include="Layouts\Scripts\_references.js" />
+    <Content Include="Scripts\Scripts.xml" />
+    <Content Include="Scripts\Site.js" />
+    <Content Include="Scripts\Site.min.js">
+      <DependentUpon>Site.js</DependentUpon>
+    </Content>
+    <Content Include="Styles\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Styles\Site.min.css">
+      <DependentUpon>Site.css</DependentUpon>
+    </Content>
+    <Content Include="SuiteDelegateControls\SuiteDelegateControls.xml" />
     <None Include="MasterPages\seattle.master" />
+    <Content Include="Layouts\Scripts\bootstarp\3.3.7\bootstrap.js" />
+    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.js" />
+    <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.js" />
+    <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.js" />
+    <Content Include="Layouts\Scripts\react\15.4.1\react-dom.js" />
+    <Content Include="Layouts\Scripts\react\15.4.1\react.js" />
+    <Content Include="Layouts\Scripts\RegisterSod.js" />
+    <Content Include="Layouts\Scripts\respond\1.4.2\respond.js" />
+    <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
+    <Content Include="Layouts\Scripts\_references.js" />
     <Content Include="MasterPages\MasterPages.xml" />
     <Content Include="PageLayouts\Home.aspx" />
     <Content Include="PageLayouts\PageLayouts.xml" />
     <Content Include="Pages\Pages.xml" />
     <Content Include="ProvisionedUI\ProvisionedUI.xml" />
-    <Content Include="Styles\Elements.xml" />
+    <Content Include="Styles\Styles.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FieldTypes>
+  <FieldType>
+    <Field Name="TypeName">Member</Field>
+    <Field Name="ParentType">User</Field>
+    <Field Name="TypeDisplayName">$Resources:core,fldtype_user; $Resources:core,fldtype_lookup;</Field>
+    <Field Name="FieldTypeClass">Practices.SharePoint.FieldTypes.MemberField, $SharePoint.Project.AssemblyFullName$</Field>
+    <Field Name="FieldEditorUserControl">/_controltemplates/15/UserFieldEditor.ascx</Field>
+  </FieldType>
+</FieldTypes>

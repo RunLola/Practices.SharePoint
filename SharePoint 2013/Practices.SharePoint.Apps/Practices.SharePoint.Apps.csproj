@@ -78,12 +78,12 @@
     <Compile Include="Apps\AppPartConfig.cs" />
     <Compile Include="Layouts\Apps\IPackageView.cs" />
     <Compile Include="Layouts\Apps\PackagePresenter.cs" />
-    <Compile Include="Layouts\Apps\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="Layouts\Apps\Package.aspx.cs">
+      <DependentUpon>Package.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layouts\Apps\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx.cs</DependentUpon>
+    <Compile Include="Layouts\Apps\Package.aspx.designer.cs">
+      <DependentUpon>Package.aspx.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,11 +103,6 @@
     <None Include="ISAPI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6dd91d9f-b488-42cb-9feb-86cb2da3c60d}</SharePointProjectItemId>
     </None>
-    <None Include="Layouts\1033\fonts\fontawesome-webfont.eot" />
-    <None Include="Layouts\1033\fonts\fontawesome-webfont.ttf" />
-    <None Include="Layouts\1033\fonts\fontawesome-webfont.woff" />
-    <None Include="Layouts\1033\fonts\fontawesome-webfont.woff2" />
-    <None Include="Layouts\1033\fonts\FontAwesome.otf" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{426b0802-f564-48e0-ab85-746a2b91a5d0}</SharePointProjectItemId>
     </None>
@@ -118,30 +113,16 @@
       <DependentUpon>Package.package</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ProvisionedUI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="CorporateCatalogCustomActions\CorporateCatalogCustomActions.xml" />
     <Content Include="Features\Practices.Apps\Practices.Apps.Template.xml">
       <DependentUpon>Practices.Apps.feature</DependentUpon>
     </Content>
     <Content Include="ISAPI\CorporateCatalog.svc" />
-    <Content Include="Layouts\1033\fonts\fontawesome-webfont.svg" />
-    <Content Include="Layouts\1033\Styles\Plugins\jquery.iconpicker.css" />
-    <Content Include="Layouts\Apps\Register.aspx" />
+    <Content Include="Layouts\Apps\Package.aspx" />
     <Content Include="Layouts\Scripts\Apps.Ribbon.Actions.js" />
     <Content Include="Layouts\Scripts\Apps.Ribbon.Loader.js" />
-    <Content Include="Layouts\Scripts\Apps.js" />
-    <Content Include="Layouts\Scripts\jquery.js" />
-    <Content Include="Layouts\1033\Styles\Plugins\chosen-sprite2x.png" />
-    <Content Include="Layouts\1033\Styles\Plugins\chosen-sprite.png" />
-    <Content Include="Layouts\1033\Styles\Plugins\jquery.chosen.css" />
-    <Content Include="Layouts\Scripts\Plugins\jquery.chosen.js" />
-    <Content Include="Layouts\Scripts\Plugins\jquery.iconpicker.js" />
-    <Content Include="Layouts\Scripts\react-dom.js" />
-    <Content Include="Layouts\Scripts\react.js" />
-    <Content Include="Layouts\Scripts\underscore.js" />
     <Content Include="Layouts\Scripts\UTest.js" />
     <Content Include="Layouts\Scripts\_references.js" />
   </ItemGroup>

@@ -3,18 +3,25 @@
 //  Developing Page Components for the Server Ribbon
 //  https://msdn.microsoft.com/en-us/library/office/ff407303.aspx
 
+function ULS_SP() {
+    if (ULS_SP.caller) {
+        ULS_SP.caller.ULSTeamName = "Windows SharePoint Services 4";
+        ULS_SP.caller.ULSFileName = "SP.Ribbon.Custom.UI.js";
+    }
+}
+
 ////////////////////////////////////////////////////////////////////////////////
-//  Namespace Apps.Actions
-Type.registerNamespace('Apps.Ribbon');
+//  Namespace Practices.Apps
+Type.registerNamespace("Practices.Apps");
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Apps.Actions.ActionsPageComponent
-Apps.Ribbon.ActionsPageComponent = function () {
-    Apps.Ribbon.ActionsPageComponent.initializeBase(this);
+Practices.Apps.ActionsPageComponent = function () {
+    Practices.Apps.ActionsPageComponent.initializeBase(this);
     this.registerWithPageManager();
 }
 
-Apps.Ribbon.ActionsPageComponent.prototype = {
+Practices.Apps.ActionsPageComponent.prototype = {
     focusedCommands: null,
     globalCommands: null,
 
@@ -22,10 +29,18 @@ Apps.Ribbon.ActionsPageComponent.prototype = {
     init: function () {
         this.focusedCommands = [];
         this.globalCommands = [
-            Apps.Ribbon.ActionsCommandNames.Create,
-            Apps.Ribbon.ActionsCommandNames.Upgrade,
-            Apps.Ribbon.ActionsCommandNames.Delete
+            Practices.Apps.ActionsCommandNames.Create,
+            Practices.Apps.ActionsCommandNames.Upgrade,
+            Practices.Apps.ActionsCommandNames.Delete
         ];
+    },
+
+    registerWithPageManager: function () {
+        SP.Ribbon.PageManager.get_instance().addPageComponent(this);
+    },
+
+    unregisterWithPageManager: function () {
+        SP.Ribbon.PageManager.get_instance().removePageComponent(this);
     },
 
     // Returns a string array with the names of the focused commands. 
@@ -41,12 +56,12 @@ Apps.Ribbon.ActionsPageComponent.prototype = {
     // Indicates whether the page component can handle the command that was passed to it.
     canHandleCommand: function (commandId) {
         switch (commandId) {
-            case Apps.Ribbon.ActionsCommandNames.Create:
-                return Apps.Ribbon.ActionsCommands.CreateEnabled();
-            case Apps.Ribbon.ActionsCommandNames.Upgrade:
-                return Apps.Ribbon.ActionsCommands.UpgradeEnabled();
-            case Apps.Ribbon.ActionsCommandNames.Delete:
-                return Apps.Ribbon.ActionsCommands.DeleteEnabled();
+            case Practices.Apps.ActionsCommandNames.Create:
+                return Practices.Apps.ActionsCommands.CreateEnabled();
+            case Practices.Apps.ActionsCommandNames.Upgrade:
+                return Practices.Apps.ActionsCommands.UpgradeEnabled();
+            case Practices.Apps.ActionsCommandNames.Delete:
+                return Practices.Apps.ActionsCommands.DeleteEnabled();
             default:
                 return false;
         }
@@ -55,14 +70,14 @@ Apps.Ribbon.ActionsPageComponent.prototype = {
     // Execute the commands that come from our ribbon button
     handleCommand: function (commandId, properties, sequence) {
         switch (commandId) {
-            case Apps.Ribbon.ActionsCommandNames.Create:
-                Apps.Ribbon.ActionsCommands.Create();
+            case Practices.Apps.ActionsCommandNames.Create:
+                Practices.Apps.ActionsCommands.Create();
                 break;
-            case Apps.Ribbon.ActionsCommandNames.Upgrade:
-                Apps.Ribbon.ActionsCommands.Upgrade();
+            case Practices.Apps.ActionsCommandNames.Upgrade:
+                Practices.Apps.ActionsCommands.Upgrade();
                 break;
-            case Apps.Ribbon.ActionsCommandNames.Delete:
-                Apps.Ribbon.ActionsCommands.Delete();
+            case Practices.Apps.ActionsCommandNames.Delete:
+                Practices.Apps.ActionsCommands.Delete();
                 break;
             default:
                 break;
@@ -85,52 +100,52 @@ Apps.Ribbon.ActionsPageComponent.prototype = {
     yieldFocus: function () {
         //alert('The page component has lost focus.');
         return true;
-    },
-
-    registerWithPageManager: function () {
-        SP.Ribbon.PageManager.get_instance().addPageComponent(this);
-    },
-
-    unregisterWithPageManager: function () {
-        SP.Ribbon.PageManager.get_instance().removePageComponent(this);
     }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Apps.Actions.AppActionsCommands
-Apps.Ribbon.ActionsCommands = function () {
+//  Practices.Apps.AppActionsCommandNames
+Practices.Apps.ActionsCommandNames = function () {
+}
+Practices.Apps.ActionsCommandNames.Create = "Apps.Actions.Create";
+Practices.Apps.ActionsCommandNames.Upgrade = "Apps.Actions.Upgrade";
+Practices.Apps.ActionsCommandNames.Delete = "Apps.Actions.Delete";
+
+////////////////////////////////////////////////////////////////////////////////
+// Practices.Apps.AppActionsCommands
+Practices.Apps.ActionsCommands = function () {
 }
 
-Apps.Ribbon.ActionsCommands.CreateEnabled = function () {
+Practices.Apps.ActionsCommands.CreateEnabled = function () {
     return true;
 }
-Apps.Ribbon.ActionsCommands.Create = function () {
-    var url = "/_vti_bin/Apps.svc/Apps/Generate/";
-    //if (_spPageContextInfo.webServerRelativeUrl.length > 1) {
-    //    url = _spPageContextInfo.webServerRelativeUrl + url;
-    //}
-    url = "/Sites/Team" + url;
-    var data = {
-        title: "应用测试01",
-        launchUrl: "http://practices.contoso.com/sites/Team/_layouts/15/addanapp.aspx",
-        fields: [{ Key: "AppShortDescription", Value: "This is the app's description." },
-                 { Key: "AppDescription", Value: "This is the app's short description." }]
-    };
+Practices.Apps.ActionsCommands.Create = function () {
+    //var url = "/_vti_bin/Apps.svc/Apps/Generate/";
+    ////if (_spPageContextInfo.webServerRelativeUrl.length > 1) {
+    ////    url = _spPageContextInfo.webServerRelativeUrl + url;
+    ////}
+    //url = "/Sites/Team" + url;
+    //var data = {
+    //    title: "应用测试01",
+    //    launchUrl: "http://practices.contoso.com/sites/Team/_layouts/15/addanapp.aspx",
+    //    fields: [{ Key: "AppShortDescription", Value: "This is the app's description." },
+    //             { Key: "AppDescription", Value: "This is the app's short description." }]
+    //};
 
-    var productId = "00000000-0000-0000-0000-000000000000";
-    $.ajax({
-        type: "POST",
-        url: url + productId,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data: JSON.stringify(data),
-    }).done(function (result) {
-        refreshListView();
-    }).fail(function () {
-    })
+    //var productId = "00000000-0000-0000-0000-000000000000";
+    //$.ajax({
+    //    type: "POST",
+    //    url: url + productId,
+    //    contentType: "application/json; charset=utf-8",
+    //    dataType: "json",
+    //    data: JSON.stringify(data),
+    //}).done(function (result) {
+    //    refreshListView();
+    //}).fail(function () {
+    //})
 }
 
-Apps.Ribbon.ActionsCommands.UpgradeEnabled = function () {
+Practices.Apps.ActionsCommands.UpgradeEnabled = function () {
     if (undefined == window.itemState) {
         window.itemState = [];
     }
@@ -162,7 +177,7 @@ Apps.Ribbon.ActionsCommands.UpgradeEnabled = function () {
     function OnSelectedItemQueryFailed() {
     }
 }
-Apps.Ribbon.ActionsCommands.Upgrade = function () {
+Practices.Apps.ActionsCommands.Upgrade = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
     var context = SP.ClientContext.get_current();
     var listId = SP.ListOperation.Selection.getSelectedList();
@@ -182,7 +197,7 @@ Apps.Ribbon.ActionsCommands.Upgrade = function () {
     }
 }
 
-Apps.Ribbon.ActionsCommands.DeleteEnabled = function () {
+Practices.Apps.ActionsCommands.DeleteEnabled = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
     var count = CountDictionary(selectedItems);
     if (count > 0) {
@@ -191,49 +206,49 @@ Apps.Ribbon.ActionsCommands.DeleteEnabled = function () {
         return false;
     }
 }
-Apps.Ribbon.ActionsCommands.Delete = function () {
-    var context = SP.ClientContext.get_current();
-    var listId = SP.ListOperation.Selection.getSelectedList();
-    var corporateCatalog = context.get_web().get_lists().getById(listId);
+Practices.Apps.ActionsCommands.Delete = function () {
+    //var context = SP.ClientContext.get_current();
+    //var listId = SP.ListOperation.Selection.getSelectedList();
+    //var corporateCatalog = context.get_web().get_lists().getById(listId);
 
-    var selectedItems = SP.ListOperation.Selection.getSelectedItems();
-    var count = CountDictionary(selectedItems);    
-    var i = 0;
-    destoryApp(i, selectedItems);
+    //var selectedItems = SP.ListOperation.Selection.getSelectedItems();
+    //var count = CountDictionary(selectedItems);
+    //var i = 0;
+    //destoryApp(i, selectedItems);
 
-    function destoryApp(i, selectedItems) {
-        var listItem = corporateCatalog.getItemById(selectedItems[i].id);
-        context.load(listItem);
-        context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
+    //function destoryApp(i, selectedItems) {
+    //    var listItem = corporateCatalog.getItemById(selectedItems[i].id);
+    //    context.load(listItem);
+    //    context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
 
-        function OnSelectedItemQuerySucceeded(sender, args) {
-            var productId = listItem.get_item("AppProductID").toString();
-            //alert(productId);
-            var url = "/_vti_bin/Apps.svc/" + productId;
-            if (_spPageContextInfo.webServerRelativeUrl.length > 1) {
-                url = _spPageContextInfo.webServerRelativeUrl + url;
-            }
+    //    function OnSelectedItemQuerySucceeded(sender, args) {
+    //        var productId = listItem.get_item("AppProductID").toString();
+    //        //alert(productId);
+    //        var url = "/_vti_bin/Apps.svc/" + productId;
+    //        if (_spPageContextInfo.webServerRelativeUrl.length > 1) {
+    //            url = _spPageContextInfo.webServerRelativeUrl + url;
+    //        }
 
-            $.ajax({
-                type: "DELETE",
-                url: url,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-            }).done(function (result) {
-                i += 1;
-                if (i < count) {
-                    SP.UI.Notify.addNotification("已删除" + i + "个应用，共" + count + "个。", false);
-                    destoryApp(i, selectedItems);                    
-                } else {
-                    SP.UI.Notify.addNotification("操作完毕。", false);
-                    refreshListView();
-                }
-            }).fail(function () {
-            })
-        }
-        function OnSelectedItemQueryFailed() {
-        }
-    }
+    //        $.ajax({
+    //            type: "DELETE",
+    //            url: url,
+    //            contentType: "application/json; charset=utf-8",
+    //            dataType: "json",
+    //        }).done(function (result) {
+    //            i += 1;
+    //            if (i < count) {
+    //                SP.UI.Notify.addNotification("已删除" + i + "个应用，共" + count + "个。", false);
+    //                destoryApp(i, selectedItems);
+    //            } else {
+    //                SP.UI.Notify.addNotification("操作完毕。", false);
+    //                refreshListView();
+    //            }
+    //        }).fail(function () {
+    //        })
+    //    }
+    //    function OnSelectedItemQueryFailed() {
+    //    }
+    //}
 }
 
 function refreshListView() {
@@ -245,39 +260,29 @@ function refreshListView() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  Apps.Actions.AppActionsCommandNames
-Apps.Ribbon.ActionsCommandNames = function () {
-}
-
-Apps.Ribbon.ActionsCommandNames.Create = 'Apps.Actions.Create';
-Apps.Ribbon.ActionsCommandNames.Upgrade = 'Apps.Actions.Upgrade';
-Apps.Ribbon.ActionsCommandNames.Delete = 'Apps.Actions.Delete';
-
-////////////////////////////////////////////////////////////////////////////////
 //  RegisterClass
-Apps.Ribbon.ActionsPageComponent.registerClass('Apps.Ribbon.ActionsPageComponent', CUI.Page.PageComponent);
-Apps.Ribbon.ActionsCommands.registerClass('Apps.Ribbon.ActionsCommands');
-Apps.Ribbon.ActionsCommandNames.registerClass('Apps.Ribbon.ActionsCommandNames');
+Practices.Apps.ActionsCommands.registerClass("Practices.Apps.ActionsCommands");
+Practices.Apps.ActionsCommandNames.registerClass("Practices.Apps.ActionsCommandNames");
+Practices.Apps.ActionsPageComponent.registerClass("Practices.Apps.ActionsPageComponent", CUI.Page.PageComponent);
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Load Apps.Ribbon.Actions.PageComponent instance.
-Apps.Ribbon.ActionsPageComponent.instance = null;
-Apps.Ribbon.ActionsPageComponent.load = function () {
-    Apps.Ribbon.ActionsPageComponent.instance = new Apps.Ribbon.ActionsPageComponent();
+Practices.Apps.ActionsPageComponent.instance = null;
+Practices.Apps.ActionsPageComponent.load = function () {
+    Practices.Apps.ActionsPageComponent.instance = new Practices.Apps.ActionsPageComponent();
 }
 
-//Apps.Ribbon.ActionsPageComponent.instance = new Apps.Ribbon.ActionsPageComponent();
-//Apps.Ribbon.ActionsPageComponent.initialize = function () {
-//    SP.SOD.executeOrDelayUntilScriptLoaded(
-//            Function.createDelegate(null, Apps.Ribbon.ActionsPageComponent.initializePageComponent),
-//            "SP.Ribbon.js");
-//}
-//Apps.Ribbon.ActionsPageComponent.initializePageComponent = function () {
-//    var ribbonPageManager = SP.Ribbon.PageManager.get_instance();
-//    if (null !== ribbonPageManager) {
-//        ribbonPageManager.addPageComponent(Apps.Ribbon.ActionsPageComponent.instance);
-//    }
-//}
+//ExecuteAndRegisterBeginEndFunctions("Apps.Ribbon.Actions.js",
+//    null, null,
+//    function () {
+//        if (typeof (_spBodyOnLoadCalled) == 'undefined' || _spBodyOnLoadCalled) {
+//            window.setTimeout(Practices.Apps.ActionsPageComponent.load, 0);
+//        }
+//        else {
+//            _spBodyOnLoadFunctionNames.push("Practices.Apps.ActionsPageComponent.load");
+//        }
+//    });
 
 ////////////////////////////////////////////////////////////////////////////////
 //  SP.SOD ( SharePoint scripts on demand ).

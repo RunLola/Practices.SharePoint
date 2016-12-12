@@ -87,7 +87,11 @@
             /// <summary>
             /// 
             /// </summary>
-            Lookup
+            Lookup,
+            /// <summary>
+            /// 
+            /// </summary>
+            Membership
         }
 
         protected enum FilterFieldType {
@@ -100,7 +104,9 @@
             Lookup,
             Computed,
             ModStat,
-            File
+            File,
+            CurrentUserGroups,
+            ContentTypeId
         }
 
         /// <summary>
@@ -141,6 +147,8 @@
                         case FilterQueryOperator.IsNull:
                         case FilterQueryOperator.IsNotNull:
                             return string.Format("<{0}><FieldRef Name='{1}'/></{0}>", QueryOperator, FieldName);
+                        case FilterQueryOperator.Membership:
+                            return string.Format("<{0} Type='{1}'><FieldRef Name='{2}'/></{0}>", QueryOperator, FilterFieldType.CurrentUserGroups, FieldName);
                         case FilterQueryOperator.Lookup:
                             switch (FieldType) {
                                 case FilterFieldType.Integer:
@@ -151,7 +159,7 @@
                                         FilterQueryOperator.Eq, FieldName, FilterFieldType.Lookup, FieldValue);
                             }
                         case FilterQueryOperator.In:
-                            string[] fieldValues = (string[])FieldValue;
+                            var fieldValues = (IEnumerable<string>)FieldValue;
                             StringBuilder builder = new StringBuilder();
                             switch (FieldType) {
                                 case FilterFieldType.Lookup:
@@ -165,69 +173,70 @@
                                     builder.AppendFormat("</{0}>", QueryOperator);
                                     break;
                                 default:
-                                    var cycle = fieldValues.Length / 500;
-                                    //if (cycle > 2) {
-                                    //    cycle = 2;
-                                    //}
-                                    var mod = fieldValues.Length % 500;
-                                    if (cycle > 0) {
-                                        if (mod > 0) {
-                                            for (int i = 0; i < cycle; i++) {
-                                                builder.AppendFormat("<{0}>", FilterChainingOperator.Or);
-                                            }
-                                            for (int i = 0; i < cycle; i++) {
-                                                builder.AppendFormat("<{0}>", QueryOperator);
-                                                builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
-                                                builder.Append("<Values>");
-                                                for (int j = 0; j < 500; j++) {
-                                                    var fieldValue = fieldValues[i * 500 + j];
-                                                    builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
-                                                }
-                                                builder.Append("</Values>");
-                                                builder.AppendFormat("</{0}>", QueryOperator);
-                                                if (i > 0) {
-                                                    builder.AppendFormat("</{0}>", FilterChainingOperator.Or);
-                                                }
-                                            }
-                                            builder.AppendFormat("<{0}>", QueryOperator);
-                                            builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
-                                            builder.Append("<Values>");
-                                            for (int i = 0; i < mod; i++) {
-                                                var fieldValue = fieldValues[cycle * 500 + i];
-                                                builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
-                                            }
-                                            builder.Append("</Values>");
-                                            builder.AppendFormat("</{0}>", QueryOperator);
-                                            builder.AppendFormat("</{0}>", FilterChainingOperator.Or);
-                                        } else {
-                                            for (int i = 0; i < cycle - 1; i++) {
-                                                builder.AppendFormat("<{0}>", FilterChainingOperator.Or);
-                                            }
-                                            for (var i = 0; i < cycle; i++) {
-                                                builder.AppendFormat("<{0}>", QueryOperator);
-                                                builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
-                                                builder.Append("<Values>");
-                                                for (int j = 0; j < 500; j++) {
-                                                    var fieldValue = fieldValues[i * 500 + j];
-                                                    builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
-                                                }
-                                                builder.Append("</Values>");
-                                                builder.AppendFormat("</{0}>", QueryOperator);
-                                                if (i > 0) {
-                                                    builder.AppendFormat("</{0}>", FilterChainingOperator.Or);
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        builder.AppendFormat("<{0}>", QueryOperator);
-                                        builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
-                                        builder.Append("<Values>");
-                                        foreach (var fieldValue in fieldValues) {
-                                            builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
-                                        }
-                                        builder.Append("</Values>");
-                                        builder.AppendFormat("</{0}>", QueryOperator);
+                                    builder.AppendFormat("<{0}>", QueryOperator);
+                                    builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
+                                    builder.Append("<Values>");
+                                    foreach (var fieldValue in fieldValues) {
+                                        builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
                                     }
+                                    builder.Append("</Values>");
+                                    builder.AppendFormat("</{0}>", QueryOperator);
+                                    //var cycle = fieldValues.Count() / 500;
+                                    ////if (cycle > 2) {
+                                    ////    cycle = 2;
+                                    ////}
+                                    //var mod = fieldValues.Count() % 500;
+                                    //if (cycle > 0) {
+                                    //    if (mod > 0) {
+                                    //        for (int i = 0; i < cycle; i++) {
+                                    //            builder.AppendFormat("<{0}>", FilterChainingOperator.Or);
+                                    //        }
+                                    //        for (int i = 0; i < cycle; i++) {
+                                    //            builder.AppendFormat("<{0}>", QueryOperator);
+                                    //            builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
+                                    //            builder.Append("<Values>");
+                                    //            for (int j = 0; j < 500; j++) {
+                                    //                var fieldValue = fieldValues[i * 500 + j];
+                                    //                builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
+                                    //            }
+                                    //            builder.Append("</Values>");
+                                    //            builder.AppendFormat("</{0}>", QueryOperator);
+                                    //            if (i > 0) {
+                                    //                builder.AppendFormat("</{0}>", FilterChainingOperator.Or);
+                                    //            }
+                                    //        }
+                                    //        builder.AppendFormat("<{0}>", QueryOperator);
+                                    //        builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
+                                    //        builder.Append("<Values>");
+                                    //        for (int i = 0; i < mod; i++) {
+                                    //            var fieldValue = fieldValues[cycle * 500 + i];
+                                    //            builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
+                                    //        }
+                                    //        builder.Append("</Values>");
+                                    //        builder.AppendFormat("</{0}>", QueryOperator);
+                                    //        builder.AppendFormat("</{0}>", FilterChainingOperator.Or);
+                                    //    } else {
+                                    //        for (int i = 0; i < cycle - 1; i++) {
+                                    //            builder.AppendFormat("<{0}>", FilterChainingOperator.Or);
+                                    //        }
+                                    //        for (var i = 0; i < cycle; i++) {
+                                    //            builder.AppendFormat("<{0}>", QueryOperator);
+                                    //            builder.AppendFormat("<FieldRef Name='{0}'/>", FieldName);
+                                    //            builder.Append("<Values>");
+                                    //            for (int j = 0; j < 500; j++) {
+                                    //                var fieldValue = fieldValues[i * 500 + j];
+                                    //                builder.AppendFormat("<Value Type='{0}'>{1}</Value>", FieldType, fieldValue);
+                                    //            }
+                                    //            builder.Append("</Values>");
+                                    //            builder.AppendFormat("</{0}>", QueryOperator);
+                                    //            if (i > 0) {
+                                    //                builder.AppendFormat("</{0}>", FilterChainingOperator.Or);
+                                    //            }
+                                    //        }
+                                    //    }
+                                    //} else {
+                                        
+                                    //}
                                     break;
                             }
                             return builder.ToString();
@@ -272,6 +281,31 @@
             });
         }
 
+        #endregion
+
+        #region <BeginsWith>
+
+        public CAMLQueryBuilder AddBeginsWith(string fieldName, string fieldValue) {
+            if (fieldName.Equals(BuiltInFieldName.ContentTypeId)) {
+                return AddFilter(new Filter {
+                    FieldName = fieldName,
+                    FieldType = FilterFieldType.ContentTypeId,
+                    FieldValue = fieldValue,
+                    QueryOperator = FilterQueryOperator.BeginsWith,
+                    ChainingOperator = FilterChainingOperator.And
+                });
+            } else {
+                return AddFilter(new Filter {
+                    FieldName = fieldName,
+                    FieldType = FilterFieldType.Text,
+                    FieldValue = fieldValue,
+                    QueryOperator = FilterQueryOperator.BeginsWith,
+                    ChainingOperator = FilterChainingOperator.And
+                });
+            }
+            
+        }
+        
         #endregion
 
         #region <Contains>
@@ -410,13 +444,107 @@
 
         #endregion
 
-        #region <In>
+        #region <Neq>
 
-        public CAMLQueryBuilder AddIn(string fieldName, Guid[] fieldValues) {
+        public CAMLQueryBuilder AddNotEqual(string fieldName, int fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Integer,
+                FieldValue = fieldValue,
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.And
+            });
+        }
+
+        public CAMLQueryBuilder AddNotEqual(string fieldName, string fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Text,
+                FieldValue = fieldValue,
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.And
+            });
+        }
+
+        public CAMLQueryBuilder AddNotEqual(string fieldName, Guid fieldValue) {
             return AddFilter(new Filter {
                 FieldName = fieldName,
                 FieldType = FilterFieldType.Guid,
-                FieldValue = Array.ConvertAll(fieldValues, fieldValue => fieldValue.ToString()),
+                FieldValue = fieldValue,
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.And
+            });
+        }
+
+        public CAMLQueryBuilder AddNotEqual(string fieldName, bool fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Boolean,
+                FieldValue = fieldValue ? "1" : "0",
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.And
+            });
+        }
+
+        public CAMLQueryBuilder OrNotEqual(string fieldName, int fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Integer,
+                FieldValue = fieldValue,
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.Or
+            });
+        }
+
+        public CAMLQueryBuilder OrNotEqual(string fieldName, string fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Text,
+                FieldValue = fieldValue,
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.Or
+            });
+        }
+
+        public CAMLQueryBuilder OrNotEqual(string fieldName, Guid fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Guid,
+                FieldValue = fieldValue,
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.Or
+            });
+        }
+
+        public CAMLQueryBuilder OrNotEqual(string fieldName, bool fieldValue) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Boolean,
+                FieldValue = fieldValue ? "1" : "0",
+                QueryOperator = FilterQueryOperator.Neq,
+                ChainingOperator = FilterChainingOperator.Or
+            });
+        }
+        
+        #endregion
+
+        #region <In>
+
+        public CAMLQueryBuilder AddIn(string fieldName, IEnumerable<string> fieldValues) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Text,
+                FieldValue = fieldValues.Select(v => v.ToString()),
+                QueryOperator = FilterQueryOperator.In,
+                ChainingOperator = FilterChainingOperator.And
+            });
+        }
+
+        public CAMLQueryBuilder AddIn(string fieldName, IEnumerable<Guid> fieldValues) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.Guid,
+                FieldValue = fieldValues.Select(v => v.ToString()),
                 QueryOperator = FilterQueryOperator.In,
                 ChainingOperator = FilterChainingOperator.And
             });
@@ -461,6 +589,16 @@
         }
 
         #endregion
+
+        public CAMLQueryBuilder OrCurrentUserGroups(string fieldName) {
+            return AddFilter(new Filter {
+                FieldName = fieldName,
+                FieldType = FilterFieldType.CurrentUserGroups,
+                FieldValue = null,
+                QueryOperator = FilterQueryOperator.Membership,
+                ChainingOperator = FilterChainingOperator.Or
+            });
+        }
 
         #endregion
 

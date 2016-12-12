@@ -10,8 +10,7 @@
 
     /// <summary>
     /// Provides a diagnostic logging for Windows SharePoint Services.
-    /// </summary>
-    [Guid("1BA36583-1EDB-4AB6-92C5-ACF18FB742AA")] 
+    /// </summary>    
     public class DiagnosticsService : SPDiagnosticsServiceBase {
         /// <summary>
         /// Initializes a new instance of the DiagnosticService class.

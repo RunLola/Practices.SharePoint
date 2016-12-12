@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="faa7ad87-64aa-4c43-b57e-c62f517fa52b" solutionId="faa7ad87-64aa-4c43-b57e-c62f517fa52b" resetWebServer="true" sharePointProductVersion="15.0" name="Practices.SharePoint.Publishing" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
-    <featureReference itemId="3345aafd-4ba6-4364-91bd-dff33dfc0195" />
+    <featureReference itemId="00361879-82af-4387-a8bc-7ce75a3c37af" />
   </features>
   <projectItems>
     <projectItemReference itemId="75ce5a0d-9f68-488a-8971-19f7a897e525" />

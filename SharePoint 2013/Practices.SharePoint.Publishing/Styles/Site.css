@@ -1,0 +1,62 @@
+﻿body #suiteBarLeft {
+  background-color: #3D99D7;
+}
+body #suiteBarLeft .ms-siteicon-img {
+  max-width: 35px;
+  margin-top: 15px;
+}
+body.ms-core-needIEFilter #suiteBarLeft {
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ff3D99D7, D7, endColorstr=#ff3D99D7, D7);
+}
+body #sideNavBox .ms-core-listMenu-verticalBox .ms-core-listMenu-root > li.static > .ms-core-listMenu-item {
+  padding: 10px 30px;
+  font-size: 1.23em;
+  font-weight: bold;
+  background-color: #F2F2F4;
+  border: 1px solid #D1D1D1;
+  margin-top: -1px;
+}
+body #sideNavBox .ms-core-listMenu-verticalBox .ms-core-listMenu-root > li.static > .ms-core-listMenu-item:hover {
+  background-color: #3C99D7;
+  color: white;
+}
+body #contentBox .ms-listviewtable .ms-viewheadertr {
+  color: #707070;
+  font-weight: normal;
+  background: #F2F2F2;
+  background-image: -webkit-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+  background-image: -o-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+  background-image: linear-gradient(to bottom, #f8f8f8 0%, #ececec 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
+}
+body #contentBox .ms-listviewtable .ms-viewheadertr > th {
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-headerCellStyleIcon {
+  /*border-left: 1px solid #dddddd;*/
+}
+body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-vh2 {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: middle;
+  /*border-right: 1px solid #dddddd;*/
+}
+body #contentBox .ms-listviewtable .ms-itmhover > td {
+  border-bottom: 1px solid #dddddd;
+}
+body #contentBox .ms-listviewtable .ms-itmhover .ms-vb-itmcbx {
+  /*border-left: 1px solid #dddddd;*/
+}
+body #contentBox .ms-listviewtable .ms-itmhover .ms-cellstyle {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: middle;
+  /*border-right: 1px solid #dddddd;*/
+}
+body #contentBox .ms-listviewtable .ms-alternating {
+  background-color: #f9f9f9;
+}

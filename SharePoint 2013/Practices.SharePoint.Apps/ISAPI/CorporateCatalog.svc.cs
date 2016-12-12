@@ -7,6 +7,7 @@
     using System.IO;
     using System.Linq;
     using System.ServiceModel.Activation;
+    using Apps;
 
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
     public class CorporateCatalogService : ICorporateCatalogService {

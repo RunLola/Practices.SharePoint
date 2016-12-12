@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Practices.SharePoint.Publishing {
+namespace Practices.SharePoint.ApplicationPages {
     
     
     public partial class AnonymousPage {

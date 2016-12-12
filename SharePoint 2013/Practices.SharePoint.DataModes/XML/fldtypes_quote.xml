@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FieldTypes>
+  <FieldType>
+    <Field Name="TypeName">QuoteText</Field>
+    <Field Name="ParentType">Text</Field>
+    <Field Name="TypeDisplayName">$Resources:core,fldtype_text; $Resources:core,fldtype_lookup;</Field>
+    <Field Name="FieldTypeClass">Practices.SharePoint.FieldTypes.QuoteTextField, $SharePoint.Project.AssemblyFullName$</Field>
+    <Field Name="FieldEditorUserControl">/_controltemplates/15/QuoteFieldEditor.ascx</Field>
+    <PropertySchema>
+      <Fields>
+        <Field Name="WebId" DisplayName="WebId" Type="Text" Hidden="True"></Field>
+        <Field Name="ListId" DisplayName="ListId" Type="Text" Hidden="True"></Field>
+        <Field Name="ViewFields" DisplayName="ViewFields" Type="Text" Hidden="True"></Field>
+        <Field Name="QuoteField" DisplayName="QuoteField" Type="Text" Hidden="True"></Field>
+      </Fields>
+    </PropertySchema>
+  </FieldType>
+  <FieldType>
+    <Field Name="TypeName">QuoteNote</Field>
+    <Field Name="ParentType">Note</Field>
+    <Field Name="TypeDisplayName">$Resources:core,fldtype_note; $Resources:core,fldtype_lookup;</Field>
+    <Field Name="FieldTypeClass">Practices.SharePoint.FieldTypes.QuoteNoteField, $SharePoint.Project.AssemblyFullName$</Field>
+    <Field Name="FieldEditorUserControl">/_controltemplates/15/QuoteFieldEditor.ascx</Field>
+    <PropertySchema>
+      <Fields>
+        <Field Name="WebId" DisplayName="WebId" Type="Text" Hidden="True"></Field>
+        <Field Name="ListId" DisplayName="ListId" Type="Text" Hidden="True"></Field>
+        <Field Name="ViewFields" DisplayName="ViewFields" Type="Text" Hidden="True"></Field>
+        <Field Name="QuoteField" DisplayName="QuoteField" Type="Text" Hidden="True"></Field>
+      </Fields>
+    </PropertySchema>
+  </FieldType>
+</FieldTypes>

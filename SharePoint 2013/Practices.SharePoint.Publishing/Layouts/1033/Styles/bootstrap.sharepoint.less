@@ -1,15 +1,16 @@
 ﻿/*!
- * Bootstrap v3 resets for SharePoint
+ * SharePoint resets for Bootstrap v3
  */
 
 /* border-box causes many issues with SharePoint*/
 *,
 *:before,
 *:after {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
 }
+
 /*reset bootstarp 3 elements expecting to be border-box*/
 * [class^="col-"],
 * [class^="col-"]:before,
@@ -23,16 +24,13 @@
 .row,
 .row:before,
 .row:after,
-
 .form-group,
 .control-lable,
 .form-control,
-
 .nav *,
 .navbar-toggle,
 .table,
 .table-responsive,
-
 .btn-block,
 .caret,
 .dropdown-menu,
@@ -46,309 +44,358 @@ legend,
 fieldset,
 code,
 pre {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
+
+a:hover, a:focus {
+    color: none;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
 img {
-  max-width: none;
-  width: auto;
+    max-width: none;
+    width: auto;
 }
+
 * [class^="col-"] img {
-  max-width: 100%;
-  /*for images inside span grid*/
+    max-width: 100%;
+    /*for images inside span grid*/
 }
+
 #scriptWPQ2 img,
 img.ms-webpart-menuArrowImg,
 #applist img,
 .ms-core-menu-icon > img {
-  width: auto;
-  /*within a span may still need to have width of image not 100% for SP2013 OOTB features/imges*/
-  max-width: none;
+    width: auto;
+    /*within a span may still need to have width of image not 100% for SP2013 OOTB features/imges*/
+    max-width: none;
 }
+
 .ms-siteactions-imgspan {
-  float: none;
-  margin: 0px;
+    float: none;
+    margin: 0px;
 }
+
 input.ms-cui-cb-input {
-  height: 14px;
-  padding: 3px 7px 2px;
+    height: 14px;
+    padding: 3px 7px 2px;
 }
+
 select,
 input[type="file"] {
-  height: auto;
-  line-height: 20px;
+    height: auto;
+    line-height: 20px;
 }
+
 label {
-  display: inline-block;
-  margin-bottom: 0px;
-  font-weight: normal;
+    display: inline-block;
+    margin-bottom: 0px;
+    font-weight: normal;
 }
+
 .navbar-toggle {
-  min-width: 0px;
+    min-width: 0px;
 }
-a:focus {
-  outline: none;
-}
+
 button::-moz-focus-inner {
-  border: 0;
+    border: 0;
 }
 /*end bootstrap resets*/
 /*SharePoint overrides some B3 classes, reset back*/
 .container {
-  background-color: transparent;
-  border: 1px transparent none;
-  color: inherit;
-  margin: 0px auto;
-  width: auto;
+    background-color: transparent;
+    border: 1px transparent none;
+    color: inherit;
+    margin: 0px auto;
+    width: auto;
 }
 /*end SP resets*/
 /*template styles*/
 /*Main SP containers*/
 /*end Main SP containers*/
 #s4-bodyContainer {
-  width: auto !important;
+    width: auto !important;
 }
 /* ribbon*/
 #suiteBar {
-  display: block;
-  /*height: 60px;*/
+    display: block;
+    /*height: 60px;*/
 }
+
 #suiteBarLeft,
 #suiteBarRight {
-  display: inline-block;
-  width: 100%;
+    display: inline-block;
+    width: 100%;
 }
+
 #suiteBarRight .ms-core-deltaSuiteBarRight {
-  float: right;
+    float: right;
 }
+
 #s4-ribbonrow [class*="col-"] {
-  float: none;
-  margin-left: 0px;
+    float: none;
+    margin-left: 0px;
 }
+
 #pageStatusBar[class],
 .ms-status-msg {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
+
 #suiteBarLeft {
-  background-color: #0088CC;
+    background-color: #0088CC;
 }
+
 .ms-cui-dd-text,
 input.ms-cui-cb-input,
 input[type="text"].ms-cui-cb-input {
-  border-color: #D3D6D9;
-  border-image: none;
-  border-style: solid;
-  border-width: 1px 0 1px 1px;
-  cursor: default;
-  display: block;
-  height: 14px;
-  padding: 3px 7px 2px;
-  white-space: nowrap;
-  font-size: inherit;
+    border-color: #D3D6D9;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    cursor: default;
+    display: block;
+    height: 14px;
+    padding: 3px 7px 2px;
+    white-space: nowrap;
+    font-size: inherit;
 }
 /*header*/
 .header {
-  margin-top: 10px;
+    margin-top: 10px;
 }
+
 .headtitle {
-  margin-left: 10px;
+    margin-left: 10px;
 }
+
 #pageTitle {
-  margin: 0px 0px 5px;
-  font-size: 2em;
+    margin: 0px 0px 5px;
+    font-size: 2em;
 }
 /* breadcrumb*/
 ul.s4-breadcrumb {
-  margin-bottom: 5px;
-  padding: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
 }
+
 ul.s4-breadcrumb,
 ul.s4-breadcrumb ul {
-  margin: 0px 0px 5px;
-  padding: 0px;
-  list-style: none inside none;
-  display: inline-block;
+    margin: 0px 0px 5px;
+    padding: 0px;
+    list-style: none inside none;
+    display: inline-block;
 }
+
 ul.s4-breadcrumb .s4-breadcrumb-arrowcont {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: transparent url('../img/glyphicons-halflings.png') no-repeat -262px -92px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: transparent url('../img/glyphicons-halflings.png') no-repeat -262px -92px;
 }
+
 ul.s4-breadcrumb .s4-breadcrumb-arrowcont img {
-  display: none !important;
+    display: none !important;
 }
+
 ul.s4-breadcrumb > li:first-child > span.s4-breadcrumb-arrowcont {
-  display: none;
+    display: none;
 }
+
 ul.s4-breadcrumb a.s4-breadcrumbCurrentNode {
-  color: #000;
+    color: #000;
 }
 /* end breadcrumb*/
 /*search box*/
 .header .searchbox {
-  display: block;
-  float: none;
-  clear: both;
+    display: block;
+    float: none;
+    clear: both;
 }
 /*end search box*/
 /*end header*/
 /*top nav */
 #topnavbar {
-  height: auto;
+    height: auto;
 }
+
 #topnavbar.navbar {
-  z-index: 50;
+    z-index: 50;
 }
+
 #topnavbar .navbar-collapse {
-  max-height: none;
-  clear: both;
+    max-height: none;
+    clear: both;
 }
 /*on mobile devices top nav bar will be a drop down, so we want to show across*/
 .ms-core-listMenu-horizontalBox {
-  display: block;
+    display: block;
 }
+
 #topnavbar .nav ul,
 #topnavbar .nav ul > li {
-  float: none;
-  list-style: none outside none;
-  margin: 0;
-  padding: 0;
+    float: none;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
 }
+
 #topnavbar .nav ul.static {
-  display: block;
-  position: relative;
-  text-align: left;
+    display: block;
+    position: relative;
+    text-align: left;
 }
+
 #topnavbar li.static {
-  display: block;
-  width: 100%;
-  position: relative;
+    display: block;
+    width: 100%;
+    position: relative;
 }
+
 #topnavbar li.static > .menu-item {
-  display: block;
-  height: 47px;
-  line-height: 1em;
-  padding: 15px 0;
-  margin: 0px;
-  position: relative;
+    display: block;
+    height: 47px;
+    line-height: 1em;
+    padding: 15px 0;
+    margin: 0px;
+    position: relative;
 }
+
 .ms-core-listMenu-horizontalBox li.static > .ms-core-listMenu-item {
-  border: none;
+    border: none;
 }
 /*images within nav should not use respponsive properties*/
 #topnavbar .nav img {
-  max-width: none;
+    max-width: none;
 }
 /*hide the edit nav button on mobile devices*/
 #topnavbar .nav ul.root > li.ms-navedit-editArea {
-  display: none;
+    display: none;
 }
 /*hide or provide padding for downdown arrow*/
 #topnavbar .ms-core-listMenu-horizontalBox .dynamic-children.additional-background {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 /*dynamic menus should not appear*/
 #topnavbar ul.dynamic {
-  display: none !important;
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  width: auto !important;
-  box-shadow: none;
+    display: none !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: auto !important;
+    box-shadow: none;
 }
+
 #topnavbar li.shown > ul.dynamic {
-  display: block !important;
+    display: block !important;
 }
+
 #topnavbar ul.dynamic > li {
-  background: transparent none;
-  border-right: medium none;
-  border-top: 1px solid #d1d1d1;
-  display: block;
-  float: none;
-  height: auto;
+    background: transparent none;
+    border-right: medium none;
+    border-top: 1px solid #d1d1d1;
+    display: block;
+    float: none;
+    height: auto;
 }
+
 #topnavbar li.dynamic .menu-item {
-  padding: 15px;
+    padding: 15px;
 }
+
 #topnavbar .ms-core-listMenu-horizontalBox .dynamic-children.additional-background {
-  background-image: url("/_layouts/15/images/menu-down.gif");
+    background-image: url("/_layouts/15/images/menu-down.gif");
 }
+
 #topnavbar .ms-core-listMenu-horizontalBox .dynamic .dynamic-children.additional-background {
-  background-image: url("/_layouts/15/images/menu-down.gif");
+    background-image: url("/_layouts/15/images/menu-down.gif");
 }
 /*end top nav */
 /*left nav */
 #sideNavBox.col-md-3 {
-  float: none;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: 0px;
-  margin-right: 0px;
-  width: auto;
+    float: none;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: auto;
 }
 /*end left nav */
 /* main content areas */
 div.table {
-  margin: 0px;
-  /*added by design manager admin page, ruins rd layout*/
+    margin: 0px;
+    /*added by design manager admin page, ruins rd layout*/
 }
+
 .col-md-9 .ms-table {
-  display: inherit;
+    display: inherit;
 }
+
 .col-md-9 .tableCol-75 {
-  display: inherit;
+    display: inherit;
 }
+
 #ms-core-tableNoSpace {
-  display: block;
+    display: block;
 }
 /*site settings*/
 /*Settings page - Add app page*/
 #idStorefrontManagementLeftNavBar.ms-core-sideNavBox-removeLeftMargin {
-  margin-left: 0;
+    margin-left: 0;
 }
+
 a.ms-storefront-selectanchor,
 a.ms-storefront-selectanchor:link,
 a.ms-storefront-selectanchor:visited {
-  clear: both;
-  width: auto;
+    clear: both;
+    width: auto;
 }
 /*end site settings*/
 /*web part zones*/
 * [class^="col-"] .ms-webpart-zone,
 * [class^="col-"] .ms-webpart-cell-vertical,
 * [class^="col-"] .ms-webpart-chrome-vertical {
-  display: block;
-  /*forces zone to stay within confines of responsive zone*/
+    display: block;
+    /*forces zone to stay within confines of responsive zone*/
 }
+
 * [class^="col-"] .ms-WPBody > table,
 * [class^="col-"] .ms-WPBody > table > tbody,
 * [class^="col-"] .ms-WPBody > table > tbody > tr,
 * [class^="col-"] .ms-WPBody > table > tbody > tr > td {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 }
+
 * [class^="col-"] .ms-WPBody > table img {
-  width: 100%;
-  /*reset back to bootstrap for web part images*/
+    width: 100%;
+    /*reset back to bootstrap for web part images*/
 }
+
 .ms-SPZone.ms-webpart-zone {
-  padding: 5px;
+    padding: 5px;
 }
+
 .ms-SPZone > .s4-wpcell,
 .ms-SPZone > .s4-wpcell-plain,
 .ms-rtestate-write > .ms-rte-wpbox > div > .s4-wpcell,
 .ms-rtestate-write > .ms-rte-wpbox > div > .s4-wpcell-plain {
-  padding: 5px 5px 10px;
+    padding: 5px 5px 10px;
 }
 /*web part properties*/
 /*edit mode table fixes*/
 #MSOTlPn_WebPartPageDiv > tbody > tr > td:first-child {
-  padding-right: 10px;
-  /*without the padding the left column overflows over the webpart properties toolpane*/
+    padding-right: 10px;
+    /*without the padding the left column overflows over the webpart properties toolpane*/
 }
 /*end edit mode table fixes*/
 .ms-ToolPaneBody select,
@@ -368,65 +415,72 @@ a.ms-storefront-selectanchor:visited {
 .ms-ToolPaneBody input[type="tel"],
 .ms-ToolPaneBody input[type="color"],
 .ms-ToolPaneBody .uneditable-input {
-  margin-bottom: 0px;
-  width: auto;
-  height: auto;
-  line-height: 20px;
+    margin-bottom: 0px;
+    width: auto;
+    height: auto;
+    line-height: 20px;
 }
+
 .ms-ToolPaneBody label {
-  display: inline-block;
-  margin-bottom: 0px;
+    display: inline-block;
+    margin-bottom: 0px;
 }
 /*end web part properties*/
 /*Gallery Grid in Banner/Homepage2*/
 ul.three-up {
-  display: block;
-  overflow: hidden;
-  margin: 0 -8px;
-  padding: 0;
+    display: block;
+    overflow: hidden;
+    margin: 0 -8px;
+    padding: 0;
 }
+
 ul.three-up > li {
-  display: block;
-  float: left;
-  height: auto;
-  margin: 0 8px 8px;
-  width: 27%;
-  list-style: none;
+    display: block;
+    float: left;
+    height: auto;
+    margin: 0 8px 8px;
+    width: 27%;
+    list-style: none;
 }
+
 ul.three-up > li:nth-child(3n+1) {
-  clear: none;
+    clear: none;
 }
 /*end web part zones*/
 /* end main content areas */
 /*Fullscreen*/
 .ms-fullscreenmode #mainbody,
 .b3-fullscreenmode #mainbody {
-  margin-left: 0px;
-  width: 100%;
+    margin-left: 0px;
+    width: 100%;
 }
+
 .ms-fullscreenmode #sideNavBox,
 .b3-fullscreenmode #sideNavBox {
-  display: none;
+    display: none;
 }
 /*end template styles */
 /*responsive*/
 @media (min-width: 768px) {
-  /*fix ribbon back to normal*/
-  #suiteBar {
-    display: table-row;
-    height: 30px;
-  }
-  #suiteBarLeft,
-  #suiteBarRight {
-    display: table-cell;
-    width: 100%;
-  }
-  #suiteBarRight {
-    width: auto;
-  }
-  #suiteBarRight .ms-core-deltaSuiteBarRight {
-    float: none;
-  }
-  /*end ribbon*/
+    /*fix ribbon back to normal*/
+    #suiteBar {
+        display: table-row;
+        height: 30px;
+    }
+
+    #suiteBarLeft,
+    #suiteBarRight {
+        display: table-cell;
+        width: 100%;
+    }
+
+    #suiteBarRight {
+        width: auto;
+    }
+
+    #suiteBarRight .ms-core-deltaSuiteBarRight {
+        float: none;
+    }
+    /*end ribbon*/
 }
 /*end responsive*/

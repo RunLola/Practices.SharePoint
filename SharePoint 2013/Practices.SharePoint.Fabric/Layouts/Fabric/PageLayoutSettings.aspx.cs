@@ -73,14 +73,8 @@
                 }
             }
         }
-
-        protected override void OnInit(EventArgs e) {
-            //var fields = new List<SPField>();
-            //foreach (SPField field in Fields) {
-            //    if (!IsFieldExcluded(SPControlMode.New, field)) {
-            //        fields.Add(field);
-            //    }
-            //}
+        protected override void OnLoad(EventArgs e) {
+            base.OnLoad(e);
             GridCols.DataSource = Fields.Cast<SPField>()
                 .Where(f => !IsFieldExcluded(SPControlMode.New, f));
             GridCols.DataBind();
@@ -88,7 +82,9 @@
             pageLayouts.Add(Get(SPControlMode.New));
             //pageLayouts.Add(Get(SPControlMode.Edit));
             //pageLayouts.Add(Get(SPControlMode.Display));
-            json.Value = JsonHelper.JsonSerializer<IEnumerable<FabricPageLayout>>(pageLayouts);
+            if (!Page.IsPostBack) {
+                JsonString.Value = JsonHelper.JsonSerializer<IEnumerable<FabricPageLayout>>(pageLayouts);
+            }            
         }
 
         protected void BtnSave_Click(object sender, EventArgs e) {
@@ -97,8 +93,8 @@
                 longOperation.TrailingHTML = "Working on it...";
                 longOperation.Begin();
 
-                if (!string.IsNullOrEmpty(json.Value)) {
-                    var pageLayouts = JsonHelper.JsonDeserialize<IEnumerable<FabricPageLayout>>(json.Value);
+                if (!string.IsNullOrEmpty(JsonString.Value)) {
+                    var pageLayouts = JsonHelper.JsonDeserialize<IEnumerable<FabricPageLayout>>(JsonString.Value);
                     Set(SPControlMode.New, pageLayouts.FirstOrDefault());
                     //Set(SPControlMode.Edit, pageLayouts.FirstOrDefault());
                     //Set(SPControlMode.Display, pageLayouts.FirstOrDefault());

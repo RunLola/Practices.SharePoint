@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="ea73db93-5326-4c44-bb47-e6e0f5045aa9" solutionId="ea73db93-5326-4c44-bb47-e6e0f5045aa9" resetWebServer="false" sharePointProductVersion="15.0" name="Practices.SharePoint.DataModes" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <assemblies>
+    <projectOutputAssembly location="Practices.SharePoint.Common.dll" deploymentTarget="GlobalAssemblyCache" projectPath="..\Practices.SharePoint.Common\Practices.SharePoint.Common.csproj" />
+  </assemblies>
+  <features>
+    <featureReference itemId="85813b64-1daf-43ca-815b-a71e61f88a5b" />
+  </features>
+  <projectItems>
+    <projectItemReference itemId="03ca2ab4-80ca-43ee-ab66-411c3e4520b6" />
+    <projectItemReference itemId="c8f90f24-5a54-4932-81b9-babd80f309d9" />
+    <projectItemReference itemId="07d7a485-6b2a-449d-9915-d39aa49e51fb" />
+  </projectItems>
+</package>

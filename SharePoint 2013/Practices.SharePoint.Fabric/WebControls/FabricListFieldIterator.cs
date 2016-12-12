@@ -33,7 +33,9 @@
         protected override void CreateChildControls() {
             this.Controls.Clear();
             if (ControlTemplate == null)
-                throw new ArgumentException("Could not find FabricListFieldIterator control template.");
+                throw new System.ArgumentException(SPResource.GetString("InvalidControlTemplate", new object[] {
+					"FabricListFieldIterator"
+				}));
             var pageLayout = new FabricPageLayout();
             SPControlMode controlMode = SPControlMode.New;
             ConfigManager configManager = new ConfigManager();

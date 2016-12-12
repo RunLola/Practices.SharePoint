@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CMSMIPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CMSMIP.dbo.CMS_BA_IN_DEPT_INFO_V' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CMS_BA_IN_DEPT_INFO_V">
+          <Key>
+            <PropertyRef Name="机构ID" />
+            <PropertyRef Name="组织机构编码" />
+            <PropertyRef Name="组织机构名称" />
+          </Key>
+          <Property Name="机构ID" Type="bigint" Nullable="false" />
+          <Property Name="组织机构编码" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="组织机构名称" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="组织机构上级ID" Type="bigint" />
+          <Property Name="组织机构级别" Type="varchar" MaxLength="400" />
+          <Property Name="组织机构类型" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CMSMIP.dbo.CMS_SA_USER_INFO_V' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CMS_SA_USER_INFO_V">
+          <Key>
+            <PropertyRef Name="SP账号" />
+            <PropertyRef Name="用户帐号" />
+          </Key>
+          <Property Name="SP账号" Type="varchar" MaxLength="116" Nullable="false" />
+          <Property Name="用户帐号" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="用户名" Type="varchar" MaxLength="60" />
+          <Property Name="用户昵称" Type="varchar" MaxLength="120" />
+          <Property Name="所属部门ID" Type="bigint" />
+          <Property Name="所属部门名称" Type="varchar" MaxLength="200" />
+          <Property Name="所属部门编码" Type="varchar" MaxLength="80" />
+          <Property Name="用户电子邮件地址" Type="varchar" MaxLength="200" />
+          <Property Name="用户手机号码" Type="varchar" MaxLength="20" />
+          <Property Name="用户性别" Type="varchar" MaxLength="4" />
+          <Property Name="用户身份证号码" Type="varchar" MaxLength="30" />
+          <Property Name="用户血型" Type="varchar" MaxLength="400" />
+          <Property Name="用户民族" Type="varchar" MaxLength="400" />
+          <Property Name="用户文化程度" Type="varchar" MaxLength="400" />
+          <Property Name="用户在聘职称" Type="varchar" MaxLength="400" />
+          <Property Name="用户工种" Type="varchar" MaxLength="400" />
+          <Property Name="用户岗位" Type="varchar" MaxLength="400" />
+          <Property Name="用户岗次" Type="varchar" MaxLength="400" />
+          <Property Name="用户人员分类" Type="varchar" MaxLength="400" />
+          <Property Name="用户政治面貌" Type="varchar" MaxLength="400" />
+          <Property Name="用户籍贯" Type="varchar" MaxLength="100" />
+          <Property Name="用户现住址" Type="varchar" MaxLength="400" />
+          <Property Name="用户原身份" Type="varchar" MaxLength="400" />
+          <Property Name="用户生日" Type="datetime" />
+          <Property Name="用户户籍类别" Type="varchar" MaxLength="400" />
+          <Property Name="用户婚姻状况" Type="varchar" MaxLength="400" />
+          <Property Name="人员类别" Type="varchar" MaxLength="400" />
+          <Property Name="参加工作时间" Type="datetime" />
+          <Property Name="办公电话" Type="varchar" MaxLength="30" />
+          <Property Name="家庭电话" Type="varchar" MaxLength="30" />
+          <Property Name="用户QQ号" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityContainer Name="CMSMIPModelStoreContainer">
+          <EntitySet Name="CMS_BA_IN_DEPT_INFO_V" EntityType="Self.CMS_BA_IN_DEPT_INFO_V" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CMS_BA_IN_DEPT_INFO_V].[机构ID] AS [机构ID], 
+    [CMS_BA_IN_DEPT_INFO_V].[组织机构编码] AS [组织机构编码], 
+    [CMS_BA_IN_DEPT_INFO_V].[组织机构名称] AS [组织机构名称], 
+    [CMS_BA_IN_DEPT_INFO_V].[组织机构上级ID] AS [组织机构上级ID], 
+    [CMS_BA_IN_DEPT_INFO_V].[组织机构级别] AS [组织机构级别], 
+    [CMS_BA_IN_DEPT_INFO_V].[组织机构类型] AS [组织机构类型]
+    FROM [dbo].[CMS_BA_IN_DEPT_INFO_V] AS [CMS_BA_IN_DEPT_INFO_V]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CMS_SA_USER_INFO_V" EntityType="Self.CMS_SA_USER_INFO_V" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CMS_SA_USER_INFO_V].[SP账号] AS [SP账号], 
+    [CMS_SA_USER_INFO_V].[用户帐号] AS [用户帐号], 
+    [CMS_SA_USER_INFO_V].[用户名] AS [用户名], 
+    [CMS_SA_USER_INFO_V].[用户昵称] AS [用户昵称], 
+    [CMS_SA_USER_INFO_V].[所属部门ID] AS [所属部门ID], 
+    [CMS_SA_USER_INFO_V].[所属部门名称] AS [所属部门名称], 
+    [CMS_SA_USER_INFO_V].[所属部门编码] AS [所属部门编码], 
+    [CMS_SA_USER_INFO_V].[用户电子邮件地址] AS [用户电子邮件地址], 
+    [CMS_SA_USER_INFO_V].[用户手机号码] AS [用户手机号码], 
+    [CMS_SA_USER_INFO_V].[用户性别] AS [用户性别], 
+    [CMS_SA_USER_INFO_V].[用户身份证号码] AS [用户身份证号码], 
+    [CMS_SA_USER_INFO_V].[用户血型] AS [用户血型], 
+    [CMS_SA_USER_INFO_V].[用户民族] AS [用户民族], 
+    [CMS_SA_USER_INFO_V].[用户文化程度] AS [用户文化程度], 
+    [CMS_SA_USER_INFO_V].[用户在聘职称] AS [用户在聘职称], 
+    [CMS_SA_USER_INFO_V].[用户工种] AS [用户工种], 
+    [CMS_SA_USER_INFO_V].[用户岗位] AS [用户岗位], 
+    [CMS_SA_USER_INFO_V].[用户岗次] AS [用户岗次], 
+    [CMS_SA_USER_INFO_V].[用户人员分类] AS [用户人员分类], 
+    [CMS_SA_USER_INFO_V].[用户政治面貌] AS [用户政治面貌], 
+    [CMS_SA_USER_INFO_V].[用户籍贯] AS [用户籍贯], 
+    [CMS_SA_USER_INFO_V].[用户现住址] AS [用户现住址], 
+    [CMS_SA_USER_INFO_V].[用户原身份] AS [用户原身份], 
+    [CMS_SA_USER_INFO_V].[用户生日] AS [用户生日], 
+    [CMS_SA_USER_INFO_V].[用户户籍类别] AS [用户户籍类别], 
+    [CMS_SA_USER_INFO_V].[用户婚姻状况] AS [用户婚姻状况], 
+    [CMS_SA_USER_INFO_V].[人员类别] AS [人员类别], 
+    [CMS_SA_USER_INFO_V].[参加工作时间] AS [参加工作时间], 
+    [CMS_SA_USER_INFO_V].[办公电话] AS [办公电话], 
+    [CMS_SA_USER_INFO_V].[家庭电话] AS [家庭电话], 
+    [CMS_SA_USER_INFO_V].[用户QQ号] AS [用户QQ号]
+    FROM [dbo].[CMS_SA_USER_INFO_V] AS [CMS_SA_USER_INFO_V]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CMSMIPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Org">
+          <Key>
+            <PropertyRef Name="机构ID" />
+            <PropertyRef Name="组织机构编码" />
+            <PropertyRef Name="组织机构名称" />
+          </Key>
+          <Property Name="机构ID" Type="Int64" Nullable="false" />
+          <Property Name="组织机构编码" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="组织机构名称" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="组织机构上级ID" Type="Int64" />
+          <Property Name="组织机构级别" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="组织机构类型" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="SP账号" />
+            <PropertyRef Name="用户帐号" />
+          </Key>
+          <Property Name="SP账号" Type="String" MaxLength="116" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="用户帐号" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="用户名" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="用户昵称" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="所属部门ID" Type="Int64" />
+          <Property Name="所属部门名称" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="所属部门编码" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="用户电子邮件地址" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="用户手机号码" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="用户性别" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="用户身份证号码" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="用户血型" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户民族" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户文化程度" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户在聘职称" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户工种" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户岗位" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户岗次" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户人员分类" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户政治面貌" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户籍贯" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="用户现住址" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户原身份" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户生日" Type="DateTime" Precision="3" />
+          <Property Name="用户户籍类别" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="用户婚姻状况" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="人员类别" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="参加工作时间" Type="DateTime" Precision="3" />
+          <Property Name="办公电话" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="家庭电话" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="用户QQ号" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CMSMIPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CMS_BA_IN_DEPT_INFO_V" EntityType="CMSMIPModel.Org" />
+          <EntitySet Name="CMS_SA_USER_INFO_V" EntityType="CMSMIPModel.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CMSMIPModelStoreContainer" CdmEntityContainer="CMSMIPEntities">
+          <EntitySetMapping Name="CMS_BA_IN_DEPT_INFO_V">
+            <EntityTypeMapping TypeName="CMSMIPModel.Org">
+              <MappingFragment StoreEntitySet="CMS_BA_IN_DEPT_INFO_V">
+                <ScalarProperty Name="机构ID" ColumnName="机构ID" />
+                <ScalarProperty Name="组织机构编码" ColumnName="组织机构编码" />
+                <ScalarProperty Name="组织机构名称" ColumnName="组织机构名称" />
+                <ScalarProperty Name="组织机构上级ID" ColumnName="组织机构上级ID" />
+                <ScalarProperty Name="组织机构级别" ColumnName="组织机构级别" />
+                <ScalarProperty Name="组织机构类型" ColumnName="组织机构类型" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CMS_SA_USER_INFO_V">
+            <EntityTypeMapping TypeName="CMSMIPModel.User">
+              <MappingFragment StoreEntitySet="CMS_SA_USER_INFO_V">
+                <ScalarProperty Name="SP账号" ColumnName="SP账号" />
+                <ScalarProperty Name="用户帐号" ColumnName="用户帐号" />
+                <ScalarProperty Name="用户名" ColumnName="用户名" />
+                <ScalarProperty Name="用户昵称" ColumnName="用户昵称" />
+                <ScalarProperty Name="所属部门ID" ColumnName="所属部门ID" />
+                <ScalarProperty Name="所属部门名称" ColumnName="所属部门名称" />
+                <ScalarProperty Name="所属部门编码" ColumnName="所属部门编码" />
+                <ScalarProperty Name="用户电子邮件地址" ColumnName="用户电子邮件地址" />
+                <ScalarProperty Name="用户手机号码" ColumnName="用户手机号码" />
+                <ScalarProperty Name="用户性别" ColumnName="用户性别" />
+                <ScalarProperty Name="用户身份证号码" ColumnName="用户身份证号码" />
+                <ScalarProperty Name="用户血型" ColumnName="用户血型" />
+                <ScalarProperty Name="用户民族" ColumnName="用户民族" />
+                <ScalarProperty Name="用户文化程度" ColumnName="用户文化程度" />
+                <ScalarProperty Name="用户在聘职称" ColumnName="用户在聘职称" />
+                <ScalarProperty Name="用户工种" ColumnName="用户工种" />
+                <ScalarProperty Name="用户岗位" ColumnName="用户岗位" />
+                <ScalarProperty Name="用户岗次" ColumnName="用户岗次" />
+                <ScalarProperty Name="用户人员分类" ColumnName="用户人员分类" />
+                <ScalarProperty Name="用户政治面貌" ColumnName="用户政治面貌" />
+                <ScalarProperty Name="用户籍贯" ColumnName="用户籍贯" />
+                <ScalarProperty Name="用户现住址" ColumnName="用户现住址" />
+                <ScalarProperty Name="用户原身份" ColumnName="用户原身份" />
+                <ScalarProperty Name="用户生日" ColumnName="用户生日" />
+                <ScalarProperty Name="用户户籍类别" ColumnName="用户户籍类别" />
+                <ScalarProperty Name="用户婚姻状况" ColumnName="用户婚姻状况" />
+                <ScalarProperty Name="人员类别" ColumnName="人员类别" />
+                <ScalarProperty Name="参加工作时间" ColumnName="参加工作时间" />
+                <ScalarProperty Name="办公电话" ColumnName="办公电话" />
+                <ScalarProperty Name="家庭电话" ColumnName="家庭电话" />
+                <ScalarProperty Name="用户QQ号" ColumnName="用户QQ号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

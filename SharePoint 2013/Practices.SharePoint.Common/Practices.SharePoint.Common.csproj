@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuiltInContentTypeId.cs" />
     <Compile Include="Configuration\ConfigManager.cs" />
     <Compile Include="Configuration\ConfigSettingSerializer.cs" />
     <Compile Include="Configuration\ConfigurationException.cs" />
@@ -76,9 +77,16 @@
     <Compile Include="Configuration\PropertyBagHierarchy.cs" />
     <Compile Include="Configuration\SitePropertyBag.cs" />
     <Compile Include="Configuration\WebPropertyBag.cs" />
+    <Compile Include="Logging\DiagnosticsService.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\ITraceLogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\TraceLogger.cs" />
+    <Compile Include="Repositories\SiteRepository.cs" />
     <Compile Include="Repositories\IListRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ListRepository.cs" />
+    <Compile Include="BuiltInFieldName.cs" />
     <Compile Include="Utilities\CAMLQueryBuilder.cs" />
     <Compile Include="Utilities\Validation.cs" />
   </ItemGroup>

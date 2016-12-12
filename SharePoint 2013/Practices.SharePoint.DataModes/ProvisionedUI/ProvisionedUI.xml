@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <CustomAction Id="Practices.IssueTasks.Actions"
+                Location="CommandUI.Ribbon"
+                Sequence="1000">
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.Tabs._children">
+          <Tab Id="Practices.IssueTracking.Actions"
+               Sequence="1000"
+               Title="My Tasks"
+               Description="Application Page Tab" >
+            <Scaling Id="Practices.IssueTracking.Actions.Scaling">
+              <MaxSize Id="Practices.IssueTracking.Actions.ActionsGroup.MaxSize"
+                       GroupId="Practices.IssueTracking.Actions.ActionsGroup"
+                       Size="LargeLarge"
+                       Sequence="100"/>
+              <Scale Id="Practices.IssueTracking.Actions.ActionsGroup.Scaling.ActionsScaling"
+                     GroupId="Practices.IssueTracking.Actions.ActionsGroup"
+                     Sequence="200"
+                     Size="Popup"/>
+            </Scaling>
+            <Groups Id="Practices.IssueTracking.Actions.Groups">
+              <Group Id="Practices.IssueTracking.Actions.ActionsGroup"
+                     Sequence="1000"
+                     Title="Actions Group"
+                     Description="Actions Group"
+                     Template="Ribbon.Templates.Flexible2" >
+                <Controls Id="Practices.IssueTracking.Actions.ActionsGroup.Controls">
+                  <Button Id="Practices.IssueTracking.Actions.ActionsGroup.Controls.Delete"
+                          Command="IssueTasks.Actions.Create"
+                          LabelText="录入隐患"
+                          ToolTipTitle="录入隐患"
+                          ToolTipDescription="录入隐患"
+                          Image16by16="/_layouts/$Resources:core,Language;/images/formatmap16x16.png" Image16by16Left="-248" Image16by16Top="0"
+                          Image32by32="/_layouts/$Resources:core,Language;/images/formatmap32x32.png" Image32by32Left="-288" Image32by32Top="-448"
+                          TemplateAlias="o1" />
+                </Controls>
+              </Group>
+            </Groups>
+          </Tab>
+        </CommandUIDefinition>
+        <CommandUIDefinition Location="Ribbon.Tabs._children">
+          <Tab Id="Practices.IssueTasks.Actions"
+               Sequence="1000"
+               Title="My Tasks"
+               Description="Application Page Tab" >
+            <Scaling Id="Practices.IssueTasks.Actions.Scaling">
+              <MaxSize Id="Practices.IssueTasks.Actions.ActionsGroup.MaxSize"
+                       GroupId="Practices.IssueTasks.Actions.ActionsGroup"
+                       Size="LargeLarge"
+                       Sequence="100"/>
+              <Scale Id="Practices.IssueTasks.Actions.ActionsGroup.Scaling.ActionsScaling"
+                     GroupId="Practices.IssueTasks.Actions.ActionsGroup"
+                     Sequence="200"
+                     Size="Popup"/>
+            </Scaling>
+            <Groups Id="Practices.IssueTasks.Actions.Groups">
+              <Group Id="Practices.IssueTasks.Actions.ActionsGroup"
+                     Sequence="1000"
+                     Title="Actions Group"
+                     Description="Actions Group"
+                     Template="Ribbon.Templates.Flexible2" >
+                <Controls Id="Practices.IssueTasks.Actions.ActionsGroup.Controls">
+                  <Button Id="Practices.IssueTasks.Actions.ActionsGroup.Controls.Delete"
+                          Command="MyTasks.Actions.Delete"
+                          LabelText="录入隐患"
+                          ToolTipTitle="录入隐患"
+                          ToolTipDescription="录入隐患"
+                          Image16by16="/_layouts/$Resources:core,Language;/images/formatmap16x16.png" Image16by16Left="-248" Image16by16Top="0"
+                          Image32by32="/_layouts/$Resources:core,Language;/images/formatmap32x32.png" Image32by32Left="-288" Image32by32Top="-448"
+                          TemplateAlias="o1" />
+                </Controls>
+              </Group>
+            </Groups>
+          </Tab>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+    </CommandUIExtension>
+  </CustomAction>
+</Elements>

@@ -1,5 +1,23 @@
 [
   {
+    "outputFileName": "Layouts/Scripts/bootstarp/3.3.7/bootstrap.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/bootstarp/3.3.7/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/es5-shim/4.5.9/es5-sham.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/es5-shim/4.5.9/es5-sham.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/es5-shim/4.5.9/es5-shim.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/es5-shim/4.5.9/es5-shim.js"
+    ]
+  },
+  {
     "outputFileName": "Layouts/Scripts/html5shiv/3.7.2/html5shiv.min.js",
     "inputFiles": [
       "Layouts/Scripts/html5shiv/3.7.2/html5shiv.js"
@@ -18,81 +36,27 @@
     ]
   },
   {
+    "outputFileName": "Layouts/Scripts/respond/1.4.2/respond.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/respond/1.4.2/respond.js"
+    ]
+  },
+  {
     "outputFileName": "Layouts/Scripts/underscore/1.8.3/underscore.min.js",
     "inputFiles": [
       "Layouts/Scripts/underscore/1.8.3/underscore.js"
     ]
   },
   {
-    "outputFileName": "Layouts/Scripts/respond.js/1.4.2/respond.min.js",
+    "outputFileName": "Layouts/Scripts/RegisterSod.min.js",
     "inputFiles": [
-      "Layouts/Scripts/respond.js/1.4.2/respond.js"
+      "Layouts/Scripts/RegisterSod.js"
     ]
   },
   {
-    "outputFileName": "Layouts/Scripts/react/15.3.0/react-dom.min.js",
+    "outputFileName": "Layouts/Scripts/jquery/3.1.1/jquery.slim.min.js",
     "inputFiles": [
-      "Layouts/Scripts/react/15.3.0/react-dom.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/react/15.3.0/react-with-addons.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/react/15.3.0/react-with-addons.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/react/15.3.0/react.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/react/15.3.0/react.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/es5-shim/4.5.9/es5-sham.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/es5-shim/4.5.9/es5-sham.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/es5-shim/4.5.9/es5-shim.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/es5-shim/4.5.9/es5-shim.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/react/0.14.8/react-dom.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/react/0.14.8/react-dom.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/react/0.14.8/react.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/react/0.14.8/react.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/react/0.14.8/react-with-addons.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/react/0.14.8/react-with-addons.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/bootstrap.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/bootstrap.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/require.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/require.js"
-    ]
-  },
-  {
-    "outputFileName": "Layouts/Scripts/sp.ui/sp.ui.discussions.min.js",
-    "inputFiles": [
-      "Layouts/Scripts/sp.ui/sp.ui.discussions.js"
+      "Layouts/Scripts/jquery/3.1.1/jquery.slim.js"
     ]
   }
 ]

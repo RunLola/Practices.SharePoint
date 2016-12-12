@@ -7,7 +7,7 @@
     using System.Xml.Linq;
     using System.Xml.Serialization;
 
-    public static class AppPartFactory {
+    internal static class AppPartFactory {
         public static PackagePart CreateAppManifest(this Package package, Guid productId, Guid identifier, string title, string launchUrl) {
             AppManifest o = new AppManifest() {
                 Name = Guid.NewGuid().ToString(),

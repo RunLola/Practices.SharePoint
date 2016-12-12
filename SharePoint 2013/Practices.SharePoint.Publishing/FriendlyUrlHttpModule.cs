@@ -7,7 +7,7 @@
     using System.Security.Permissions;
     using System.Web;
     using System.Web.UI;
-
+     
     public class FriendlyUrlHttpModule : IHttpModule {
         [SharePointPermission(SecurityAction.Demand, ObjectModel = true)]
         public void Init(HttpApplication app) {

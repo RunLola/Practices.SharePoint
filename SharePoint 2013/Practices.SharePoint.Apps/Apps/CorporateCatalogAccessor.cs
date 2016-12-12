@@ -103,7 +103,7 @@
             item.Recycle();
             return true;
         }
-        
+
         #endregion
 
         public SPListItem Get(Guid productId) {
@@ -126,8 +126,22 @@
                 ViewFields = string.Concat(string.Format("<FieldRef Name='{0}' />", CorporateCatalogBuiltInFields.ProductID)),
                 ViewFieldsOnly = true,
             };
-            var items = List.GetItems(query).Cast<SPListItem>();
+            var items = Get(query);
             return items.Select(item => new Guid(item[CorporateCatalogBuiltInFields.ProductID].ToString()));
+        }
+
+        public override IEnumerable<SPListItem> Get(string queryString) {
+            var query = new SPQuery() {
+                Query = queryString
+            };
+            return Get(query);
+        }
+
+        public override IEnumerable<SPListItem> Get(string queryString, uint startRow, uint maxRows) {
+            var query = new SPQuery() {
+                Query = queryString
+            };
+            return Get(query, startRow, maxRows);
         }
 
         public static SPList GetAppCatalog(SPWeb clientWeb) {

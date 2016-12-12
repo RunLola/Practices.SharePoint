@@ -118,5 +118,23 @@
     "inputFiles": [
       "Layouts/Scripts/RegisterSod.js"
     ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/bootstarp/3.3.7/bootstrap.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/bootstarp/3.3.7/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/15.4.1/react-dom.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/15.4.1/react-dom.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/react/15.4.1/react.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/react/15.4.1/react.js"
+    ]
   }
 ]
