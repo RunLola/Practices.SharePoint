@@ -248,7 +248,7 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="Layouts\Anonymous.aspx" />
-    <Content Include="Layouts\Scripts\bootstarp\3.3.7\bootstrap.min.js">
+    <Content Include="Layouts\Scripts\bootstrap\3.3.7\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
     </Content>
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.min.js">
@@ -292,7 +292,7 @@
     </Content>
     <Content Include="SuiteDelegateControls\SuiteDelegateControls.xml" />
     <None Include="MasterPages\seattle.master" />
-    <Content Include="Layouts\Scripts\bootstarp\3.3.7\bootstrap.js" />
+    <Content Include="Layouts\Scripts\bootstrap\3.3.7\bootstrap.js" />
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-sham.js" />
     <Content Include="Layouts\Scripts\es5-shim\4.5.9\es5-shim.js" />
     <Content Include="Layouts\Scripts\html5shiv\3.7.2\html5shiv.js" />

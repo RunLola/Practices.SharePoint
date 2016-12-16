@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Practices.SharePoint.ApplicationPages {
+namespace Practices.SharePoint.Layouts.Practices {
     
     
-    public partial class IssueTasksPage {
+    public partial class InitTracking {
         
         /// <summary>
-        /// DataGrid control.
+        /// AssignedTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.SPGridView DataGrid;
+        protected global::Microsoft.SharePoint.WebControls.ClientPeoplePicker AssignedTo;
     }
 }

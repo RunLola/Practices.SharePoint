@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <CustomAction Id="Practices.IssueTasks.Actions"
+  <CustomAction Id="Practices.IssueTracking.Actions"
                 Location="CommandUI.Ribbon"
+                RegistrationType="List"
                 Sequence="1000">
     <CommandUIExtension>
       <CommandUIDefinitions>
@@ -28,10 +29,10 @@
                      Template="Ribbon.Templates.Flexible2" >
                 <Controls Id="Practices.IssueTracking.Actions.ActionsGroup.Controls">
                   <Button Id="Practices.IssueTracking.Actions.ActionsGroup.Controls.Delete"
-                          Command="IssueTasks.Actions.Create"
-                          LabelText="录入隐患"
-                          ToolTipTitle="录入隐患"
-                          ToolTipDescription="录入隐患"
+                          Command="IssueTracking.Actions.StartWorkflow"
+                          LabelText="下达隐患"
+                          ToolTipTitle="下达隐患"
+                          ToolTipDescription="下达隐患"
                           Image16by16="/_layouts/$Resources:core,Language;/images/formatmap16x16.png" Image16by16Left="-248" Image16by16Top="0"
                           Image32by32="/_layouts/$Resources:core,Language;/images/formatmap32x32.png" Image32by32Left="-288" Image32by32Top="-448"
                           TemplateAlias="o1" />

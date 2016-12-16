@@ -12,20 +12,16 @@
 <%@ Register TagPrefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages"
     Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="IssueTasksControl.ascx.cs"
-    Inherits="Practices.SharePoint.WebParts.IssueTasksControl" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="WorkflowTasksControl.ascx.cs"
+        Inherits="Practices.SharePoint.WebParts.WorkflowTasksControl" %>
 <style>
     .ms-listviewtable {
         border-spacing: 0;
     }
 </style>
-<sharepoint:scriptlink language="javascript" name="SP.Ribbon.js" ondemand="true" runat="server" loadafterui="true" localizable="false" />
-<sharepoint:scriptlink language="javascript" name="Scripts/jquery/1.12.4/jquery.min.js" runat="server" loadafterui="true" />
+<SharePoint:ScriptLink Language="javascript" Name="SP.Ribbon.js" OnDemand="true" runat="server" />
+<SharePoint:ScriptLink Language="javascript" Name="Scripts/spGridView.min.js" runat="server" LoadAfterUI="true" />
 <script>
-    LoadSodByKey("jquery.js", function () {
-
-    });
-
     SP.SOD.executeOrDelayUntilScriptLoaded(function () {
         SP.SOD.executeOrDelayUntilScriptLoaded(function () {
             SP.SOD.executeOrDelayUntilScriptLoaded(function () {
@@ -35,35 +31,17 @@
         }, "cui.js");
     }, "sp.js");
 
-    (function ($) {
-        $.fn.extend({
-            spGridView: function () {
-                var $grid = $(this);
-                $grid.find(".ms-itmhover").click(function () {
-                    $(this).toggleClass("s4-itm-selected");
-                });
-                $grid.find(".ms-vh-selectAllIcon").click(function () {
-                    if ($grid.find(".ms-itmhover").length > $grid.find(".s4-itm-selected").length) {
-                        $grid.find(".ms-itmhover").addClass("s4-itm-selected");
-                    } else {
-                        $grid.find(".ms-itmhover").removeClass("s4-itm-selected");
-                    }
-                });
-            }
-        });
-    })(jQuery);
-
     $(function () {
-        $("#<%=TasksGrid.ClientID%>").spGridView();
+        $("#<%=GridView.ClientID%>").spGridView();
     });
 </script>
-<sharepoint:spgridview id="TasksGrid" runat="server" autogeneratecolumns="false" cssclass="ms-listviewtable"
-    width="100%" borderwidth="0" borderstyle="None" cellpadding="1" cellspacing="-1" gridlines="None">
+<SharePoint:SPGridView ID="GridView" runat="server" AutoGenerateColumns="false" CssClass="ms-listviewtable"
+    Width="100%" BorderWidth="0" BorderStyle="None" CellPadding="1" CellSpacing="-1" GridLines="None">
     <HeaderStyle CssClass="ms-viewheadertr ms-vhltr" />
     <RowStyle CssClass="ms-itmHoverEnabled ms-itmhover" />
     <AlternatingRowStyle CssClass="ms-itmHoverEnabled ms-itmhover ms-alternating" />
     <Columns>
-        <asp:TemplateField>                
+        <asp:TemplateField>
             <HeaderTemplate>
                 <span id="cbxSelectAllItems" class="ms-selectall-span" tabindex="0" title="Select or deselect all items"">
                     <span tabindex="-1" class="ms-selectall-iconouter">
@@ -71,13 +49,14 @@
                     </span>
                 </span>
             </HeaderTemplate>
-            <HeaderStyle CssClass="ms-headerCellStyleIcon ms-vh-icon ms-vh-selectAllIcon" />                
+            <HeaderStyle CssClass="ms-headerCellStyleIcon ms-vh-icon ms-vh-selectAllIcon" />
             <ItemTemplate>
                 <div class="s4-itm-cbx s4-itm-imgCbx" tabindex="-1" title=""
                     role="checkbox" aria-checked="false">
                     <span class="s4-itm-imgCbx-inner">
                         <span class="ms-selectitem-span">
                             <img class="ms-selectitem-icon" alt="" src="/_layouts/15/images/spcommon.png?rev=23">
+                            <asp:HiddenField ID="Identity" runat="server" Value='<%# Eval("Identity") %>'></asp:HiddenField>
                         </span>
                     </span>
                 </div>
@@ -85,16 +64,16 @@
             <ItemStyle CssClass="ms-cellStyleNonEditable ms-vb-itmcbx ms-vb-imgFirstCell" />
         </asp:TemplateField>
         <asp:TemplateField>
-            <HeaderTemplate>                    
+            <%--<HeaderTemplate>                    
                 <div class="ms-vh-div">
                     Title
                 </div>
-            </HeaderTemplate>
-            <HeaderStyle CssClass="ms-vh2" />                
+            </HeaderTemplate>--%>
+            <HeaderStyle CssClass="ms-vh2" />
             <ItemTemplate>
-                <div class="ms-vb ms-vb-menuPadding itx" id="1">
-                    <asp:HyperLink id="LinkTitle" runat="server" 
-                        Text='<%# Bind("Title") %>' NavigateUrl='<%# Bind("NavigateUrl") %>' CssClass="ms-listlink" ></asp:HyperLink>
+                <div class="ms-vb ms-vb-menuPadding itx">
+                    <asp:HyperLink ID="LinkTitle" runat="server"
+                        Text='<%# Eval("Title") %>' NavigateUrl='<%# Eval("NavigateUrl") %>' CssClass="ms-listlink"></asp:HyperLink>
                 </div>
             </ItemTemplate>
             <ItemStyle CssClass="ms-cellstyle ms-vb-title ms-positionRelative" />
@@ -102,4 +81,6 @@
         <%--<SharePoint:SPBoundField DataField="AppVersion" HeaderText="Version"
             HeaderStyle-CssClass="ms-vh2" ItemStyle-CssClass="ms-vb2 ms-cellstyle ms-vb-lastCell" />--%>
     </Columns>
-</sharepoint:spgridview>
+</SharePoint:SPGridView>
+<SharePoint:SPGridViewPager ID="GridViewPager" runat="server" GridViewId="GridView">
+</SharePoint:SPGridViewPager>

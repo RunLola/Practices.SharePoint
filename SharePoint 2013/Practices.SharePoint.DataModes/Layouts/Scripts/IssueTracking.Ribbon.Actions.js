@@ -56,12 +56,8 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
     // Indicates whether the page component can handle the command that was passed to it.
     canHandleCommand: function (commandId) {
         switch (commandId) {
-            case Practices.IssueTracking.ActionsCommandNames.Create:
-                return Practices.IssueTracking.ActionsCommands.CreateEnabled();
-            case Practices.IssueTracking.ActionsCommandNames.Upgrade:
-                return Practices.IssueTracking.ActionsCommands.UpgradeEnabled();
-            case Practices.IssueTracking.ActionsCommandNames.Delete:
-                return Practices.IssueTracking.ActionsCommands.DeleteEnabled();
+            case Practices.IssueTracking.ActionsCommandNames.StartWorkflow:
+                return Practices.IssueTracking.ActionsCommands.StartWorkflowEnabled();
             default:
                 return false;
         }
@@ -70,14 +66,8 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
     // Execute the commands that come from our ribbon button
     handleCommand: function (commandId, properties, sequence) {
         switch (commandId) {
-            case Practices.IssueTracking.ActionsCommandNames.Create:
-                Practices.IssueTracking.ActionsCommands.Create();
-                break;
-            case Practices.IssueTracking.ActionsCommandNames.Upgrade:
-                Practices.IssueTracking.ActionsCommands.Upgrade();
-                break;
-            case Practices.IssueTracking.ActionsCommandNames.Delete:
-                Practices.IssueTracking.ActionsCommands.Delete();
+            case Practices.IssueTracking.ActionsCommandNames.StartWorkflow:
+                Practices.IssueTracking.ActionsCommands.StartWorkflow();
                 break;
             default:
                 break;
@@ -107,78 +97,62 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
 //  Practices.IssueTracking.AppActionsCommandNames
 Practices.IssueTracking.ActionsCommandNames = function () {
 }
-Practices.IssueTracking.ActionsCommandNames.Create = "IssueTracking.Actions.Create";
-Practices.IssueTracking.ActionsCommandNames.Upgrade = "IssueTracking.Actions.Upgrade";
-Practices.IssueTracking.ActionsCommandNames.Delete = "IssueTracking.Actions.Delete";
+Practices.IssueTracking.ActionsCommandNames.StartWorkflow = "IssueTracking.Actions.StartWorkflow";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Practices.IssueTracking.AppActionsCommands
 Practices.IssueTracking.ActionsCommands = function () {
 }
 
-Practices.IssueTracking.ActionsCommands.CreateEnabled = function () {
-    return true;
-}
-Practices.IssueTracking.ActionsCommands.Create = function () {
-}
+Practices.IssueTracking.ActionsCommands.StartWorkflowEnabled = function () {
+    if (undefined == window.itemState) {
+        window.itemState = [];
+    }
+    var selectedItems = SP.ListOperation.Selection.getSelectedItems();
+    var count = CountDictionary(selectedItems);
+    if (count == 1) {
+        if (IsNullOrUndefined(window.itemState[selectedItems[0].id])) {
+            var context = SP.ClientContext.get_current();
+            var listId = SP.ListOperation.Selection.getSelectedList();
+            var list = context.get_web().get_lists().getById(listId);
+            var item = list.getItemById(selectedItems[0].id);
+            context.load(item);
+            clientContext.executeQueryAsync(Function.createDelegate(this, onQuerySucceeded), Function.createDelegate(this, onQueryFailed));
 
-Practices.IssueTracking.ActionsCommands.UpgradeEnabled = function () {
-    return true;
-    //if (undefined == window.itemState) {
-    //    window.itemState = [];
-    //}
-    //var selectedItems = SP.ListOperation.Selection.getSelectedItems();
-    //var count = CountDictionary(selectedItems);
-    //if (count == 1) {
-    //    if (IsNullOrUndefined(window.itemState[selectedItems[0].id])) {
-    //        var context = SP.ClientContext.get_current();
-    //        var listId = SP.ListOperation.Selection.getSelectedList();
-    //        var corporateCatalog = context.get_web().get_lists().getById(listId);
-    //        var listItem = corporateCatalog.getItemById(selectedItems[0].id);
-    //        context.load(listItem);
-    //        context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
-    //        return false;
-    //    }
-    //    else {
-    //        return window.itemState[selectedItems[0].id];
-    //    }
-    //} else {
-    //    return false;
-    //}
+            function onQuerySucceeded(sender, args) {
+                var isValid = listItem.get_item('IsValidAppPackage');
+                window.itemState[listItem.get_id()] = isValid;
+                RefreshCommandUI();
+            }
 
-    //function OnSelectedItemQuerySucceeded(sender, args) {
-    //    var isValid = listItem.get_item('IsValidAppPackage');
-    //    window.itemState[listItem.get_id()] = isValid;
-    //    RefreshCommandUI();
-    //}
+            function onQueryFailed(sender, args) {
+                alert('Request failed. ' + args.get_message() + '\n' + args.get_stackTrace());
+                console.log("Error: " + args.get_message() + "\n" + args.get_stackTrace());
+            }
+            return false;
+        }
+        else {
+            return window.itemState[selectedItems[0].id];
+        }
+    } else {
+        return false;
+    }
 
-    //function OnSelectedItemQueryFailed() {
-    //}
+
 }
-Practices.IssueTracking.ActionsCommands.Upgrade = function () {
+Practices.IssueTracking.ActionsCommands.StartWorkflow = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
     var context = SP.ClientContext.get_current();
     var listId = SP.ListOperation.Selection.getSelectedList();
-    var corporateCatalog = context.get_web().get_lists().getById(listId);
-    var listItem = corporateCatalog.getItemById(selectedItems[0].id);
-    context.load(listItem);
-    context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
-
-    function OnSelectedItemQuerySucceeded(sender, args) {
-        var productId = listItem.get_item("AppProductID").toString();
-        var sourceUrl = SP.PageContextInfo.get_webServerRelativeUrl() + "/AppCatalog";
-        var url = SP.Utilities.Utility.getLayoutsPageUrl("Apps/Register.aspx?ProductId=" + productId + "&Source=" + sourceUrl);
-        STSNavigate(url);
-    }
-
-    function OnSelectedItemQueryFailed() {
-    }
-}
-
-Practices.IssueTracking.ActionsCommands.DeleteEnabled = function () {
-    return true;
-}
-Practices.IssueTracking.ActionsCommands.Delete = function () {
+    var itemId = selectedItems[0].id;
+    var url = SP.Utilities.Utility.getLayoutsPageUrl("Practices/StartTracking.aspx?ListId=" + listId + "&Id=" + itemId);
+    //STSNavigate(url);
+    var options = SP.UI.$create_DialogOptions();
+    options.title = "下达隐患";
+    options.width = 600;
+    options.height = 450;
+    options.url = url;
+    SP.UI.ModalDialog.showModalDialog(options);
 }
 
 function refreshListView() {

@@ -42,6 +42,7 @@
     <AssemblyOriginatorKeyFile>..\..\Signing.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Server, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Server.UserProfiles, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SharePoint.Portal, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -79,26 +80,36 @@
     <Compile Include="CONTROLTEMPLATES\QuoteFieldEditor.ascx.designer.cs">
       <DependentUpon>QuoteFieldEditor.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="IssueTasksWebPart\IIssueTasksView.cs" />
-    <Compile Include="IssueTasksWebPart\IssueTasksControl.ascx.cs">
-      <DependentUpon>IssueTasksControl.ascx</DependentUpon>
+    <Compile Include="IssueTrackingWebPart\IIssueTrackingView.cs" />
+    <Compile Include="IssueTrackingWebPart\IssueTrackingPresenter.cs" />
+    <Compile Include="Providers\SiteClaimProvider.cs" />
+    <Compile Include="IssueTrackingWebPart\IssueTrackingWebPart.cs" />
+    <Compile Include="IssueTrackingWebPart\IssueTrackingControl.ascx.cs">
+      <DependentUpon>IssueTrackingControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="IssueTasksWebPart\IssueTasksControl.ascx.designer.cs">
-      <DependentUpon>IssueTasksControl.ascx.cs</DependentUpon>
+    <Compile Include="IssueTrackingWebPart\IssueTrackingControl.ascx.designer.cs">
+      <DependentUpon>IssueTrackingControl.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="IssueTasksWebPart\IssueTasksPresenter.cs" />
-    <Compile Include="IssueTasksWebPart\IssueTasksWebPart.cs" />
-    <Compile Include="Layouts\Practices\IIssueTasksView.cs" />
-    <Compile Include="Layouts\Practices\IssueTasks.aspx.cs">
-      <DependentUpon>IssueTasks.aspx</DependentUpon>
+    <Compile Include="WorkflowTasksWebPart\IWorkflowTasksView.cs" />
+    <Compile Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx.cs">
+      <DependentUpon>WorkflowTasksControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layouts\Practices\IssueTasks.aspx.designer.cs">
-      <DependentUpon>IssueTasks.aspx.cs</DependentUpon>
+    <Compile Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx.designer.cs">
+      <DependentUpon>WorkflowTasksControl.ascx.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layouts\Practices\IssueTasksPresenter.cs" />
-    <Compile Include="Repositories\RelatedItem.cs" />
+    <Compile Include="WorkflowTasksWebPart\WorkflowTasksPresenter.cs" />
+    <Compile Include="WorkflowTasksWebPart\WorkflowTasksWebPart.cs" />
+    <Compile Include="Layouts\Practices\StartTracking.aspx.cs">
+      <DependentUpon>StartTracking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Practices\StartTracking.aspx.designer.cs">
+      <DependentUpon>StartTracking.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RelatedItem.cs" />
+    <Compile Include="Repositories\IssueTrackingRepository.cs" />
     <Compile Include="Repositories\WorkflowTaskRepository.cs" />
     <Compile Include="FieldTypes\QuoteNoteFieldControl.cs" />
     <Compile Include="FieldTypes\QuoteTextFieldControl.cs" />
@@ -119,8 +130,12 @@
     <None Include="Features\Feature3\Feature3.feature">
       <FeatureId>{85813b64-1daf-43ca-815b-a71e61f88a5b}</FeatureId>
     </None>
-    <None Include="IssueTasksWebPart\IssueTasksWebPart.webpart" />
-    <None Include="IssueTasksWebPart\SharePointProjectItem.spdata">
+    <None Include="IssueTrackingWebPart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0c8f0a89-4f6f-4701-9e73-756a6b79e2bf}</SharePointProjectItemId>
+    </None>
+    <None Include="IssueTrackingWebPart\IssueTrackingWebPart.webpart" />
+    <None Include="WorkflowTasksWebPart\WorkflowTasksWebPart.webpart" />
+    <None Include="WorkflowTasksWebPart\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5cb38094-a926-443a-b369-d8a6dd40226e}</SharePointProjectItemId>
     </None>
     <None Include="Layouts\SharePointProjectItem.spdata">
@@ -148,11 +163,27 @@
     <Content Include="Features\Feature3\Feature3.Template.xml">
       <DependentUpon>Feature3.feature</DependentUpon>
     </Content>
-    <Content Include="IssueTasksWebPart\Elements.xml" />
-    <Content Include="IssueTasksWebPart\IssueTasksControl.ascx" />
-    <Content Include="Layouts\Practices\IssueTasks.aspx" />
+    <Content Include="IssueTrackingWebPart\IssueTrackingWebPart.xml" />
+    <Content Include="IssueTrackingWebPart\IssueTrackingControl.ascx" />
+    <Content Include="Layouts\Scripts\spWorkflow.js" />
+    <Content Include="WorkflowTasksWebPart\WorkflowTasksWebPart.xml" />
+    <Content Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx" />
+    <Content Include="Layouts\Practices\StartTracking.aspx" />
     <Content Include="Layouts\Scripts\IssueTracking.Ribbon.Actions.js" />
     <Content Include="Layouts\Scripts\IssueTasks.Ribbon.Actions.js" />
+    <Content Include="Layouts\Scripts\JavaScript1.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\1.12.4\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.intellisense.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.slim.js" />
+    <Content Include="Layouts\Scripts\jquery\3.1.1\jquery.slim.min.js">
+      <DependentUpon>jquery.slim.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\spGridView.js" />
     <Content Include="Layouts\Scripts\_references.js" />
     <Content Include="ProvisionedUI\ProvisionedUI.xml" />
     <Content Include="XML\fldtypes_user.xml">

@@ -11,9 +11,10 @@
     using System.Web;
     using System.Web.Script.Serialization;
     using Utilities;
+    using Models;
 
-    class IssueTasksPresenter {
-        IIssueTasksView view;
+    class WorkflowTasksPresenter {
+        IWorkflowTasksView view;
         SPWeb web;
         readonly string taskStatus = "Completed";
 
@@ -23,25 +24,20 @@
             }
         }
 
-        public IssueTasksPresenter(IIssueTasksView view, SPWeb web) {
+        public WorkflowTasksPresenter(IWorkflowTasksView view, SPWeb web) {
             this.view = view;
             this.web = web;
         }
 
-        public void LoadIssuesTasks() {
+        public void LoadTasks() {
             if (view.List != null && view.ViewFields.Count() > 0 && view.TaskContentTypes.Count() > 0) {
-                view.IssueTasks = GetRelatedItems(0, 100);
+                view.RelatedItems = GetRelatedItems(0, 100);
             } else {
-                view.IssueTasks = GetTable();
+                view.RelatedItems = GetTable();
             }            
         }
 
-        protected DataTable GetIssues(uint startRow, uint maxRows) {
-            var table = GetTable();
-            return table;
-        }
-
-        public DataTable GetRelatedItems(uint startRow, uint maxRows) {
+        protected DataTable GetRelatedItems(uint startRow, uint maxRows) {
             var table = GetTable();            
             var tasks = GetTasks(startRow, maxRows);
             foreach (var task in tasks) {
@@ -50,14 +46,16 @@
                     var url = string.Format("{0}listform.aspx?ListId={1}&PageType=6&ID={2}&Source={3}",
                         SPUtility.GetWebLayoutsFolder(web), task["ListId"], task["ID"], HttpUtility.UrlDecode(HttpContext.Current.Request.Url.PathAndQuery));
                     row["NavigateUrl"] = url;
-                    
+
                     var relatedItemsJson = task[BuiltInFieldName.RelatedItems].ToString();
                     var relatedItem = new JavaScriptSerializer().Deserialize<List<RelatedItem>>(relatedItemsJson).AsEnumerable().FirstOrDefault();
                     //using (SPWeb web = Web.Site.OpenWeb(new Guid(relatedItem.WebId))) {
                     //}
                     var list = web.Lists[new Guid(relatedItem.ListId)];
                     var item = list.GetItemById(relatedItem.ItemId);
-                    foreach (var field in view.ViewFields) {
+                    row["Identity"] = new JavaScriptSerializer().Serialize(relatedItem);
+                    row["Title"] = item[view.ViewFields.FirstOrDefault().InternalName];
+                    foreach (var field in view.ViewFields.Skip(1)) {
                         if (item.Fields.ContainsField(field.InternalName)) {
                             row[field.InternalName] = item[field.InternalName];
                         }
@@ -83,7 +81,8 @@
         public DataTable GetTable() {
             var table = new DataTable();
             table.Columns.Add("NavigateUrl");
-            foreach (var field in view.ViewFields) {
+            table.Columns.Add("Title");
+            foreach (var field in view.ViewFields.Skip(1)) {
                 table.Columns.Add(field.InternalName);
             }
             return table;

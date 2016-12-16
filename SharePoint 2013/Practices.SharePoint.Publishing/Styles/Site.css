@@ -20,29 +20,36 @@ body #sideNavBox .ms-core-listMenu-verticalBox .ms-core-listMenu-root > li.stati
   background-color: #3C99D7;
   color: white;
 }
-body #contentBox .ms-listviewtable .ms-viewheadertr {
+body #contentBox .ms-listviewtable {
+  width: 100%;
+}
+body #contentBox .ms-listviewtable .ms-viewheadertr > th {
+  padding: 8px;
   color: #707070;
-  font-weight: normal;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.42857143;
+  vertical-align: middle;
   background: #F2F2F2;
   background-image: -webkit-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
   background-image: -o-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
   background-image: linear-gradient(to bottom, #f8f8f8 0%, #ececec 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
-}
-body #contentBox .ms-listviewtable .ms-viewheadertr > th {
   border-top: 1px solid #dddddd;
   border-bottom: 1px solid #dddddd;
 }
 body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-headerCellStyleIcon {
+  padding: 0;
   /*border-left: 1px solid #dddddd;*/
 }
+body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-vh-icon:last-child {
+  background: none;
+  border: none;
+}
+body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-headerCellStyleIcon,
+body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-vh,
 body #contentBox .ms-listviewtable .ms-viewheadertr > th.ms-vh2 {
-  font-size: 1em;
-  font-weight: bold;
-  padding: 8px;
-  line-height: 1.42857143;
-  vertical-align: middle;
   /*border-right: 1px solid #dddddd;*/
 }
 body #contentBox .ms-listviewtable .ms-itmhover > td {

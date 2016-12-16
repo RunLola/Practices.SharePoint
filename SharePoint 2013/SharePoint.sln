@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.SharePoint.Apps", "Practices.SharePoint.Apps\Practices.SharePoint.Apps.csproj", "{01801FDC-EEDB-46FF-9E42-81713C00AD76}"
 EndProject
@@ -18,6 +18,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.SharePoint.Fabric", "Practices.SharePoint.Fabric\Practices.SharePoint.Fabric.csproj", "{0FFF6CBD-497C-4D6A-9932-3C83B6FFED90}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practices.SharePoint.DataModes", "Practices.SharePoint.DataModes\Practices.SharePoint.DataModes.csproj", "{612A1B20-3F44-40AA-8E09-D75E5D7AC912}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{695FBF89-BB6E-4D38-B6FD-9105BE56827F}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\TrustedIdentity.ps1 = Scripts\TrustedIdentity.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -155,8 +155,8 @@ Practices.Apps.ActionsCommands.UpgradeEnabled = function () {
         if (IsNullOrUndefined(window.itemState[selectedItems[0].id])) {
             var context = SP.ClientContext.get_current();
             var listId = SP.ListOperation.Selection.getSelectedList();
-            var corporateCatalog = context.get_web().get_lists().getById(listId);
-            var listItem = corporateCatalog.getItemById(selectedItems[0].id);
+            var list = context.get_web().get_lists().getById(listId);
+            var listItem = list.getItemById(selectedItems[0].id);
             context.load(listItem);
             context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
             return false;

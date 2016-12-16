@@ -8,9 +8,13 @@
     using Microsoft.Office.Server.UserProfiles;
     using Utilities;
     using System.Data;
+    using Microsoft.SharePoint.Administration.Claims;
 
     class Program {
         static void Main(string[] args) {
+            var key = SPOriginalIssuers.Format(SPOriginalIssuerType.TrustedProvider, "基础平台");
+            Console.WriteLine(key);
+            Console.ReadKey();
             var siteUrl = "http://share";
             var s = SPBuiltInFieldId.TaskStatus;
             using (SPSite site = new SPSite(siteUrl)) {

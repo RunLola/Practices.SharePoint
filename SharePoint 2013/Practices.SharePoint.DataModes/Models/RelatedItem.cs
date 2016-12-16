@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint.Repositories {
+﻿namespace Practices.SharePoint.Models {
     using System;
     using System.Collections.Generic;
     using System.Linq;

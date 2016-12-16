@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
-  <Module Name="IssueTasksWebPart" List="113" Url="_catalogs/wp">
-    <File Path="IssueTasksWebPart.webpart"  Url="IssueTasksWebPart.webpart" Type="GhostableInLibrary" >
+  <Module Name="WorkflowTasksWebPart" List="113" Url="_catalogs/wp">
+    <File Path="WorkflowTasksWebPart.webpart"  Url="WorkflowTasksWebPart.webpart" Type="GhostableInLibrary" >
       <Property Name="Group" Value="IssueTracking" />
     </File>
   </Module>

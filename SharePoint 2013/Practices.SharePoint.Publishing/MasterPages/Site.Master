@@ -45,6 +45,10 @@
         <SharePoint:ScriptLink language="javascript" name="~SiteCollection/Scripts/Site.js" runat="server" />
         <SharePoint:CssRegistration name="<% $SPUrl:~SiteCollection/Styles/Site.css %>" runat="server" />
 
+        <SharePoint:ScriptLink runat="server" Name="SP.js" Localizable="false" OnDemand="False" LoadAfterUI="True"></SharePoint:ScriptLink>
+        <SharePoint:ScriptLink runat="server" Name="SP.Runtime.js" Localizable="false" OnDemand="False" LoadAfterUI="True"></SharePoint:ScriptLink>
+        <SharePoint:ScriptLink runat="server" Name="SP.WorkflowServices.js" Localizable="false" OnDemand="False" LoadAfterUI="True"></SharePoint:ScriptLink>
+
         <SharePoint:CustomJSUrl runat="server" />
         <SharePoint:SoapDiscoveryLink runat="server" />
         <SharePoint:AjaxDelta id="DeltaPlaceHolderAdditionalPageHead" Container="false" runat="server">

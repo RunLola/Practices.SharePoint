@@ -10,15 +10,24 @@
 namespace Practices.SharePoint.WebParts {
     
     
-    public partial class IssueTasksControl {
+    public partial class WorkflowTasksControl {
         
         /// <summary>
-        /// TasksGrid control.
+        /// GridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.SPGridView TasksGrid;
+        protected global::Microsoft.SharePoint.WebControls.SPGridView GridView;
+        
+        /// <summary>
+        /// GridViewPager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.SharePoint.WebControls.SPGridViewPager GridViewPager;
     }
 }

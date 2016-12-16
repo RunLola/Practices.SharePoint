@@ -2,13 +2,13 @@
 <webParts>
   <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
     <metaData>
-      <type name="Practices.SharePoint.WebParts.IssueTasksWebPart, $SharePoint.Project.AssemblyFullName$" />
+      <type name="Practices.SharePoint.WebParts.IssueTrackingWebPart, $SharePoint.Project.AssemblyFullName$" />
       <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
     </metaData>
     <data>
       <properties>
-        <property name="Title" type="string">IssueTasksWebPart</property>
-        <property name="Description" type="string">Issue Tasks Visual Web Part</property>
+        <property name="Title" type="string">Practices.SharePoint.DataModes - IssueTrackingWebPart</property>
+        <property name="Description" type="string">My Visual Web Part</property>
       </properties>
     </data>
   </webPart>
