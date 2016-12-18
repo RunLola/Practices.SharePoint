@@ -43,11 +43,16 @@
         private const string _ascxPath = @"~/_CONTROLTEMPLATES/15/WebParts/IssueTasksControl.ascx";
 
         protected override void CreateChildControls() {
-            var control = Page.LoadControl(_ascxPath) as WorkflowTasksControl;
-            control.TaskContentTypeNames = TaskContentTypeNames.Trim(';').Split(';').AsEnumerable();
-            control.ViewFieldNames = ViewFieldNames.Trim(';').Split(';').AsEnumerable();
-            control.ListTitle = ListTitle;            
-            Controls.Add(control);
+            if (!string.IsNullOrEmpty(TaskContentTypeNames) &&
+                !string.IsNullOrEmpty(ListTitle) &&
+                !string.IsNullOrEmpty(ViewFieldNames)) {
+
+                var control = Page.LoadControl(_ascxPath) as WorkflowTasksControl;
+                control.TaskContentTypeNames = ViewFieldNames.Trim(';').Split(';').AsEnumerable();
+                control.ViewFieldNames = ViewFieldNames.Trim(';').Split(';').AsEnumerable();
+                control.ListTitle = ListTitle;
+                Controls.Add(control);
+            }            
         }
     }
 }

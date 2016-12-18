@@ -160,7 +160,7 @@
 
         #endregion
 
-        public RegisterPage() {
+        public PackagePage() {
             this.presenter = new PackagePresenter(this, PortalWeb);
         }
 

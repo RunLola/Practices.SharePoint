@@ -82,15 +82,12 @@ function GetUserFieldValues(clientId) {
     var fieldValues = [];
     var peoplePicker = SPClientPeoplePicker.SPClientPeoplePickerDict[clientId];
     var pickerEntities = peoplePicker.GetAllUserInfo();
-    for (var i = 0; i < pickerEntities.length; i++)
-    {
+    for (var i = 0; i < pickerEntities.length; i++) {
         var pickerEntity = pickerEntities[i];
-        if (pickerEntity.EntityType == "User")
-        {
+        if (pickerEntity.EntityType == "User") {
             var loginName = pickerEntity.Key;
             //GetUserId(loginName);
-        } else if (pickerEntity.EntityData["PrincipalType"] == "SharePointGroup")
-        {
+        } else if (pickerEntity.EntityData["PrincipalType"] == "SharePointGroup") {
             var groupId = pickerEntity.EntityData["SPGroupID"];
             var groupName = pickerEntity.EntityData["AccountName"];
             var fieldValue = new SP.FieldUserValue();

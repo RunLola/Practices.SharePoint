@@ -82,6 +82,7 @@
     <Compile Include="Logging\ITraceLogger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Logging\TraceLogger.cs" />
+    <Compile Include="Repositories\ISiteRepository.cs" />
     <Compile Include="Repositories\SiteRepository.cs" />
     <Compile Include="Repositories\IListRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -29,9 +29,7 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
     init: function () {
         this.focusedCommands = [];
         this.globalCommands = [
-            Practices.IssueTracking.ActionsCommandNames.Create,
-            Practices.IssueTracking.ActionsCommandNames.Upgrade,
-            Practices.IssueTracking.ActionsCommandNames.Delete
+            Practices.IssueTracking.ActionsCommandNames.StartWorkflow
         ];
     },
 
@@ -111,17 +109,29 @@ Practices.IssueTracking.ActionsCommands.StartWorkflowEnabled = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
     var count = CountDictionary(selectedItems);
     if (count == 1) {
-        if (IsNullOrUndefined(window.itemState[selectedItems[0].id])) {
-            var context = SP.ClientContext.get_current();
-            var listId = SP.ListOperation.Selection.getSelectedList();
-            var list = context.get_web().get_lists().getById(listId);
-            var item = list.getItemById(selectedItems[0].id);
-            context.load(item);
+        var listId = SP.ListOperation.Selection.getSelectedList();
+        var itemId = selectedItems[0].id;
+
+        if (IsNullOrUndefined(window.itemState[itemId])) {
+            var clientContext = SP.ClientContext.get_current();
+            var serviceManager = SP.WorkflowServices.WorkflowServicesManager.newObject(clientContext, clientContext.get_web());
+            var instanceService = serviceManager.getWorkflowInstanceService();
+            var instances = instanceService.enumerateInstancesForListItem(listId, itemId);
+            clientContext.load(instances);
             clientContext.executeQueryAsync(Function.createDelegate(this, onQuerySucceeded), Function.createDelegate(this, onQueryFailed));
+            return false;
 
             function onQuerySucceeded(sender, args) {
-                var isValid = listItem.get_item('IsValidAppPackage');
-                window.itemState[listItem.get_id()] = isValid;
+                console.log("Instances load success. Attempting to find workflow.");
+                var flag = true;
+                for (var i = 0; i < instances.get_count() ; i++) {
+                    var instance = instances.get_item(i);
+                    if (instance.get_status() == 1) {
+                        flag = false;                        
+                        break;
+                    }
+                }
+                window.itemState[itemId] = flag;
                 RefreshCommandUI();
             }
 
@@ -129,30 +139,42 @@ Practices.IssueTracking.ActionsCommands.StartWorkflowEnabled = function () {
                 alert('Request failed. ' + args.get_message() + '\n' + args.get_stackTrace());
                 console.log("Error: " + args.get_message() + "\n" + args.get_stackTrace());
             }
-            return false;
-        }
-        else {
+        } else {
             return window.itemState[selectedItems[0].id];
         }
     } else {
         return false;
     }
-
-
 }
 Practices.IssueTracking.ActionsCommands.StartWorkflow = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
     var context = SP.ClientContext.get_current();
     var listId = SP.ListOperation.Selection.getSelectedList();
     var itemId = selectedItems[0].id;
-    var url = SP.Utilities.Utility.getLayoutsPageUrl("Practices/StartTracking.aspx?ListId=" + listId + "&Id=" + itemId);
+    var url = SP.Utilities.Utility.getLayoutsPageUrl("Practices/StartTracking.aspx?ListId=" + listId + "&ItemId=" + itemId);
     //STSNavigate(url);
     var options = SP.UI.$create_DialogOptions();
     options.title = "下达隐患";
-    options.width = 600;
-    options.height = 450;
+    //options.width = 750;
+    //options.height = 450;
+    options.allowMaximize = true;
+    options.autoSize = true;
     options.url = url;
+    options.dialogReturnValueCallback = onDialogClose;
     SP.UI.ModalDialog.showModalDialog(options);
+
+    function onDialogClose(dialogResult, returnValue) {
+        if (dialogResult == SP.UI.DialogResult.OK) {
+            console.log(returnValue);
+            alert('隐患整改任务已下达!');
+            refreshListView();
+        }
+        if (dialogResult == SP.UI.DialogResult.Cancel) {
+            console.log(returnValue);
+            alert('隐患整改任务已取消');
+            refreshListView();
+        }
+    }
 }
 
 function refreshListView() {

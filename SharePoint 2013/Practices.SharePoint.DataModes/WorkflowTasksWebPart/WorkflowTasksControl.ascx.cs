@@ -11,9 +11,6 @@
     using System.Linq;
 
     public partial class WorkflowTasksControl : UserControl, IWorkflowTasksView {
-        
-        readonly string ribbonTabId = "Practices.IssueTracking.Actions";
-
         WorkflowTasksPresenter presenter;
 
         #region IWorkflowTasksView
@@ -67,12 +64,12 @@
         }
 
         protected override void OnPreRender(EventArgs e) {
-            LoadAndActivateRibbonContextualTab(ribbonTabId);
+            //LoadAndActivateRibbonContextualTab(ribbonTabId);
             base.OnPreRender(e);
         }
 
         protected override void OnLoad(EventArgs e) {
-            base.OnLoad(e);
+            base.OnLoad(e);            
             presenter.LoadTasks();
             GenerateBoundFields(GridView);
             GridView.DataSource = RelatedItems;
@@ -81,7 +78,6 @@
         
         protected void LoadAndActivateRibbonContextualTab(string tabId) {
             SPRibbon current = SPRibbon.GetCurrent(this.Page);
-            // Ensure ribbon exists.
             if (current != null) {
                 current.Minimized = false;
                 current.CommandUIVisible = true;

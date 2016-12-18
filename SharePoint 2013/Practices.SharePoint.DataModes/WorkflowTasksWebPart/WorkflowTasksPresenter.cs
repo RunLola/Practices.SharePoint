@@ -14,10 +14,11 @@
     using Models;
 
     class WorkflowTasksPresenter {
-        IWorkflowTasksView view;
-        SPWeb web;
+                
         readonly string taskStatus = "Completed";
+        IWorkflowTasksView view;
 
+        SPWeb web;
         protected SPWeb Web {
             get {
                 return web;
@@ -40,7 +41,7 @@
         protected DataTable GetRelatedItems(uint startRow, uint maxRows) {
             var table = GetTable();            
             var tasks = GetTasks(startRow, maxRows);
-            foreach (var task in tasks) {
+            foreach (DataRow task in tasks.Rows) {
                 var row = table.NewRow();
                 using (SPWeb web = Web.Site.OpenWeb(new Guid(task["WebId"].ToString()))) {
                     var url = string.Format("{0}listform.aspx?ListId={1}&PageType=6&ID={2}&Source={3}",
@@ -66,7 +67,7 @@
             return table;
         }
         
-        protected IEnumerable<DataRow> GetTasks(uint startRow, uint maxRows) {
+        protected DataTable GetTasks(uint startRow, uint maxRows) {
             var repository = new WorkflowTaskRepository();
             var queryString = new CAMLQueryBuilder()
                 .AddCurrentUser(BuiltInFieldName.AssignedTo)

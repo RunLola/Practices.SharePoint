@@ -20,8 +20,8 @@
         border-spacing: 0;
     }
 </style>
-<SharePoint:ScriptLink Language="javascript" Name="SP.Ribbon.js" OnDemand="true" runat="server" />
-<SharePoint:ScriptLink Language="javascript" Name="Scripts/spGridView.min.js" runat="server" LoadAfterUI="true" />
+<SharePoint:ScriptLink Language="javascript" Name="SP.Ribbon.js" OnDemand="true" runat="server" Localizable="false" />
+<SharePoint:ScriptLink Language="javascript" Name="Scripts/spGridView.js" runat="server" LoadAfterUI="true" Localizable="false" />
 <script>
     SP.SOD.executeOrDelayUntilScriptLoaded(function () {
         SP.SOD.executeOrDelayUntilScriptLoaded(function () {
@@ -79,7 +79,7 @@
             </ItemTemplate>
             <ItemStyle CssClass="ms-cellstyle ms-vb-title ms-positionRelative" />
         </asp:TemplateField>
-        <%--<SharePoint:SPBoundField DataField="AppVersion" HeaderText="Version"
+        <%--<SharePoint:SPBoundField DataField="" HeaderText=""
             HeaderStyle-CssClass="ms-vh2" ItemStyle-CssClass="ms-vb2 ms-cellstyle ms-vb-lastCell" />--%>
     </Columns>
 </SharePoint:SPGridView>

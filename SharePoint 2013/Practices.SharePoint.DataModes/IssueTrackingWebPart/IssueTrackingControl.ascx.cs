@@ -10,25 +10,39 @@
     using System.Linq;
 
     public partial class IssueTrackingControl : UserControl, IIssueTrackingView {
+
+        readonly string ribbonTabId = "Practices.IssueTracking.Actions";
+
         IssueTrackingPresenter presenter;
+
+        public string ContentTypeName;
+        public IEnumerable<string> ViewFieldNames;
 
         #region IIssueTrackingView
 
-        public string ContentTypeName;
+        private SPContentType contentType;
         public SPContentType ContentType {
             get {
-                return Web.ContentTypes[ContentTypeName];
+                if (contentType == null) {
+                    contentType = Web.ContentTypes[ContentTypeName];
+                }
+                return contentType;
             }
         }
 
-        public IEnumerable<string> ViewFieldNames;
-        public IEnumerable<SPField> ViewFields {
+        private List<SPField> viewFields = new List<SPField>();
+        public IList<SPField> ViewFields {
             get {
-                foreach (var fieldName in ViewFieldNames) {
-                    if (List.Fields.ContainsField(fieldName)) {
-                        yield return List.Fields[fieldName];
+                if (!viewFields.Any()) {
+                    if (ContentType != null) {
+                        foreach (var fieldName in ViewFieldNames) {
+                            if (ContentType.Fields.ContainsField(fieldName)) {
+                                viewFields.Add(ContentType.Fields[fieldName]);
+                            }
+                        }
                     }
                 }
+                return viewFields;
             }
         }
 
@@ -37,16 +51,8 @@
             set;
         }
 
-        public string ListTitle;
-        public SPList List {
-            get {
-                var list = Web.Lists.TryGetList(ListTitle);
-                return list;
-            }
-        }
-
         #endregion
-        
+
         protected SPWeb Web {
             get {
                 return SPContext.Current.Web;
@@ -57,22 +63,31 @@
             presenter = new IssueTrackingPresenter(this, Web);
         }
 
-        protected override void OnLoad(EventArgs e) {
-            base.OnLoad(e);
-            base.OnLoad(e);
-            presenter.LoadIssues();
-            GenerateBoundFields(GridView);
-            GridView.DataSource = Items;
-            GridView.DataBind();
+        protected void Page_Load(object sender, EventArgs e) {
+            if (ContentType != null && ViewFields.Any()) {
+                GenerateBoundFields(GridView);
+                presenter.loadData(0, 100);
+                if (Items != null && Items.Rows.Count > 0) {
+                    GridView.DataSource = Items;
+                    GridView.DataBind();
+                }
+            }
         }
 
-        protected void Page_Load(object sender, EventArgs e) {
+        protected void LoadAndActivateRibbonContextualTab(string tabId) {
+            SPRibbon current = SPRibbon.GetCurrent(this.Page);
+            if (current != null) {
+                current.Minimized = false;
+                current.CommandUIVisible = true;
+                if (!current.IsTabAvailable(tabId)) {
+                    current.MakeTabAvailable(tabId);
+                }
+            }
         }
 
         protected void GenerateBoundFields(SPGridView grid) {
             var titleField = grid.Columns[1] as TemplateField;
             titleField.HeaderText = ViewFields.FirstOrDefault().Title;
-
             foreach (var field in ViewFields.Skip(1)) {
                 var boundField = new SPBoundField() {
                     HeaderText = field.Title,

@@ -153,12 +153,12 @@ Practices.Apps.ActionsCommands.UpgradeEnabled = function () {
     var count = CountDictionary(selectedItems);
     if (count == 1) {
         if (IsNullOrUndefined(window.itemState[selectedItems[0].id])) {
-            var context = SP.ClientContext.get_current();
+            var clientContext = SP.ClientContext.get_current();
             var listId = SP.ListOperation.Selection.getSelectedList();
-            var list = context.get_web().get_lists().getById(listId);
+            var list = clientContext.get_web().get_lists().getById(listId);
             var listItem = list.getItemById(selectedItems[0].id);
-            context.load(listItem);
-            context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
+            clientContext.load(listItem);
+            clientContext.executeQueryAsync(OnQuerySucceeded, OnQueryFailed);
             return false;
         }
         else {
@@ -168,23 +168,23 @@ Practices.Apps.ActionsCommands.UpgradeEnabled = function () {
         return false;
     }
 
-    function OnSelectedItemQuerySucceeded(sender, args) {
+    function OnQuerySucceeded(sender, args) {
         var isValid = listItem.get_item('IsValidAppPackage');
         window.itemState[listItem.get_id()] = isValid;
         RefreshCommandUI();
     }
 
-    function OnSelectedItemQueryFailed() {
+    function OnQueryFailed() {
     }
 }
 Practices.Apps.ActionsCommands.Upgrade = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
-    var context = SP.ClientContext.get_current();
+    var clientContext = SP.ClientContext.get_current();
     var listId = SP.ListOperation.Selection.getSelectedList();
-    var corporateCatalog = context.get_web().get_lists().getById(listId);
+    var corporateCatalog = clientContext.get_web().get_lists().getById(listId);
     var listItem = corporateCatalog.getItemById(selectedItems[0].id);
-    context.load(listItem);
-    context.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
+    clientContext.load(listItem);
+    clientContext.executeQueryAsync(OnSelectedItemQuerySucceeded, OnSelectedItemQueryFailed);
 
     function OnSelectedItemQuerySucceeded(sender, args) {
         var productId = listItem.get_item("AppProductID").toString();

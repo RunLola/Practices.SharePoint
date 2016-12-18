@@ -57,6 +57,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -165,6 +166,7 @@
     </Content>
     <Content Include="IssueTrackingWebPart\IssueTrackingWebPart.xml" />
     <Content Include="IssueTrackingWebPart\IssueTrackingControl.ascx" />
+    <Content Include="Layouts\Scripts\IssueTracking.Ribbon.Loader.js" />
     <Content Include="Layouts\Scripts\spWorkflow.js" />
     <Content Include="WorkflowTasksWebPart\WorkflowTasksWebPart.xml" />
     <Content Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx" />
@@ -185,7 +187,9 @@
     </Content>
     <Content Include="Layouts\Scripts\spGridView.js" />
     <Content Include="Layouts\Scripts\_references.js" />
-    <Content Include="ProvisionedUI\ProvisionedUI.xml" />
+    <Content Include="ProvisionedUI\ProvisionedUI.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="XML\fldtypes_user.xml">
       <SubType>Designer</SubType>
     </Content>

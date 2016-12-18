@@ -12,16 +12,12 @@
             get;
         }
 
-        IEnumerable<SPField> ViewFields {
+        IList<SPField> ViewFields {
             get;
         }
         
         DataTable Items {
             set;
-        }
-
-        SPList List {
-            get;
         }
     }
 }

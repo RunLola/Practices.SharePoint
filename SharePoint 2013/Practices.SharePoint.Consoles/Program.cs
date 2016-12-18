@@ -12,29 +12,23 @@
 
     class Program {
         static void Main(string[] args) {
-            var key = SPOriginalIssuers.Format(SPOriginalIssuerType.TrustedProvider, "基础平台");
-            Console.WriteLine(key);
-            Console.ReadKey();
             var siteUrl = "http://share";
-            var s = SPBuiltInFieldId.TaskStatus;
             using (SPSite site = new SPSite(siteUrl)) {
                 using (SPWeb web = site.OpenWeb()) {
-                    var queryString = new CAMLQueryBuilder()
-                        .AddCurrentUser(BuiltInFieldName.AssignedTo)
-                        .OrCurrentUserGroups(BuiltInFieldName.AssignedTo)
-                        .AddNotEqual(BuiltInFieldName.TaskStatus, "Completed")                        
-                        .AddIsNotNull(BuiltInFieldName.RelatedItems)
-                        .AddBeginsWith(BuiltInFieldName.ContentTypeId, BuiltInContentTypeId.WorkflowTask2013.ToString())
-                        .AddIn(BuiltInFieldName.ContentType, new List<string>() { "Workflow Task (SharePoint 2013)" })
-                        .AddSorting(BuiltInFieldName.DueDate).Build();
+                    var queryString = new CAMLQueryBuilder().Build();
                     var query = new SPSiteDataQuery() {
-                        Lists = "<Lists ServerTemplate='107' BaseType='0' />",
+                        Lists = "<Lists ServerTemplate='1100' BaseType='5' />",
                         Webs = "<Webs Scope='SiteCollection' />",
-                        ViewFields = string.Format("<FieldRef Name='{0}' />", BuiltInFieldName.RelatedItems),
+                        ViewFields = "<FieldRef Name='Title' /><FieldRef Name='AssignedTo' />",
                         Query = queryString,
-                        QueryThrottleMode = SPQueryThrottleOption.Override
+                        QueryThrottleMode = SPQueryThrottleOption.Override,
+                        RowLimit = 100
                     };
                     var data = web.GetSiteData(query);
+                        var rows = data.AsEnumerable().AsEnumerable();
+                    var table = GetTable();
+                    rows.CopyToDataTable(table, LoadOption.Upsert);
+                    
                     Console.WriteLine("");
                     //foreach (SPGroup group in web.SiteGroups) {
                     //    var roleDefinitions = web.RoleDefinitions;
@@ -65,6 +59,17 @@
 //                    view.Update();
                 }
             }
+        }
+
+        public static DataTable GetTable() {
+            var table = new DataTable();
+            table.Columns.Add("WebId");
+            table.Columns.Add("ListId");
+            table.Columns.Add("ID");
+            table.Columns.Add("Title");
+            table.Columns.Add("AssignedTo");            
+            table.Columns.Add("NavigateUrl");
+            return table;
         }
 
         static void InitUsers(SPServiceContext context) {

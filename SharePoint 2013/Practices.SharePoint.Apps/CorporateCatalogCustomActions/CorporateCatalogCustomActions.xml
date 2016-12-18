@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <CustomAction Id="Practices.AppActions"
+  <CustomAction Id="Practices.Apps.Actions"
                 Location="CommandUI.Ribbon"
                 RegistrationId="330"
                 RegistrationType="List"

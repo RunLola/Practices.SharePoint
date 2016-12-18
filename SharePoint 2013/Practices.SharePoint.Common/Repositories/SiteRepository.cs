@@ -7,7 +7,7 @@
     using Microsoft.SharePoint;
     using System.Data;
 
-    public abstract class SiteRepository : IListRepository<DataRow> {
+    public abstract class SiteRepository : ISiteRepository {
         private SPWeb web;
         protected SPWeb Web {
             get {
@@ -30,7 +30,7 @@
             this.web = clientWeb;
         }
 
-        public virtual IEnumerable<DataRow> Get(string queryString) {
+        public virtual DataTable Get(string queryString) {
             var query = new SPSiteDataQuery() {
                 Lists = ListTemplate,
                 Webs = WebScope,
@@ -41,7 +41,7 @@
             return Get(query);
         }
 
-        public virtual IEnumerable<DataRow> Get(string queryString, uint startRow, uint maxRows) {
+        public virtual DataTable Get(string queryString, uint startRow, uint maxRows) {
             var query = new SPSiteDataQuery() {
                 Lists = ListTemplate,
                 Webs = WebScope,
@@ -53,14 +53,15 @@
             return Get(query, startRow, maxRows);
         }
 
-        protected IEnumerable<DataRow> Get(SPSiteDataQuery query) {
-            return Web.GetSiteData(query).AsEnumerable();
+        protected DataTable Get(SPSiteDataQuery query) {
+            return Web.GetSiteData(query);
         }
 
-        protected IEnumerable<DataRow> Get(SPSiteDataQuery query, uint startRow, uint maxRows) {
-            query.RowLimit = startRow + maxRows;
-            var rows = Web.GetSiteData(query).AsEnumerable().AsEnumerable();
-            return rows.Skip(int.Parse(startRow.ToString())).Take(int.Parse(maxRows.ToString()));
+        protected DataTable Get(SPSiteDataQuery query, uint startRow, uint maxRows) {
+            var data = Web.GetSiteData(query);
+            return data.Select().
+                Skip(int.Parse(startRow.ToString())).Take(int.Parse(maxRows.ToString()))
+                .CopyToDataTable();
         }
     }
 }

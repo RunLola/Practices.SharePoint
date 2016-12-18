@@ -10,7 +10,7 @@
     public class IssueTrackingRepository : SiteRepository {
         protected override string ListTemplate {
             get {
-                return "<Lists ServerTemplate='107' BaseType='0' />";
+                return "<Lists ServerTemplate='1100' BaseType='5' />";
             }
         }
 
@@ -19,11 +19,19 @@
                 return "<Webs Scope='SiteCollection' />";
             }
         }
-
+        private IEnumerable<string> fieldNames;
         protected override string ViewFields {
             get {
-                return string.Format("<FieldRef Name='{0}' />", BuiltInFieldName.RelatedItems);
+                string viewFields = string.Empty;
+                foreach (var fieldName in fieldNames) {
+                    viewFields += string.Format("<FieldRef Name='{0}' />", fieldName);
+                }
+                return viewFields;
             }
+        }
+
+        public IssueTrackingRepository(IEnumerable<string> fieldNames) {
+            this.fieldNames = fieldNames;
         }
     }
 }

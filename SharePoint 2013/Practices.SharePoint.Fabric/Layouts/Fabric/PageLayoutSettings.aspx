@@ -69,8 +69,8 @@
         <asp:HiddenField ID="JsonString" runat="server" ClientIDMode="Static" />
         <wssuc:buttonsection runat="server">
             <template_buttons>
-                <asp:Button id="BtnSave" runat="server" Text="Save" 
-                    class="ms-ButtonHeightWidth" UseSubmitBehavior="false" 
+                <asp:Button id="BtnSave" runat="server" 
+                    Text="Save" CssClass="ms-ButtonHeightWidth" UseSubmitBehavior="false" 
                     OnClientClick="CollectData();" OnClick="BtnSave_Click"/>
 	        </template_buttons>
         </wssuc:buttonsection>
