@@ -286,7 +286,7 @@
         #region <BeginsWith>
 
         public CAMLQueryBuilder AddBeginsWith(string fieldName, string fieldValue) {
-            if (fieldName.Equals(BuiltInFieldName.ContentTypeId)) {
+            if (fieldName.Equals(SPBuiltInFieldName.ContentTypeId)) {
                 return AddFilter(new Filter {
                     FieldName = fieldName,
                     FieldType = FilterFieldType.ContentTypeId,
@@ -302,8 +302,7 @@
                     QueryOperator = FilterQueryOperator.BeginsWith,
                     ChainingOperator = FilterChainingOperator.And
                 });
-            }
-            
+            }            
         }
         
         #endregion
@@ -419,7 +418,7 @@
         public CAMLQueryBuilder AddCurrentUser(string fieldName) {
             return AddFilter(new Filter {
                 FieldName = fieldName,
-                FieldValue = "<UserID Type=\"Integer\" />",
+                FieldValue = "<UserID Type='Integer' />",
                 FieldType = FilterFieldType.Integer,
                 QueryOperator = FilterQueryOperator.Eq,
                 ChainingOperator = FilterChainingOperator.And

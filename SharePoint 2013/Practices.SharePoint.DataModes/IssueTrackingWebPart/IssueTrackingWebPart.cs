@@ -26,7 +26,14 @@
          Personalizable(PersonalizationScope.Shared),
          Category("配置选项")]
         public string ViewFieldNames { get; set; }
-        
+
+        [WebBrowsable(true),
+         WebDisplayName("问题状态"),
+         WebDescription("未处理，未解决，已解决，已关闭"),
+         Personalizable(PersonalizationScope.Shared),
+         Category("配置选项")]
+        public string IssueStatus { get; set; }
+
         protected SPWeb Web {
             get {
                 return SPContext.Current.Web;
@@ -39,12 +46,12 @@
         protected override void CreateChildControls() {
             if (!string.IsNullOrEmpty(ContentTypeName) &&
                !string.IsNullOrEmpty(ViewFieldNames)) {
-
                 var control = (IssueTrackingControl)Page.LoadControl(_ascxPath);
                 control.ContentTypeName = ContentTypeName;
                 control.ViewFieldNames = ViewFieldNames.Trim(';').Split(';').AsEnumerable();
+                control.IssueStatus = IssueStatus;
                 Controls.Add(control);            
-            }            
+            }
         }
     }
 }

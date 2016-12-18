@@ -2,7 +2,7 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <CustomAction Id="Practices.IssueTracking.Actions"
                 Location="CommandUI.Ribbon"
-                RegistrationId="100"
+                RegistrationId="1100"
                 RegistrationType="List"
                 Sequence="1000">
     <CommandUIExtension>
@@ -20,9 +20,9 @@
       </CommandUIDefinitions>
     </CommandUIExtension>
   </CustomAction>
-  <CustomAction Id="Apps.Ribbon.Loader"
+  <CustomAction Id="IssueTracking.Ribbon.Loader"
                 Location="ScriptLink"
-                RegistrationId="100"
+                RegistrationId="1100"
                 RegistrationType="List"
                 ScriptSrc="/_layouts/15/Scripts/IssueTracking.Ribbon.Loader.js"
                 Rights="AddListItems, EditListItems, DeleteListItems"

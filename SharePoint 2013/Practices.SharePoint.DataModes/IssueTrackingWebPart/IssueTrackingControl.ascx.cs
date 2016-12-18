@@ -17,6 +17,7 @@
 
         public string ContentTypeName;
         public IEnumerable<string> ViewFieldNames;
+        public string IssueStatus;
 
         #region IIssueTrackingView
 
@@ -46,6 +47,12 @@
             }
         }
 
+        public string Status {
+            get {
+                return IssueStatus;
+            }
+        }
+
         public DataTable Items {
             get;
             set;
@@ -62,15 +69,18 @@
         public IssueTrackingControl() {
             presenter = new IssueTrackingPresenter(this, Web);
         }
+        
+        protected override void OnLoad(EventArgs e) {
+            base.OnLoad(e);            
+        }
+
 
         protected void Page_Load(object sender, EventArgs e) {
-            if (ContentType != null && ViewFields.Any()) {
+            if (!Page.IsPostBack && ViewFields.Any()) {
                 GenerateBoundFields(GridView);
-                presenter.loadData(0, 100);
-                if (Items != null && Items.Rows.Count > 0) {
-                    GridView.DataSource = Items;
-                    GridView.DataBind();
-                }
+                presenter.loadData(0, 30);
+                GridView.DataSource = Items;
+                GridView.DataBind();
             }
         }
 
@@ -91,7 +101,7 @@
             foreach (var field in ViewFields.Skip(1)) {
                 var boundField = new SPBoundField() {
                     HeaderText = field.Title,
-                    DataField = field.InternalName,
+                    DataField = field.Id.ToString(),
                 };
                 boundField.HeaderStyle.CssClass = "ms-vh2";
                 boundField.ItemStyle.CssClass = "ms-cellstyle ms-vb2";

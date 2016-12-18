@@ -11,30 +11,52 @@
     using System.Linq;
 
     public partial class WorkflowTasksControl : UserControl, IWorkflowTasksView {
+
         WorkflowTasksPresenter presenter;
+        readonly SPContentTypeId WorkflowTask2013 = new SPContentTypeId("0x0108003365C4474CAE8C42BCE396314E88E51F");
+
+        public IEnumerable<string> TaskContentTypeNames = new List<string>();
+        public string ContentTypeName;
+        public IEnumerable<string> ViewFieldNames= new List<string>();
 
         #region IWorkflowTasksView
 
-        public IEnumerable<string> TaskContentTypeNames;
-        public IEnumerable<SPContentType> TaskContentTypes {
+        private List<SPContentType> taskContentTypes= new List<SPContentType>();
+        public IList<SPContentType> TaskContentTypes {
             get {
-                foreach (var contentTypeName in TaskContentTypeNames) {
-                    var contentType = Web.ContentTypes[contentTypeName];
-                    if (contentType != null && contentType.Parent.Id == SPBuiltInContentTypeId.WorkflowTask) {
-                        yield return contentType;
+                if (!taskContentTypes.Any()) {
+                    foreach (var contentTypeName in TaskContentTypeNames) {
+                        var contentType = Web.ContentTypes[contentTypeName];
+                        if (contentType != null && (contentType.Parent.Id == WorkflowTask2013) || contentType.Id == WorkflowTask2013) {
+                            taskContentTypes.Add(contentType);
+                        }
                     }
                 }
+                return taskContentTypes;
             }
         }
 
-        public IEnumerable<string> ViewFieldNames;
-        public IEnumerable<SPField> ViewFields {
+        private SPContentType contentType;
+        public SPContentType ContentType {
             get {
-                foreach (var fieldName in ViewFieldNames) {
-                    if (List.Fields.ContainsField(fieldName)) {
-                        yield return List.Fields[fieldName];
+                if (contentType == null) {
+                    contentType = Web.ContentTypes[ContentTypeName];
+                }
+                return contentType;
+            }
+        }
+
+        private List<SPField> viewFields = new List<SPField>();
+        public IList<SPField> ViewFields {
+            get {
+                if (!viewFields.Any() && ContentType != null) {
+                    foreach (var fieldName in ViewFieldNames) {
+                        if (ContentType.Fields.ContainsField(fieldName)) {
+                            viewFields.Add(ContentType.Fields[fieldName]);
+                        }
                     }
                 }
+                return viewFields;
             }
         }
 
@@ -42,15 +64,7 @@
             get;
             set;
         }
-
-        public string ListTitle;
-        public SPList List {
-            get {
-                var list = Web.Lists.TryGetList(ListTitle);
-                return list;
-            }
-        }
-
+        
         #endregion
 
         protected SPWeb Web {
@@ -69,13 +83,24 @@
         }
 
         protected override void OnLoad(EventArgs e) {
-            base.OnLoad(e);            
-            presenter.LoadTasks();
-            GenerateBoundFields(GridView);
-            GridView.DataSource = RelatedItems;
-            GridView.DataBind();
+            base.OnLoad(e);
+            
         }
-        
+
+        protected void Page_Load(object sender, EventArgs e) {
+            if (!Page.IsPostBack && ViewFields.Any()) {
+                GenerateBoundFields(GridView);
+                if (TaskContentTypes.Any()) {
+                    presenter.LoadTasks(0, 30);
+                    GridView.DataSource = RelatedItems;
+                    GridView.DataBind();
+                } else {
+                    GridView.DataSource = new DataTable();
+                    GridView.DataBind();
+                }
+            }
+        }
+
         protected void LoadAndActivateRibbonContextualTab(string tabId) {
             SPRibbon current = SPRibbon.GetCurrent(this.Page);
             if (current != null) {
@@ -94,7 +119,7 @@
             foreach (var field in ViewFields.Skip(1)) {
                 var boundField = new SPBoundField() {
                     HeaderText = field.Title,
-                    DataField = field.InternalName,
+                    DataField = field.Id.ToString(),
                 };
                 boundField.HeaderStyle.CssClass = "ms-vh2";
                 boundField.ItemStyle.CssClass = "ms-cellstyle ms-vb2";

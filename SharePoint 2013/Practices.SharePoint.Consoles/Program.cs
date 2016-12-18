@@ -12,12 +12,13 @@
 
     class Program {
         static void Main(string[] args) {
+            var array = "".Trim(';').Split(';').AsEnumerable();
+
             var siteUrl = "http://share";
             using (SPSite site = new SPSite(siteUrl)) {
                 using (SPWeb web = site.OpenWeb()) {
-                    var queryString = new CAMLQueryBuilder().Build();
+                    var queryString = new CAMLQueryBuilder().AddCurrentUser(SPBuiltInFieldName.AssignedTo).OrCurrentUserGroups(SPBuiltInFieldName.AssignedTo).Build();
                     var query = new SPSiteDataQuery() {
-                        Lists = "<Lists ServerTemplate='1100' BaseType='5' />",
                         Webs = "<Webs Scope='SiteCollection' />",
                         ViewFields = "<FieldRef Name='Title' /><FieldRef Name='AssignedTo' />",
                         Query = queryString,

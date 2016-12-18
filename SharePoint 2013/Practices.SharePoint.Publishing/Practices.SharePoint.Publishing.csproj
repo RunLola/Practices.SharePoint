@@ -307,7 +307,7 @@
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
     <Content Include="Layouts\Scripts\_references.js" />
     <Content Include="MasterPages\MasterPages.xml" />
-    <Content Include="PageLayouts\Home.aspx" />
+    <Content Include="PageLayouts\WebPartPage.aspx" />
     <Content Include="PageLayouts\PageLayouts.xml" />
     <Content Include="Pages\Pages.xml" />
     <Content Include="ProvisionedUI\ProvisionedUI.xml" />

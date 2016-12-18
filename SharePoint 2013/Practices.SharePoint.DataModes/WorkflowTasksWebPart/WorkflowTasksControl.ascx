@@ -19,24 +19,14 @@
         border-spacing: 0;
     }
 </style>
-<SharePoint:ScriptLink Language="javascript" Name="SP.Ribbon.js" OnDemand="true" runat="server" />
-<SharePoint:ScriptLink Language="javascript" Name="Scripts/spGridView.min.js" runat="server" LoadAfterUI="true" />
+<SharePoint:ScriptLink Language="javascript" Name="Scripts/spGridView.js" runat="server" LoadAfterUI="true" />
 <script>
-    SP.SOD.executeOrDelayUntilScriptLoaded(function () {
-        SP.SOD.executeOrDelayUntilScriptLoaded(function () {
-            SP.SOD.executeOrDelayUntilScriptLoaded(function () {
-                SP.SOD.registerSod("IssueTasks.Ribbon.Actions", "/_layouts/15/Scripts/IssueTasks.Ribbon.Actions.js");
-                SP.SOD.execute('IssueTasks.Ribbon.Actions', 'Practices.IssueTasks.ActionsPageComponent.load');
-            }, "sp.ribbon.js");
-        }, "cui.js");
-    }, "sp.js");
-
     $(function () {
         $("#<%=GridView.ClientID%>").spGridView();
     });
 </script>
 <SharePoint:SPGridView ID="GridView" runat="server" AutoGenerateColumns="false" CssClass="ms-listviewtable"
-    Width="100%" BorderWidth="0" BorderStyle="None" CellPadding="1" CellSpacing="-1" GridLines="None">
+    ShowHeaderWhenEmpty="true" Width="100%" BorderWidth="0" BorderStyle="None" CellPadding="1" CellSpacing="-1" GridLines="None">
     <HeaderStyle CssClass="ms-viewheadertr ms-vhltr" />
     <RowStyle CssClass="ms-itmHoverEnabled ms-itmhover" />
     <AlternatingRowStyle CssClass="ms-itmHoverEnabled ms-itmhover ms-alternating" />

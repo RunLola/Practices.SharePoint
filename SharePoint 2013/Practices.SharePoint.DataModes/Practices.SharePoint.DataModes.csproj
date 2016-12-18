@@ -102,11 +102,11 @@
     </Compile>
     <Compile Include="WorkflowTasksWebPart\WorkflowTasksPresenter.cs" />
     <Compile Include="WorkflowTasksWebPart\WorkflowTasksWebPart.cs" />
-    <Compile Include="Layouts\Practices\StartTracking.aspx.cs">
+    <Compile Include="Layouts\IssueTracking\StartTracking.aspx.cs">
       <DependentUpon>StartTracking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layouts\Practices\StartTracking.aspx.designer.cs">
+    <Compile Include="Layouts\IssueTracking\StartTracking.aspx.designer.cs">
       <DependentUpon>StartTracking.aspx.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\RelatedItem.cs" />
@@ -170,7 +170,7 @@
     <Content Include="Layouts\Scripts\spWorkflow.js" />
     <Content Include="WorkflowTasksWebPart\WorkflowTasksWebPart.xml" />
     <Content Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx" />
-    <Content Include="Layouts\Practices\StartTracking.aspx" />
+    <Content Include="Layouts\IssueTracking\StartTracking.aspx" />
     <Content Include="Layouts\Scripts\IssueTracking.Ribbon.Actions.js" />
     <Content Include="Layouts\Scripts\IssueTasks.Ribbon.Actions.js" />
     <Content Include="Layouts\Scripts\JavaScript1.js" />

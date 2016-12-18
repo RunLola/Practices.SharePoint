@@ -59,9 +59,13 @@
 
         protected DataTable Get(SPSiteDataQuery query, uint startRow, uint maxRows) {
             var data = Web.GetSiteData(query);
-            return data.Select().
+            if (data.Rows.Count > 0) {
+                return data.Select().
                 Skip(int.Parse(startRow.ToString())).Take(int.Parse(maxRows.ToString()))
                 .CopyToDataTable();
+            } else {
+                return data;
+            }            
         }
     }
 }

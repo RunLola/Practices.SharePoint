@@ -15,7 +15,11 @@
         IList<SPField> ViewFields {
             get;
         }
-        
+
+        string Status {
+            get;
+        }
+
         DataTable Items {
             set;
         }

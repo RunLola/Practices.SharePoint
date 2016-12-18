@@ -151,7 +151,7 @@ Practices.IssueTracking.ActionsCommands.StartWorkflow = function () {
     var context = SP.ClientContext.get_current();
     var listId = SP.ListOperation.Selection.getSelectedList();
     var itemId = selectedItems[0].id;
-    var url = SP.Utilities.Utility.getLayoutsPageUrl("Practices/StartTracking.aspx?ListId=" + listId + "&ItemId=" + itemId);
+    var url = SP.Utilities.Utility.getLayoutsPageUrl("IssueTracking/StartTracking.aspx?ListId=" + listId + "&ItemId=" + itemId);
     //STSNavigate(url);
     var options = SP.UI.$create_DialogOptions();
     options.title = "下达隐患";

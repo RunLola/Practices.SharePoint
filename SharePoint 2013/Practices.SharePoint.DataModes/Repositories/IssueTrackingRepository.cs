@@ -19,19 +19,19 @@
                 return "<Webs Scope='SiteCollection' />";
             }
         }
-        private IEnumerable<string> fieldNames;
+        private IEnumerable<Guid> fieldIds;
         protected override string ViewFields {
             get {
                 string viewFields = string.Empty;
-                foreach (var fieldName in fieldNames) {
-                    viewFields += string.Format("<FieldRef Name='{0}' />", fieldName);
+                foreach (var fieldId in fieldIds) {
+                    viewFields += string.Format("<FieldRef ID='{0}' />", fieldId);
                 }
                 return viewFields;
             }
         }
 
-        public IssueTrackingRepository(IEnumerable<string> fieldNames) {
-            this.fieldNames = fieldNames;
+        public IssueTrackingRepository(IEnumerable<Guid> fieldIds) {
+            this.fieldIds = fieldIds;
         }
     }
 }

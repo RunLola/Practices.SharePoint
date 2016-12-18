@@ -12,7 +12,7 @@
     public class WorkflowTaskRepository : SiteRepository {
         protected override string ListTemplate {
             get {
-                return "<Lists ServerTemplate='107' BaseType='0' />";
+                return "<Lists ServerTemplate='171' BaseType='0' />";
             }
         }
 
@@ -24,8 +24,8 @@
         
         protected override string ViewFields {
             get {
-                return string.Format("<FieldRef Name='{0}' />", BuiltInFieldName.RelatedItems);
+                return string.Format("<FieldRef Name='{0}' />", SPBuiltInFieldName.RelatedItems);
             }
-        }        
+        }
     }
 }

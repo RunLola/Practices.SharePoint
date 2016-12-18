@@ -7,20 +7,20 @@
     using System.Threading.Tasks;
     using Microsoft.SharePoint;
     interface IWorkflowTasksView {
-        IEnumerable<SPContentType> TaskContentTypes {
+        IList<SPContentType> TaskContentTypes {
             get;
         }
 
-        IEnumerable<SPField> ViewFields {
+        SPContentType ContentType {
+            get;
+        }
+
+        IList<SPField> ViewFields {
             get;
         }
         
         DataTable RelatedItems {
             set;
-        }
-
-        SPList List {
-            get;
         }
     }
 }

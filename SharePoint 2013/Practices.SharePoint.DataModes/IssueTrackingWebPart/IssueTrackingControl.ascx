@@ -37,7 +37,7 @@
     });
 </script>
 <SharePoint:SPGridView ID="GridView" runat="server" AutoGenerateColumns="false" CssClass="ms-listviewtable"
-    Width="100%" BorderWidth="0" BorderStyle="None" CellPadding="1" CellSpacing="-1" GridLines="None">
+    ShowHeaderWhenEmpty="true" Width="100%" BorderWidth="0" BorderStyle="None" CellPadding="1" CellSpacing="-1" GridLines="None">
     <HeaderStyle CssClass="ms-viewheadertr ms-vhltr" />
     <RowStyle CssClass="ms-itmHoverEnabled ms-itmhover" />
     <AlternatingRowStyle CssClass="ms-itmHoverEnabled ms-itmhover ms-alternating" />
