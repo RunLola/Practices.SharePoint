@@ -1,4 +1,4 @@
-﻿namespace Practices.SharePoint {
+﻿namespace Practices.SharePoint.Apps {
     using System;
     using System.Xml;
     using System.Xml.Serialization;

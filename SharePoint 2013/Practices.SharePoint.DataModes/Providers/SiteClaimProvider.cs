@@ -6,6 +6,7 @@
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.SharePoint.WebControls;
+    using Models;
 
     public class SiteClaimProvider : SPClaimProvider {
         public static string ProviderDisplayName {
@@ -60,8 +61,7 @@
 
         public SiteClaimProvider(string displayName) : base(displayName) {
         }
-
-
+        
         protected override void FillClaimsForEntity(Uri context, SPClaim entity, List<SPClaim> claims) {
             throw new NotImplementedException();
         }
@@ -135,12 +135,6 @@
             entity.EntityType = SPClaimEntityTypes.User;
             entity.IsResolved = true;
             return entity;
-        }
-
-        public class SiteUser {
-            public string LoginName { get; set; }
-
-            public string DisplayName { get; set; }
-        }
+        }        
     }
 }

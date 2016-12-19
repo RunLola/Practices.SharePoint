@@ -59,6 +59,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
@@ -81,8 +83,14 @@
     <Compile Include="CONTROLTEMPLATES\QuoteFieldEditor.ascx.designer.cs">
       <DependentUpon>QuoteFieldEditor.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISAPI\ProfilesCatalog.svc.cs">
+      <DependentUpon>ProfilesCatalog.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ISAPI\IProfilesCatalog.cs" />
     <Compile Include="IssueTrackingWebPart\IIssueTrackingView.cs" />
     <Compile Include="IssueTrackingWebPart\IssueTrackingPresenter.cs" />
+    <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\SiteUser.cs" />
     <Compile Include="Providers\SiteClaimProvider.cs" />
     <Compile Include="IssueTrackingWebPart\IssueTrackingWebPart.cs" />
     <Compile Include="IssueTrackingWebPart\IssueTrackingControl.ascx.cs">
@@ -92,6 +100,8 @@
     <Compile Include="IssueTrackingWebPart\IssueTrackingControl.ascx.designer.cs">
       <DependentUpon>IssueTrackingControl.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\OrganizationRepository.cs" />
+    <Compile Include="Repositories\SiteUserRepository.cs" />
     <Compile Include="WorkflowTasksWebPart\IWorkflowTasksView.cs" />
     <Compile Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx.cs">
       <DependentUpon>WorkflowTasksControl.ascx</DependentUpon>
@@ -131,6 +141,9 @@
     <None Include="Features\Feature3\Feature3.feature">
       <FeatureId>{85813b64-1daf-43ca-815b-a71e61f88a5b}</FeatureId>
     </None>
+    <None Include="ISAPI\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b35fd62c-2e49-4ad2-8c85-4fd145614c05}</SharePointProjectItemId>
+    </None>
     <None Include="IssueTrackingWebPart\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0c8f0a89-4f6f-4701-9e73-756a6b79e2bf}</SharePointProjectItemId>
     </None>
@@ -164,9 +177,11 @@
     <Content Include="Features\Feature3\Feature3.Template.xml">
       <DependentUpon>Feature3.feature</DependentUpon>
     </Content>
+    <Content Include="ISAPI\ProfilesCatalog.svc" />
     <Content Include="IssueTrackingWebPart\IssueTrackingWebPart.xml" />
     <Content Include="IssueTrackingWebPart\IssueTrackingControl.ascx" />
     <Content Include="Layouts\Scripts\IssueTracking.Ribbon.Loader.js" />
+    <Content Include="Layouts\Scripts\spPeoplePicker.js" />
     <Content Include="Layouts\Scripts\spWorkflow.js" />
     <Content Include="WorkflowTasksWebPart\WorkflowTasksWebPart.xml" />
     <Content Include="WorkflowTasksWebPart\WorkflowTasksControl.ascx" />

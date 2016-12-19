@@ -8,7 +8,7 @@
         public abstract SPList List {
             get;
         }
-
+        
         public abstract IEnumerable<SPListItem> Get(string queryString);
 
         public abstract IEnumerable<SPListItem> Get(string queryString, uint startRow, uint maxRows);

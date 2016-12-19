@@ -1,6 +1,6 @@
 ﻿namespace Practices.SharePoint.Services {
     using Microsoft.SharePoint;
-    using Practices.SharePoint.Configuration;
+    using Configuration;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

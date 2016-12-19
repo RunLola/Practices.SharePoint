@@ -1,0 +1,27 @@
+﻿namespace Practices.SharePoint.Models {
+    using Repositories;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Microsoft.SharePoint;
+    using Models;
+
+    public class Organization : BaseEntity {
+        public int ParentId {
+            get;
+            set;
+        }
+
+        public string OriginId {
+            get;
+            set;
+        }
+
+        public int GroupId {
+            get;
+            set;
+        }
+    }
+}
