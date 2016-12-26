@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Styles" RootWebOnly="True">
-    <File Path="Styles\less\tab.less" Url="Styles/less/tab.less" />
-    <File Path="Styles\less\mixins.less" Url="Styles/less/mixins.less" />
-    <File Path="Styles\less\variables.less" Url="Styles/less/variables.less" />
     <File Path="Styles\Site.css" Url="Styles/Site.css" />
-    <File Path="Styles\Site.min.css" Url="Styles/Site.min.css" />
-    <File Path="Styles\less\gridview.less" Url="Styles/less/gridview.less" />
   </Module>
 </Elements>

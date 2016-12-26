@@ -23,7 +23,7 @@
     Inherits="Practices.SharePoint.ApplicationPages.StartBlamingPage" DynamicMasterPageFile="~masterurl/default.master" %>
 
 <asp:Content ID="PageTitle" ContentPlaceHolderID="PlaceHolderPageTitle" runat="server">
-    Application Page
+    责任追究
 </asp:Content>
 
 <asp:Content ID="PageHead" ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
@@ -32,10 +32,9 @@
 
 <asp:Content ID="Main" ContentPlaceHolderID="PlaceHolderMain" runat="server">
     <table class="propertysheet" border="0" width="100%" cellspacing="0" cellpadding="0" id="diidProjectPageOverview">
-        <wssuc:InputFormSection id="InputFormSection1"
-            Title="责任人员"
-            Description=""
-            runat="server">
+        <wssuc:InputFormSection runat="server"
+            Title="追责人员"
+            Description="" >
             <template_inputformcontrols>
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
@@ -47,14 +46,13 @@
 			    </wssuc:InputFormControl>
 	        </template_inputformcontrols>
         </wssuc:InputFormSection>
-        <wssuc:InputFormSection id="InputFormSection2"
+        <wssuc:InputFormSection runat="server"
             Title="原因分析"
-            Description="分析造成隐患、不安全行为的根源"
-            runat="server">
+            Description="分析造成隐患、不安全行为的根源" >
             <template_inputformcontrols>
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
-                        <wssawc:InputFormTextBox ID="InputFormTextBox1" Runat="server" 
+                        <wssawc:InputFormTextBox ID="Reasons" Runat="server" 
                                class="ms-input" TextMode="MultiLine" Columns="66" Rows="5"/>
                         <wssawc:InputFormRequiredFieldValidator ControlToValidate="InputFormTextBox1" Runat="server"
                             Display="Dynamic" SetFocusOnError="true"/>
@@ -62,14 +60,13 @@
 			    </wssuc:InputFormControl>
 	        </template_inputformcontrols>
         </wssuc:InputFormSection>
-        <wssuc:InputFormSection id="InputFormSection3"
+        <wssuc:InputFormSection runat="server"
             Title="履责情况"
-            Description="相关责任人员履行职责情况"
-            runat="server">
+            Description="相关责任人员履行职责情况" >
             <template_inputformcontrols>
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
-                        <wssawc:InputFormTextBox ID="InputFormTextBox2" Runat="server" 
+                        <wssawc:InputFormTextBox ID="Situations" Runat="server" 
                                class="ms-input" TextMode="MultiLine" Columns="66" Rows="5"/>
                         <wssawc:InputFormRequiredFieldValidator ControlToValidate="InputFormTextBox2" Runat="server"
                             Display="Dynamic" SetFocusOnError="true"/>
@@ -77,28 +74,34 @@
 			    </wssuc:InputFormControl>
 	        </template_inputformcontrols>
         </wssuc:InputFormSection>
-        <wssuc:InputFormSection id="InputFormSection4"
+        <wssuc:InputFormSection runat="server"
             Title="追责时间"
-            Description="相关责任人员履行职责情况"
-            runat="server">
+            Description="" >
             <template_inputformcontrols>
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
-                        <asp:TextBox runat="server" id="txtDate" ClientIDMode="Static"></asp:TextBox>
-                        <iframe id='txtDateDatePickerFrame' title='Select a date from the calendar.' style='display:none; position:absolute; width:200px; z-index:101;' src='/_layouts/15/images/blank.gif?rev=23' class="owl-date-picker "></iframe>
-                        <a href='javascript:void()' style='vertical-align:top' onclick="clickDatePicker('txtNDate', '/_layouts/15/iframe.aspx?&cal=1&lcid=1033&langid=1033&tz=-08:00:00.0002046&ww=0111110&fdow=0&fwoy=0&hj=0&swn=false&minjday=109207&maxjday=2666269&date=', '', event); return false;">
-                        <img id='txtDateDatePickerImage' border='0' alt='Select a date from the calendar.' src='/_layouts/15/images/calendar_25.gif?rev=23'>
-                        </a>
+                        <SharePoint:DateTimeControl ID="BlameDate" runat="server" DateOnly="true" /> 
                         <wssawc:InputFormRequiredFieldValidator ControlToValidate="txtDate" Runat="server"
                             Display="Dynamic" SetFocusOnError="true"/>
 				    </Template_Control>
 			    </wssuc:InputFormControl>
 	        </template_inputformcontrols>
         </wssuc:InputFormSection>
-        <wssuc:InputFormSection id="InputFormSection5"
+        <wssuc:InputFormSection runat="server"
+            Title="追责地点"
+            Description="" >
+            <template_inputformcontrols>
+			    <wssuc:InputFormControl runat="server">
+				    <Template_Control>
+                        <wssawc:InputFormTextBox ID="BlameLocation" Runat="server" 
+                               class="ms-input" Columns="65" MaxLength="255" />  
+				    </Template_Control>
+			    </wssuc:InputFormControl>
+	        </template_inputformcontrols>
+        </wssuc:InputFormSection>
+        <wssuc:InputFormSection runat="server"
             Title="追责状态"
-            Description="相关责任人员履行职责情况"
-            runat="server">
+            Description="相关责任人员履行职责情况" >
             <template_inputformcontrols>
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
@@ -108,9 +111,10 @@
         </wssuc:InputFormSection>
         <wssuc:ButtonSection runat="server">
             <Template_Buttons>
-                <asp:Button id="BtnSave" runat="server" 
-                    CssClass="ms-ButtonHeightWidth" Text="Save" 
-                    UseSubmitBehavior="false" OnClientClick="StartTracking();return false;" OnClick="BtnSave_Click" />
+                <asp:Button runat="server" id="ButtonSave" class="ms-ButtonHeightWidth" 
+                    UseSubmitBehavior="false" OnClick="ButtonSave_Click"                     
+                    Text="<%$Resources:wss,multipages_okbutton_text%>" 
+                    accesskey="<%$Resources:wss,okbutton_accesskey%>" />
 	        </Template_Buttons>
         </wssuc:ButtonSection>
     </table>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="PageLayouts" Path="PageLayouts" Url="_catalogs/masterpage" List="116" RootWebOnly="True">
-    <File Path="WebPartPage.aspx" Url="PageLayouts/WebPartPage.aspx" />
+    <File Path="WebPartPages.aspx" Url="WebPartPages.aspx" />
   </Module>
 </Elements>

@@ -189,6 +189,9 @@
     <None Include="Features\Practices.Enterprise\Practices.Enterprise.feature">
       <FeatureId>{85813b64-1daf-43ca-815b-a71e61f88a5b}</FeatureId>
     </None>
+    <None Include="PageLayouts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b7cf4984-fa42-437e-9e72-610308e27ba4}</SharePointProjectItemId>
+    </None>
     <None Include="RegisterPageComponent\RegisterPageComponentWebPart.webpart" />
     <None Include="RegisterPageComponent\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b4e0f1de-0242-49e3-bdce-5db18bb9d864}</SharePointProjectItemId>
@@ -237,6 +240,8 @@
     <Content Include="Features\Practices.Enterprise\Practices.Enterprise.Template.xml">
       <DependentUpon>Practices.Enterprise.feature</DependentUpon>
     </Content>
+    <Content Include="PageLayouts\PageLayouts.xml" />
+    <Content Include="PageLayouts\WebPartPages.aspx" />
     <Content Include="RegisterPageComponent\RegisterPageComponentWebPart.xml" />
     <Content Include="ISAPI\ProfilesCatalog.svc" />
     <Content Include="IssueTrackingWebPart\IssueTrackingWebPart.xml" />

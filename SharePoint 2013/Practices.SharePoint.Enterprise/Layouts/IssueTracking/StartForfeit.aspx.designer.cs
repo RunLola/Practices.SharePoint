@@ -7,99 +7,99 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Practices.SharePoint.Layouts.IssueTracking {
+namespace Practices.SharePoint.ApplicationPages {
     
     
     public partial class StartForfeitPage {
         
         /// <summary>
-        /// InputFormSection1 control.
+        /// Literal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection1;
+        protected global::System.Web.UI.WebControls.Literal Literal1;
         
         /// <summary>
-        /// AssignedTo control.
+        /// Literal2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.ClientPeoplePicker AssignedTo;
+        protected global::System.Web.UI.WebControls.Literal Literal2;
         
         /// <summary>
-        /// InputFormSection2 control.
+        /// Literal3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection2;
+        protected global::System.Web.UI.WebControls.Literal Literal3;
         
         /// <summary>
-        /// InputFormTextBox1 control.
+        /// Literal4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox InputFormTextBox1;
+        protected global::System.Web.UI.WebControls.Literal Literal4;
         
         /// <summary>
-        /// InputFormSection3 control.
+        /// Literal5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection3;
+        protected global::System.Web.UI.WebControls.Literal Literal5;
         
         /// <summary>
-        /// InputFormTextBox2 control.
+        /// Literal6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox InputFormTextBox2;
+        protected global::System.Web.UI.WebControls.Literal Literal6;
         
         /// <summary>
-        /// InputFormSection4 control.
+        /// Literal7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection4;
+        protected global::System.Web.UI.WebControls.Literal Literal7;
         
         /// <summary>
-        /// txtDate control.
+        /// Dep control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
+        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox Dep;
         
         /// <summary>
-        /// InputFormSection5 control.
+        /// Pso control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection5;
+        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox Pso;
         
         /// <summary>
-        /// BtnSave control.
+        /// ButtonSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSave;
+        protected global::System.Web.UI.WebControls.Button ButtonSave;
     }
 }

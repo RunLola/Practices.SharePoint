@@ -186,7 +186,7 @@ Practices.IssueTracking.ActionsCommands.StartTracking = function () {
     }
 }
 Practices.IssueTracking.ActionsCommands.StartBlamingEnabled = function () {
-    var selectedItems = $("table[id$='GridView']").getSelectedItems();
+    var selectedItems = $("#can").find("table[id$='GridView']").getSelectedItems();
     var count = selectedItems.length;
     if (count == 1) {
         return true;
@@ -202,7 +202,6 @@ Practices.IssueTracking.ActionsCommands.StartBlaming = function () {
     var itemId = selectedItem.ItemId;
     EnsureScriptFunc("SP.js", "SP.Utilities.Utility", function () {
         var url = SP.Utilities.Utility.getLayoutsPageUrl("IssueTracking/StartBlaming.aspx?WebId=" + webId + "&ListId=" + listId + "&ItemId=" + itemId);
-        //STSNavigate(url);
         SP.SOD.execute("sp.ui.dialog.js", "SP.UI.ModalDialog.showModalDialog", {
             title: "责任追究",
             width: 750,
@@ -268,12 +267,12 @@ Practices.IssueTracking.ActionsCommands.StartForfeit = function () {
     var listId = selectedItem.ListId;
     var itemId = selectedItem.ItemId;
     EnsureScriptFunc("SP.js", "SP.Utilities.Utility", function () {
-        var url = SP.Utilities.Utility.getLayoutsPageUrl("Practices.IssueTracking/StartForfeit.aspx?WebId=" + webId + "&ListId=" + listId + "&ItemId=" + itemId);
+        var url = SP.Utilities.Utility.getLayoutsPageUrl("IssueTracking/StartForfeit.aspx?WebId=" + webId + "&ListId=" + listId + "&ItemId=" + itemId);
         //STSNavigate(url);
         SP.SOD.execute("sp.ui.dialog.js", "SP.UI.ModalDialog.showModalDialog", {
             title: "进行罚款",
-            //options.width = 750;
-            //options.height = 450;
+            width: 750,
+            height: 450,
             allowMaximize: true,
             autoSize: true,
             url: url,

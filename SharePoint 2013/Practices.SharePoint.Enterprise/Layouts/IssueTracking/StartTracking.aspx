@@ -23,7 +23,7 @@
     Inherits="Practices.SharePoint.ApplicationPages.StartTrackingPage" DynamicMasterPageFile="~masterurl/default.master" %>
 
 <asp:Content ID="PageTitle" ContentPlaceHolderID="PlaceHolderPageTitle" runat="server">
-    下达隐患
+    隐患下达
 </asp:Content>
 
 <asp:Content ID="PageHead" ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
@@ -100,8 +100,10 @@
         </wssuc:InputFormSection>
         <wssuc:ButtonSection runat="server">
             <template_buttons>
-                <asp:Button id="BtnSave" runat="server" CssClass="ms-ButtonHeightWidth"
-                     Text="Save" UseSubmitBehavior="false" OnClientClick="StartTracking();return false;"/>
+                <asp:Button runat="server" id="ButtonSave" class="ms-ButtonHeightWidth" 
+                    UseSubmitBehavior="false" OnClientClick="StartTracking();return false;"               
+                    Text="<%$Resources:wss,multipages_okbutton_text%>" 
+                    accesskey="<%$Resources:wss,okbutton_accesskey%>" />
 	        </template_buttons>
         </wssuc:ButtonSection>
     </table>    

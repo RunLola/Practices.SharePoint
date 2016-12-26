@@ -89,6 +89,7 @@
     <Compile Include="Repositories\ListRepository.cs" />
     <Compile Include="SPBuiltInFieldName.cs" />
     <Compile Include="Utilities\CAMLQueryBuilder.cs" />
+    <Compile Include="Utilities\Picker.cs" />
     <Compile Include="Utilities\Validation.cs" />
   </ItemGroup>
   <ItemGroup>

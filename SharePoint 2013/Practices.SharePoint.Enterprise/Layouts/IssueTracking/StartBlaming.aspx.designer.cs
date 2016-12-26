@@ -13,15 +13,6 @@ namespace Practices.SharePoint.ApplicationPages {
     public partial class StartBlamingPage {
         
         /// <summary>
-        /// InputFormSection1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection1;
-        
-        /// <summary>
         /// AssignedTo control.
         /// </summary>
         /// <remarks>
@@ -31,75 +22,48 @@ namespace Practices.SharePoint.ApplicationPages {
         protected global::Microsoft.SharePoint.WebControls.ClientPeoplePicker AssignedTo;
         
         /// <summary>
-        /// InputFormSection2 control.
+        /// Reasons control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection2;
+        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox Reasons;
         
         /// <summary>
-        /// InputFormTextBox1 control.
+        /// Situations control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox InputFormTextBox1;
+        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox Situations;
         
         /// <summary>
-        /// InputFormSection3 control.
+        /// BlameDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection3;
+        protected global::Microsoft.SharePoint.WebControls.DateTimeControl BlameDate;
         
         /// <summary>
-        /// InputFormTextBox2 control.
+        /// BlameLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox InputFormTextBox2;
+        protected global::Microsoft.SharePoint.WebControls.InputFormTextBox BlameLocation;
         
         /// <summary>
-        /// InputFormSection4 control.
+        /// ButtonSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection4;
-        
-        /// <summary>
-        /// txtDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDate;
-        
-        /// <summary>
-        /// InputFormSection5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UserControl InputFormSection5;
-        
-        /// <summary>
-        /// BtnSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSave;
+        protected global::System.Web.UI.WebControls.Button ButtonSave;
     }
 }

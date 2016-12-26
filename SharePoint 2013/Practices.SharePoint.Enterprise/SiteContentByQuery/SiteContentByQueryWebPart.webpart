@@ -7,8 +7,8 @@
     </metaData>
     <data>
       <properties>
-        <property name="Title" type="string">Practices.SharePoint.Records - SiteContentByQuery</property>
-        <property name="Description" type="string">My Visual Web Part</property>
+        <property name="Title" type="string">SiteContentByQuery</property>
+        <property name="Description" type="string">SiteContentByQuery</property>
       </properties>
     </data>
   </webPart>

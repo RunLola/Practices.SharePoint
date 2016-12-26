@@ -286,6 +286,7 @@
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
       <DependentUpon>underscore.js</DependentUpon>
     </Content>
+    <Content Include="PageLayouts\WebPartPage.aspx" />
     <Content Include="Scripts\Scripts.xml">
       <SubType>Designer</SubType>
     </Content>

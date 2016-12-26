@@ -312,6 +312,9 @@
         </wssuc:InputFormSection>
         <wssuc:ButtonSection runat="server">
             <template_buttons>
+                <asp:Button id="btnSubmit" runat="server" 
+                    Text="<%$Resources:wss,multipages_createbutton_text%>" class="ms-ButtonHeightWidth" 
+                    UseSubmitBehavior="false" OnClick="BtnSubmit_Click" accesskey="<%$Resources:wss,multipages_createbutton_accesskey%>"/>
                 <asp:Button id="BtnCreate" runat="server" 
                     class="ms-ButtonHeightWidth" Text="创建" UseSubmitBehavior="false" OnClick="BtnCreate_Click"/>
                 <asp:Button id="BtnSave" runat="server" 
