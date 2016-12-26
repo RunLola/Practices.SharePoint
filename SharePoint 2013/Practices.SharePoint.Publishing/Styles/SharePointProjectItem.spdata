@@ -3,7 +3,11 @@
   <Files>
     <ProjectItemFile Source="Styles.xml" Type="ElementManifest" />
     <ProjectItemFile Source="Site.less" Target="Styles\" Type="ElementFile" />
+    <ProjectItemFile Source="less\tab.less" Target="Styles\less\" Type="ElementFile" />
+    <ProjectItemFile Source="less\mixins.less" Target="Styles\less\" Type="ElementFile" />
+    <ProjectItemFile Source="less\variables.less" Target="Styles\less\" Type="ElementFile" />
     <ProjectItemFile Source="Site.css" Target="Styles\" Type="ElementFile" />
     <ProjectItemFile Source="Site.min.css" Target="Styles\" Type="ElementFile" />
+    <ProjectItemFile Source="less\gridview.less" Target="Styles\less\" Type="ElementFile" />
   </Files>
 </ProjectItem>

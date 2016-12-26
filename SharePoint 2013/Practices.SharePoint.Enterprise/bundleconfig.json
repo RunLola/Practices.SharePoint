@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "Layouts/Scripts/jstree.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/jstree.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/fuelux/tree.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/fuelux/tree.js"
+    ]
+  }
+]

@@ -4,6 +4,10 @@
 // 4.背景(background, border等)
 // 5.其他(animation, transition等)
 body {
+    [class^="col-"] {
+        padding: 0;
+    }
+    /* SuiteBar */
     #suiteBarLeft {
         background-color: #3D99D7;
 
@@ -18,84 +22,30 @@ body {
             -ms-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ff3D99D7,endColorstr=#ff3D99D7);
         }
     }
+    /* SideNavbox */
+    .ms-core-listMenu-verticalBox {
+        .ms-core-listMenu-root {
+            > li.static > .ms-core-listMenu-item {
+                padding: 10px 30px;
+                font-size: 1.23em;
+                font-weight: bold;
+                background-color: #F2F2F4;
+                border: 1px solid #D1D1D1;
+                margin-top: -1px;
 
-    #sideNavBox {
-        .ms-core-listMenu-verticalBox {
-            .ms-core-listMenu-root {
-                > li.static > .ms-core-listMenu-item {
-                    padding: 10px 30px;
-                    font-size: 1.23em;
-                    font-weight: bold;
-                    background-color: #F2F2F4;
-                    border: 1px solid #D1D1D1;
-                    margin-top: -1px;
-
-                    &:hover {
-                        background-color: #3C99D7;
-                        color: white;
-                    }
+                &:hover {
+                    background-color: #3C99D7;
+                    color: white;
                 }
             }
         }
     }
 
+    @import "less/mixins.less";
+    @import "less/variables.less";
+
     #contentBox {
-        .ms-listviewtable {
-            width: 100%;
-
-            .ms-viewheadertr {
-                > th {
-                    padding: 8px;
-                    color: #707070;
-                    font-size: 1em;
-                    font-weight: bold;
-                    line-height: 1.42857143;
-                    vertical-align: middle;
-                    background: #F2F2F2;
-                    background-image: -webkit-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
-                    background-image: -o-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
-                    background-image: linear-gradient(to bottom, #f8f8f8 0%, #ececec 100%);
-                    background-repeat: repeat-x;
-                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
-                    border-top: 1px solid #dddddd;
-                    border-bottom: 1px solid #dddddd;
-
-                    &.ms-headerCellStyleIcon {
-                        padding: 0;
-                        /*border-left: 1px solid #dddddd;*/
-                    }
-
-                    &.ms-vh-icon:last-child {
-                        background: none;
-                        border: none;
-                    }
-
-                    &.ms-headerCellStyleIcon, &.ms-vh, &.ms-vh2 {
-                        /*border-right: 1px solid #dddddd;*/
-                    }
-                }
-            }
-
-            .ms-itmhover {
-                > td {
-                    border-bottom: 1px solid #dddddd;
-                }
-
-                .ms-vb-itmcbx {
-                    /*border-left: 1px solid #dddddd;*/
-                }
-
-                .ms-cellstyle {
-                    padding: 8px;
-                    line-height: 1.42857143;
-                    vertical-align: middle;
-                    /*border-right: 1px solid #dddddd;*/
-                }
-            }
-
-            .ms-alternating {
-                background-color: #f9f9f9;
-            }
-        }
+        @import "less/tab.less";
+        @import "less/gridview.less";
     }
 }

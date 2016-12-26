@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!--<CustomAction Id="IssueTracking.Actions.Loader"
+                Location="ScriptLink"
+                RegistrationId="1100"
+                RegistrationType="List"
+                Rights="AddListItems, EditListItems, DeleteListItems"
+                ScriptSrc="/_layouts/15/Scripts/IssueTracking.Ribbon.Loader.js" />-->
+  <CustomAction Id="Ribbon.IssueTracking.Tracking"
+              Location="CommandUI.Ribbon"
+              RegistrationId="1100"
+              RegistrationType="List"
+              Sequence="1000">
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.ListItem.Workflow.Controls._children">
+          <Button Id="IssueTracking.Actions.StartTracking"
+                  Sequence="10"
+                  Command="IssueTracking.Actions.StartTracking"
+                  Image16by16="/_layouts/15/images/stsappcatalogribbon16x16.png?rev=23" Image16by16Top="-1" Image16by16Left="-1"
+                  Image32by32="/_layouts/15/images/stsappcatalogribbon32x32.png?rev=23" Image32by32Top="-1" Image32by32Left="-1"
+                  LabelText="$Resources:core,cui_ButNewDocument;"
+                  Description="Selected Largest Team of Certified SharePoint developers."
+                  ToolTipTitle="$Resources:core,cui_ButNewDocument;"
+                  ToolTipDescription="$Resources:core,cui_STT_ButNewDocument;"
+                  TemplateAlias="o1"/>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+    </CommandUIExtension>
+  </CustomAction>
+  <CustomAction Id="Ribbon.IssueTracking.Blaming"
+                Location="CommandUI.Ribbon" >
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.Tabs._children">
+          <Tab Id="IssueTracking.Actions.Blaming"
+               Title="隐患管理"
+               Description="Application Page Tab" >
+            <Scaling Id="IssueTracking.Actions.Scaling">
+              <MaxSize Id="IssueTracking.Actions.BlamingGroup.MaxSize"
+                       Sequence="100"
+                       GroupId="IssueTracking.Actions.BlamingGroup"
+                       Size="Large"/>
+              <Scale Id="IssueTracking.Actions.BlamingGroup.Scaling.TrackingScaling"
+                     Sequence="200"
+                     GroupId="IssueTracking.Actions.BlamingGroup"
+                     Size="Popup" />
+            </Scaling>
+            <Groups Id="IssueTracking.Actions.Groups">
+              <Group Id="IssueTracking.Actions.BlamingGroup"
+                     Sequence="10"
+                     Description="Functions that can be performed on Enterprise Risks"
+                     Title="责任追究"
+                     Template="Ribbon.Templates.Flexible">
+                <Controls Id="IssueTracking.Actions.BlamingGroup.Controls">
+                  <Button Id="IssueTracking.Actions.StartBlaming"
+                          Sequence="10"
+                          Command="IssueTracking.Actions.StartBlaming"
+                          Image16by16="/_layouts/15/images/stsappcatalogribbon16x16.png?rev=23" Image16by16Top="-1" Image16by16Left="-1"
+                          Image32by32="/_layouts/15/images/stsappcatalogribbon32x32.png?rev=23" Image32by32Top="-1" Image32by32Left="-1"
+                          LabelText="责任追究"
+                          Description="选中可进行责任追究的隐患进行罚款"
+                          ToolTipTitle="责任追究"
+                          ToolTipDescription="$Resources:core,cui_STT_ButNewDocument;"
+                          TemplateAlias="o1"/>
+                </Controls>
+              </Group>
+            </Groups>
+          </Tab>
+        </CommandUIDefinition>
+        <CommandUIDefinition Location="Ribbon.Templates._children">
+          <GroupTemplate Id="Ribbon.Templates.Flexible">
+            <Layout Title="Large">
+              <OverflowSection Type="OneRow" TemplateAlias="o1" DisplayMode="Large"/>
+            </Layout>
+            <Layout Title="Medium">
+              <OverflowSection Type="ThreeRow" TemplateAlias="o1" DisplayMode="Medium"/>
+            </Layout>
+            <Layout Title="MediumTwoRow">
+              <OverflowSection Type="TwoRow" TemplateAlias="o1" DisplayMode="Medium" />
+            </Layout>
+            <Layout Title="Small">
+              <OverflowSection Type="ThreeRow" TemplateAlias="o1" DisplayMode="Small" />
+            </Layout>
+            <Layout Title="Popup" LayoutTitle="Large" />
+          </GroupTemplate>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+    </CommandUIExtension>
+  </CustomAction>
+  <CustomAction Id="Ribbon.IssueTracking.Forfeit"
+                Location="CommandUI.Ribbon" >
+    <CommandUIExtension>
+      <CommandUIDefinitions>
+        <CommandUIDefinition Location="Ribbon.Tabs._children">
+          <Tab Id="IssueTracking.Actions.Forfeit"
+               Title="隐患管理"
+               Description="Application Page Tab" >
+            <Scaling Id="IssueTracking.Actions.Scaling">
+              <MaxSize Id="IssueTracking.Actions.ForfeitGroup.MaxSize"
+                       Sequence="100"
+                       GroupId="IssueTracking.Actions.ForfeitGroup"
+                       Size="Large"/>
+              <Scale Id="IssueTracking.Actions.ForfeitGroup.Scaling.TrackingScaling"
+                     Sequence="200"
+                     GroupId="IssueTracking.Actions.ForfeitGroup"
+                     Size="Popup" />
+            </Scaling>
+            <Groups Id="IssueTracking.Actions.Groups">
+              <Group Id="IssueTracking.Actions.ForfeitGroup"
+                     Sequence="10"
+                     Description="Functions that can be performed on Enterprise Risks"
+                     Title="进行罚款"
+                     Template="Ribbon.Templates.Flexible">
+                <Controls Id="IssueTracking.Actions.ForfeitGroup.Controls">
+                  <Button Id="IssueTracking.Actions.StartForfeit"
+                          Sequence="10"
+                          Command="IssueTracking.Actions.StartForfeit"
+                          Image16by16="/_layouts/15/images/stsappcatalogribbon16x16.png?rev=23" Image16by16Top="-1" Image16by16Left="-1"
+                          Image32by32="/_layouts/15/images/stsappcatalogribbon32x32.png?rev=23" Image32by32Top="-1" Image32by32Left="-1"
+                          LabelText="进行罚款"
+                          Description="选中可进行罚款的隐患进行罚款"
+                          ToolTipTitle="进行罚款"
+                          ToolTipDescription="$Resources:core,cui_STT_ButNewDocument;"
+                          TemplateAlias="o1"/>
+                </Controls>
+              </Group>
+            </Groups>
+          </Tab>
+        </CommandUIDefinition>
+        <CommandUIDefinition Location="Ribbon.Templates._children">
+          <GroupTemplate Id="Ribbon.Templates.Flexible">
+            <Layout Title="Large">
+              <OverflowSection Type="OneRow" TemplateAlias="o1" DisplayMode="Large"/>
+            </Layout>
+            <Layout Title="Medium">
+              <OverflowSection Type="ThreeRow" TemplateAlias="o1" DisplayMode="Medium"/>
+            </Layout>
+            <Layout Title="MediumTwoRow">
+              <OverflowSection Type="TwoRow" TemplateAlias="o1" DisplayMode="Medium" />
+            </Layout>
+            <Layout Title="Small">
+              <OverflowSection Type="ThreeRow" TemplateAlias="o1" DisplayMode="Small" />
+            </Layout>
+            <Layout Title="Popup" LayoutTitle="Large" />
+          </GroupTemplate>
+        </CommandUIDefinition>
+      </CommandUIDefinitions>
+    </CommandUIExtension>
+  </CustomAction>
+</Elements>

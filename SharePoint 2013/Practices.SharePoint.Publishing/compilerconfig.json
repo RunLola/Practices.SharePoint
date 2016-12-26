@@ -18,5 +18,9 @@
   {
     "outputFile": "Scripts/Site.js",
     "inputFile": "Scripts/Site.jsx"
+  },
+  {
+    "outputFile": "Styles/StyleSheet1.css",
+    "inputFile": "Styles/StyleSheet1.less"
   }
 ]

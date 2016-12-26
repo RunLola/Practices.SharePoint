@@ -12,25 +12,28 @@
 
     class Program {
         static void Main(string[] args) {
-            var array = "".Trim(';').Split(';').AsEnumerable();
+            var array = "隐患下达任务;隐患整改任务;隐患复查任务;隐患验收任务;隐患签字任务;隐患签字任务;".Trim(';').Split(';').AsEnumerable();
 
-            var siteUrl = "http://share";
+            var siteUrl = "http://58.132.202.99/sites/yanglijun";
             using (SPSite site = new SPSite(siteUrl)) {
                 using (SPWeb web = site.OpenWeb()) {
-                    var queryString = new CAMLQueryBuilder().AddCurrentUser(SPBuiltInFieldName.AssignedTo).OrCurrentUserGroups(SPBuiltInFieldName.AssignedTo).Build();
+                    var queryString = new CAMLQueryBuilder()
+                        .AddCurrentUser(SPBuiltInFieldName.AssignedTo)
+                        .OrCurrentUserGroups(SPBuiltInFieldName.AssignedTo)
+                        .AddNotEqual(SPBuiltInFieldName.TaskStatus, "Completed")
+                        .AddIsNotNull(SPBuiltInFieldName.RelatedItems).Build();
                     var query = new SPSiteDataQuery() {
                         Webs = "<Webs Scope='SiteCollection' />",
-                        ViewFields = "<FieldRef Name='Title' /><FieldRef Name='AssignedTo' />",
+                        Lists = "<Lists ServerTemplate='171' BaseType='0' />",
+                        ViewFields = "<FieldRef Name='Title' /><FieldRef Name='ContentType' />",
                         Query = queryString,
                         QueryThrottleMode = SPQueryThrottleOption.Override,
                         RowLimit = 100
                     };
                     var data = web.GetSiteData(query);
-                        var rows = data.AsEnumerable().AsEnumerable();
-                    var table = GetTable();
-                    rows.CopyToDataTable(table, LoadOption.Upsert);
-                    
-                    Console.WriteLine("");
+
+                    Console.WriteLine(data.Rows.Count);
+                    Console.ReadKey();
                     //foreach (SPGroup group in web.SiteGroups) {
                     //    var roleDefinitions = web.RoleDefinitions;
                     //    var roleAssignments = web.RoleAssignments;

@@ -13,19 +13,19 @@
 * [class^="col-"],
 * [class^="col-"]:before,
 * [class^="col-"]:after,
-.container,
-.container:before,
-.container:after,
-.container-fluid,
-.container-fluid:before,
-.container-fluid:after,
+* .container,
+* .container:before,
+* .container:after,
+* .container-fluid,
+* .container-fluid:before,
+* .container-fluid:after,
 .row,
 .row:before,
 .row:after,
 .form-group,
 .control-lable,
 .form-control,
-.nav *,
+.nav,
 .navbar-toggle,
 .table,
 .table-responsive,
@@ -57,10 +57,6 @@ a:focus {
 img {
   max-width: none;
   width: auto;
-}
-* [class^="col-"] img {
-  max-width: 100%;
-  /*for images inside span grid*/
 }
 #scriptWPQ2 img,
 img.ms-webpart-menuArrowImg,

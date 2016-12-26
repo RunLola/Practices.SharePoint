@@ -1,0 +1,213 @@
+﻿.fuelux .tree {
+  padding-left: 9px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+.fuelux .tree:before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  top: -20px;
+  bottom: 16px;
+  left: 0;
+  z-index: 1;
+  border: 1px dotted #67B2DD;
+  border-width: 0 0 0 1px;
+}
+.fuelux .tree .tree-folder {
+  width: auto;
+  min-height: 20px;
+  cursor: pointer;
+}
+.fuelux .tree .tree-folder .tree-folder-header {
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+}
+.fuelux .tree .tree-folder .tree-folder-header:hover {
+  background-color: #F0F7FC;
+}
+.fuelux .tree .tree-folder .tree-folder-header .tree-folder-name,
+.fuelux .tree .tree-item .tree-item-name {
+  display: inline;
+  z-index: 2;
+}
+.fuelux .tree .tree-folder .tree-folder-header > .ace-icon:first-child,
+.fuelux .tree .tree-item > .ace-icon:first-child {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  top: -1px;
+}
+.fuelux .tree .tree-folder .tree-folder-header .tree-folder-name {
+  margin-left: 2px;
+}
+.fuelux .tree .tree-folder .tree-folder-header > .ace-icon:first-child {
+  margin: -2px 0 0 -2px;
+}
+.fuelux .tree .tree-folder:last-child:after {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  bottom: 0;
+  left: -15px;
+  border-left: 1px solid #FFF;
+}
+.fuelux .tree .tree-folder .tree-folder-content {
+  margin-left: 23px;
+  position: relative;
+}
+.fuelux .tree .tree-folder .tree-folder-content:before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -14px;
+  bottom: 16px;
+  left: -14px;
+  border: 1px dotted #67B2DD;
+  border-width: 0 0 0 1px;
+}
+.fuelux .tree .tree-item {
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.fuelux .tree .tree-item:hover {
+  background-color: #F0F7FC;
+}
+.fuelux .tree .tree-item .tree-item-name {
+  margin-left: 3px;
+}
+.fuelux .tree .tree-item .tree-item-name > .ace-icon:first-child {
+  margin-right: 3px;
+}
+.fuelux .tree .tree-item > .ace-icon:first-child {
+  margin-top: -1px;
+}
+.fuelux .tree .tree-folder,
+.fuelux .tree .tree-item {
+  position: relative;
+}
+.fuelux .tree .tree-folder:before,
+.fuelux .tree .tree-item:before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: -13px;
+  width: 18px;
+  height: 0;
+  border-top: 1px dotted #67B2DD;
+  z-index: 1;
+}
+.fuelux .tree .tree-selected {
+  background-color: rgba(98, 168, 209, 0.1);
+  color: #6398B0;
+}
+.fuelux .tree .tree-selected:hover {
+  background-color: rgba(98, 168, 209, 0.1);
+}
+.fuelux .tree .tree-item,
+.fuelux .tree .tree-folder {
+  border: 1px solid #FFF;
+}
+.fuelux .tree .tree-folder .tree-folder-header {
+  border-radius: 0;
+}
+.fuelux .tree .tree-item,
+.fuelux .tree .tree-folder .tree-folder-header {
+  margin: 0;
+  padding: 5px;
+  color: #4D6878;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.fuelux .tree .tree-item > .ace-icon:first-child {
+  color: #F9E8CE;
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 3px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background-color: #FAFAFA;
+  border: 1px solid #CCC;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.fuelux .tree .tree-selected > .ace-icon:first-child {
+  background-color: #F9A021;
+  border-color: #F9A021;
+  color: #FFF;
+}
+.fuelux .tree .tree-plus.ace-icon:first-child,
+.fuelux .tree .tree-minus.ace-icon:first-child {
+  font-style: normal;
+  border: 1px solid #DDD;
+  vertical-align: middle;
+  height: 11px;
+  width: 11px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  text-align: center;
+  border: 1px solid #8BAEBF;
+  line-height: 10px;
+  background-color: #FFF;
+  position: relative;
+  z-index: 1;
+}
+.fuelux .tree .tree-plus.ace-icon:first-child:before,
+.fuelux .tree .tree-minus.ace-icon:first-child:before {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 0;
+  border-top: 1px solid #4D6878;
+  position: absolute;
+  top: 5px;
+  left: 2px;
+}
+.fuelux .tree .tree-plus.ace-icon:first-child:after {
+  content: "";
+  display: block;
+  height: 7px;
+  width: 0;
+  border-left: 1px solid #4D6878;
+  position: absolute;
+  top: 2px;
+  left: 5px;
+}
+.fuelux .tree .tree-unselectable .tree-item > .ace-icon:first-child {
+  color: #5084A0;
+  width: 13px;
+  height: 13px;
+  line-height: 13px;
+  font-size: 10px;
+  text-align: center;
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+.fuelux .tree .ace-icon[class*="-down"] {
+  transform: rotate(-45deg);
+}
+.fuelux .tree .fa-spin {
+  height: auto;
+}
+.fuelux .tree .tree-loading {
+  margin-left: 36px;
+}
+.fuelux .tree img {
+  display: inline;
+  veritcal-align: middle;
+}

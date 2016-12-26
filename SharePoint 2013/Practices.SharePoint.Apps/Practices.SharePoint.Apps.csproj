@@ -19,7 +19,7 @@
     <SccProvider>SAK</SccProvider>
     <TokenReplacementFileExtensions>svc</TokenReplacementFileExtensions>
     <SandboxedSolution>False</SandboxedSolution>
-    <AssemblyDeploymentTarget>WebApplication</AssemblyDeploymentTarget>
+    <AssemblyDeploymentTarget>GlobalAssemblyCache</AssemblyDeploymentTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

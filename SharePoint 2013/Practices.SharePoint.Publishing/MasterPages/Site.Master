@@ -35,7 +35,7 @@
         <SharePoint:ScriptLink language="javascript" name="sharing.js" OnDemand="true" runat="server" Localizable="false" />
         <SharePoint:ScriptLink language="javascript" name="suitelinks.js" OnDemand="true" runat="server" Localizable="false" />
         <!-- RequireJS -->
-        <SharePoint:ScriptLink Language="javascript" Name="Scripts/RegisterSod.min.js" runat="server" />
+        <SharePoint:ScriptLink Language="javascript" Name="Scripts/RegisterSod.min.js" runat="server" Localizable="false" />
         <!-- Bootstrap -->
         <SharePoint:CssRegistration Name="bootstarp/3.3.7/bootstrap.min.css" runat="server" />
         <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />
@@ -44,10 +44,6 @@
         <!-- Personalize -->
         <SharePoint:ScriptLink language="javascript" name="~SiteCollection/Scripts/Site.js" runat="server" />
         <SharePoint:CssRegistration name="<% $SPUrl:~SiteCollection/Styles/Site.css %>" runat="server" />
-
-        <SharePoint:ScriptLink runat="server" Name="SP.js" Localizable="false" OnDemand="False" LoadAfterUI="True"></SharePoint:ScriptLink>
-        <SharePoint:ScriptLink runat="server" Name="SP.Runtime.js" Localizable="false" OnDemand="False" LoadAfterUI="True"></SharePoint:ScriptLink>
-        <SharePoint:ScriptLink runat="server" Name="SP.WorkflowServices.js" Localizable="false" OnDemand="False" LoadAfterUI="True"></SharePoint:ScriptLink>
 
         <SharePoint:CustomJSUrl runat="server" />
         <SharePoint:SoapDiscoveryLink runat="server" />

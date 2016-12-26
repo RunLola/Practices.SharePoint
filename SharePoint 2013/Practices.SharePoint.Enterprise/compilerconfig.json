@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "Layouts/Scripts/fuelux/fuelux.css",
+    "inputFile": "Layouts/Scripts/fuelux/fuelux.less"
+  },
+  {
+    "outputFile": "Layouts/Scripts/bootstarp/mixins.css",
+    "inputFile": "Layouts/Scripts/bootstarp/mixins.less"
+  },
+  {
+    "outputFile": "Layouts/Scripts/fuelux/fuelux.site.css",
+    "inputFile": "Layouts/Scripts/fuelux/fuelux.site.less"
+  }
+]

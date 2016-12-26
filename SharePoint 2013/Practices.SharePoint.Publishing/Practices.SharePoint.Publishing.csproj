@@ -101,8 +101,8 @@
     <None Include="CONTROLTEMPLATES\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a201d83e-43f7-4a11-8140-4f4edf0d5e6a}</SharePointProjectItemId>
     </None>
-    <None Include="Features\Feature1\Feature1.feature">
-      <FeatureId>{00361879-82af-4387-a8bc-7ce75a3c37af}</FeatureId>
+    <None Include="Features\Practices.Publishing\Practices.Publishing.feature">
+      <FeatureId>{f336bf27-ba5a-4c67-ab22-7bfb726a1f01}</FeatureId>
     </None>
     <None Include="Images\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{12d8d36f-9fc9-4ed4-b9ac-48c2a4e347f2}</SharePointProjectItemId>
@@ -213,10 +213,17 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5085e8d6-4e69-4ec1-80ea-329aeac27a59}</SharePointProjectItemId>
     </None>
+    <None Include="Scripts\Site.min.js.map">
+      <DependentUpon>Site.min.js</DependentUpon>
+    </None>
+    <None Include="Styles\less\gridview.less" />
+    <None Include="Styles\less\mixins.less" />
+    <None Include="Styles\less\variables.less" />
     <None Include="Styles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8ceb2081-8868-4322-94a3-05eb1a43b150}</SharePointProjectItemId>
     </None>
     <None Include="Styles\Site.less" />
+    <None Include="Styles\less\tab.less" />
     <None Include="SuiteDelegateControls\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{80155244-5bcc-491d-8713-4e5f8e40e4f2}</SharePointProjectItemId>
     </None>
@@ -225,8 +232,8 @@
   <ItemGroup>
     <Content Include="CONTROLTEMPLATES\SiteSuiteLinks.ascx" />
     <Content Include="CONTROLTEMPLATES\SiteSuiteBarBranding.ascx" />
-    <Content Include="Features\Feature1\Feature1.Template.xml">
-      <DependentUpon>Feature1.feature</DependentUpon>
+    <Content Include="Features\Practices.Publishing\Practices.Publishing.Template.xml">
+      <DependentUpon>Practices.Publishing.feature</DependentUpon>
     </Content>
     <Content Include="Layouts\1033\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.css">
@@ -279,7 +286,9 @@
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
       <DependentUpon>underscore.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\Scripts.xml" />
+    <Content Include="Scripts\Scripts.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\Site.min.js">
       <DependentUpon>Site.js</DependentUpon>
@@ -307,7 +316,6 @@
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.js" />
     <Content Include="Layouts\Scripts\_references.js" />
     <Content Include="MasterPages\MasterPages.xml" />
-    <Content Include="PageLayouts\WebPartPage.aspx" />
     <Content Include="PageLayouts\PageLayouts.xml" />
     <Content Include="Pages\Pages.xml" />
     <Content Include="ProvisionedUI\ProvisionedUI.xml" />

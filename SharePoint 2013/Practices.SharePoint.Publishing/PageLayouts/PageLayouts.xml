@@ -1,10 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="PageLayouts" Path="PageLayouts" Url="_catalogs/masterpage" List="116" RootWebOnly="True">
-    <File Path="WebPartPage.aspx" Url="PageLayouts/WebPartPage.aspx" Type="GhostableInLibrary">
-      <Property Name="Title" Value="空白Web部件页面" />
-      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_pagelayout_name;" />      
-      <Property Name="PublishingAssociatedContentType" Value=";#$Resources:cmscore,contenttype_welcomepage_name;;#0x010100C568DB52D9D0A14D9B2FDCC96666E9F2007948130EC3DB064584E219954237AF390064DEA0F50FC8C147B0B6EA0636C4A7D4;#" />
-    </File>
   </Module>
 </Elements>

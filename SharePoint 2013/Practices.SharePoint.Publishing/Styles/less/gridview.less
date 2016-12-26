@@ -1,0 +1,57 @@
+﻿.ms-listviewtable {
+    width: 100%;
+
+    .ms-viewheadertr {
+        > th {
+            padding: 8px;
+            color: #707070;
+            font-size: 1em;
+            font-weight: bold;
+            line-height: 1.42857143;
+            vertical-align: middle;
+            background: #F2F2F2;
+            background-image: -webkit-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+            background-image: -o-linear-gradient(top, #f8f8f8 0%, #ececec 100%);
+            background-image: linear-gradient(to bottom, #f8f8f8 0%, #ececec 100%);
+            background-repeat: repeat-x;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
+            border-top: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
+
+            &.ms-headerCellStyleIcon {
+                padding: 0;
+                /*border-left: 1px solid #dddddd;*/
+            }
+
+            &.ms-vh-icon:last-child {
+                background: none;
+                border: none;
+            }
+
+            &.ms-headerCellStyleIcon, &.ms-vh, &.ms-vh2 {
+                /*border-right: 1px solid #dddddd;*/
+            }
+        }
+    }
+
+    .ms-itmhover {
+        > td {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .ms-vb-itmcbx {
+            /*border-left: 1px solid #dddddd;*/
+        }
+
+        .ms-cellstyle {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: middle;
+            /*border-right: 1px solid #dddddd;*/
+        }
+    }
+
+    .ms-alternating {
+        background-color: #f9f9f9;
+    }
+}

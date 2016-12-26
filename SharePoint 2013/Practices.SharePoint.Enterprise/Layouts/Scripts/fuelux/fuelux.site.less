@@ -1,0 +1,256 @@
+﻿@tree-border-color: #67B2DD;
+@icon: ace-icon;
+
+// Box sizing
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+.fuelux .tree {
+    padding-left: 9px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+
+    &:before {
+        display: inline-block;
+        content: "";
+        position: absolute;
+        top: -20px;
+        bottom: 16px;
+        left: 0;
+        z-index: 1;
+        border: 1px dotted @tree-border-color;
+        border-width: 0 0 0 1px;
+    }
+
+
+    .tree-folder {
+        width: auto;
+        min-height: 20px;
+        cursor: pointer;
+
+        .tree-folder-header {
+            position: relative;
+            height: 20px;
+            line-height: 20px;
+
+            &:hover {
+                background-color: #F0F7FC;
+            }
+        }
+    }
+
+    .tree-folder .tree-folder-header .tree-folder-name, .tree-item .tree-item-name {
+        display: inline;
+        z-index: 2;
+    }
+
+    .tree-folder .tree-folder-header > .@{icon}:first-child,
+    .tree-item > .@{icon}:first-child {
+        display: inline-block;
+        position: relative;
+        z-index: 2;
+        top: -1px;
+    }
+
+    .tree-folder {
+        .tree-folder-header {
+            .tree-folder-name {
+                margin-left: 2px;
+            }
+
+            > .@{icon}:first-child {
+                margin: -2px 0 0 -2px;
+            }
+        }
+
+        &:last-child:after {
+            display: inline-block;
+            content: "";
+            position: absolute;
+            z-index: 1;
+            top: 15px;
+            bottom: 0;
+            left: -15px;
+            border-left: 1px solid #FFF;
+        }
+
+        .tree-folder-content {
+            margin-left: 23px;
+            position: relative;
+
+            &:before {
+                display: inline-block;
+                content: "";
+                position: absolute;
+                z-index: 1;
+                top: -14px;
+                bottom: 16px;
+                left: -14px;
+                border: 1px dotted @tree-border-color;
+                border-width: 0 0 0 1px;
+            }
+        }
+    }
+
+
+
+    .tree-item {
+        position: relative;
+        height: 20px;
+        line-height: 20px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #F0F7FC;
+        }
+
+        .tree-item-name {
+            margin-left: 3px;
+
+            > .@{icon}:first-child {
+                margin-right: 3px;
+            }
+        }
+
+        > .@{icon}:first-child {
+            margin-top: -1px;
+        }
+    }
+
+    .tree-folder, .tree-item {
+        position: relative;
+
+        &:before {
+            display: inline-block;
+            content: "";
+            position: absolute;
+            top: 14px;
+            left: -13px;
+            width: 18px;
+            height: 0;
+            border-top: 1px dotted @tree-border-color;
+            z-index: 1;
+        }
+    }
+
+
+    .tree-selected {
+        background-color: rgba(98, 168, 209, 0.1);
+        color: #6398B0;
+
+        &:hover {
+            background-color: rgba(98, 168, 209, 0.1);
+        }
+    }
+
+    .tree-item, .tree-folder {
+        border: 1px solid #FFF;
+    }
+
+    .tree-folder .tree-folder-header {
+        border-radius: 0;
+    }
+
+    .tree-item, .tree-folder .tree-folder-header {
+        margin: 0;
+        padding: 5px;
+        color: #4D6878;
+        .box-sizing(content-box);
+    }
+
+
+    .tree-item > .@{icon}:first-child {
+        color: #F9E8CE;
+        border: 1px solid #CCC;
+        width: 13px;
+        height: 13px;
+        line-height: 13px;
+        font-size: 11px;
+        text-align: center;
+        border-radius: 3px;
+        .box-sizing(content-box);
+        background-color: #FAFAFA;
+        border: 1px solid #CCC;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .tree-selected > .@{icon}:first-child {
+        background-color: #F9A021;
+        border-color: #F9A021;
+        color: #FFF;
+    }
+
+
+    .tree-plus.@{icon}:first-child, .tree-minus.@{icon}:first-child {
+        font-style: normal;
+        border: 1px solid #DDD;
+        vertical-align: middle;
+        height: 11px;
+        width: 11px;
+        .box-sizing(content-box);
+        text-align: center;
+        border: 1px solid #8BAEBF;
+        line-height: 10px;
+        background-color: #FFF;
+        position: relative;
+        z-index: 1;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 7px;
+            height: 0;
+            border-top: 1px solid #4D6878;
+            position: absolute;
+            top: 5px;
+            left: 2px;
+        }
+    }
+
+    .tree-plus.@{icon}:first-child:after {
+        content: "";
+        display: block;
+        height: 7px;
+        width: 0;
+        border-left: 1px solid #4D6878;
+        position: absolute;
+        top: 2px;
+        left: 5px;
+    }
+
+    .tree-unselectable .tree-item > .@{icon}:first-child {
+        color: #5084A0;
+        border: none;
+        width: 13px;
+        height: 13px;
+        line-height: 13px;
+        font-size: 10px;
+        text-align: center;
+        border-radius: 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+
+    .@{icon}[class*="-down"] {
+        transform: rotate(-45deg);
+    }
+
+    .fa-spin {
+        height: auto;
+    }
+
+    .tree-loading {
+        margin-left: 36px;
+    }
+
+    img {
+        display: inline;
+        veritcal-align: middle;
+    }
+}

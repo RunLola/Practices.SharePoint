@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <CustomAction Id="Practices.Apps.Actions"
+  <CustomAction Id="Ribbon.Apps.Actions"
                 Location="CommandUI.Ribbon"
                 RegistrationId="330"
                 RegistrationType="List"
@@ -40,12 +40,10 @@
       </CommandUIDefinitions>
     </CommandUIExtension>
   </CustomAction>
-
   <CustomAction Id="Apps.Ribbon.Loader"
                 Location="ScriptLink"
                 RegistrationId="330"
                 RegistrationType="List"
                 ScriptSrc="/_layouts/15/Scripts/Apps.Ribbon.Loader.js"
-                Rights="AddListItems, EditListItems, DeleteListItems"
-                Sequence="1010" />
+                Rights="AddListItems, EditListItems, DeleteListItems" />
 </Elements>

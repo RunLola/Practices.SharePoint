@@ -76,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\FabricExtensions.cs" />
     <Compile Include="WebControls\FabricPageLayout.cs" />
+    <Compile Include="WebControls\FabricTaskListFieldIterator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Signing.snk">

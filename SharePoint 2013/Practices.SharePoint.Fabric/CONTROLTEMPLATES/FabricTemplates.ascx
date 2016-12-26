@@ -60,7 +60,7 @@
         </div>
     </Template>
 </SharePoint:RenderingTemplate>
-
+k
 <SharePoint:RenderingTemplate ID="FabricListForm" runat="server">
     <Template>
         <style>
@@ -68,8 +68,10 @@
                 width: 100%;
             }
         </style>
+        <%--
         <SharePoint:CssRegistration Name="bootstarp/3.3.7/bootstrap.min.css" runat="server" />
         <SharePoint:CssRegistration Name="bootstrap.sharepoint.min.css" runat="server" />
+        --%>
         <table style="width: 100%">
             <tr>
                 <td>
@@ -97,7 +99,7 @@
                             <SharePoint:ApprovalStatus runat="server" />
                             <SharePoint:FormComponent TemplateName="AttachmentRows" ComponentRequiresPostback="false" runat="server" />
                         </table>
-                        <table cellpadding="0" cellspacing="0" width="100%" style="padding-top:7px">
+                        <table cellpadding="0" cellspacing="0" width="100%" style="padding-top: 7px">
                             <tr>
                                 <td width="100%">
                                     <SharePoint:ItemHiddenVersion runat="server" />
@@ -123,5 +125,79 @@
             </tr>
         </table>
         <SharePoint:AttachmentUpload runat="server" />
+    </Template>
+</SharePoint:RenderingTemplate>
+
+<SharePoint:RenderingTemplate ID="FabricTaskForm" runat="server">
+    <Template>
+        <table>
+            <tr>
+                <td style="height: 350px; vertical-align: top">
+                    <span id='part1'>
+                        <SharePoint:EditDatesSelector RenderInEditDatesMode="false" runat="server">
+                            <SharePoint:InformationBar runat="server" />
+                            <div id="listFormToolBarTop">
+                                <wssuc:ToolBar CssClass="ms-formtoolbar" id="toolBar1" RightButtonSeparator="&amp;#160;" runat="server">
+                                    <template_rightbuttons>
+											<SharePoint:NextPageButton runat="server"/>
+											<SharePoint:SaveButton runat="server"/>
+											<SharePoint:GoBackButton runat="server"/>
+										</template_rightbuttons>
+                                </wssuc:ToolBar>
+                            </div>
+                            <SharePoint:FormToolBar runat="server" />
+                        </SharePoint:EditDatesSelector>
+                        <SharePoint:ItemValidationFailedMessage runat="server" />
+                        <SharePoint:EditDatesSelector RenderInEditDatesMode="true" runat="server">
+                            <div>
+                                <SharePoint:EncodedLiteral runat="server" Text="<%$Resources:wss,BeautifulTimeline_HelperText%>" EncodeMethod='HtmlEncode' />
+                            </div>
+                        </SharePoint:EditDatesSelector>
+                        <table class="ms-formtable" style="margin-top: 8px;" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <SharePoint:EditDatesSelector RenderInEditDatesMode="false" runat="server">
+                                <SharePoint:ChangeContentType runat="server" Visible="false" />
+                                <SharePoint:FolderFormFields runat="server" />
+                                <Practices:FabricTaskListFieldIterator BottomFields="Title;#StartDate;#DueDate;#AssignedTo;#PercentComplete;#RelatedItems;#Description;#Priority;#Status;#Predecessors" runat="server" />
+                                <SharePoint:ApprovalStatus runat="server" />
+                                <SharePoint:FormComponent TemplateName="AttachmentRows" ComponentRequiresPostback="false" runat="server" />
+                            </SharePoint:EditDatesSelector>
+                            <SharePoint:EditDatesSelector RenderInEditDatesMode="true" runat="server">
+                                <SharePoint:SpecifiedListFieldIterator ShownFields="StartDate;#DueDate" runat="server" />
+                            </SharePoint:EditDatesSelector>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" width="100%" style="padding-top: 7px">
+                            <tr>
+                                <td width="100%">
+                                    <SharePoint:EditDatesSelector RenderInEditDatesMode="false" runat="server">
+                                        <SharePoint:ItemHiddenVersion runat="server" />
+                                        <SharePoint:ParentInformationField runat="server" />
+                                        <SharePoint:InitContentType runat="server" />
+                                    </SharePoint:EditDatesSelector>
+                                    <wssuc:ToolBar CssClass="ms-formtoolbar" id="toolBar2" RightButtonSeparator="&amp;#160;" runat="server">
+                                        <template_buttons>
+									        <SharePoint:EditDatesSelector RenderInEditDatesMode="false" runat="server">
+										        <SharePoint:CreatedModifiedInfo runat="server"/>
+									        </SharePoint:EditDatesSelector>
+								        </template_buttons>
+                                        <template_rightbuttons>
+									        <SharePoint:SaveButton runat="server"/>
+									        <SharePoint:GoBackButton runat="server"/>
+								        </template_rightbuttons>
+                                    </wssuc:ToolBar>
+                                </td>
+                            </tr>
+                        </table>
+                    </span>
+                </td>
+                <SharePoint:EditDatesSelector RenderInEditDatesMode="false" runat="server">
+                    <td valign="top">
+                        <SharePoint:DelegateControl runat="server" ControlId="RelatedItemsPlaceHolder" />
+                    </td>
+                </SharePoint:EditDatesSelector>
+            </tr>
+        </table>
+        <SharePoint:EditDatesSelector RenderInEditDatesMode="false" runat="server">
+            <SharePoint:AttachmentUpload runat="server" />
+        </SharePoint:EditDatesSelector>
     </Template>
 </SharePoint:RenderingTemplate>

@@ -128,6 +128,7 @@
             };
             var items = Get(query);
             return items.Select(item => new Guid(item[CorporateCatalogBuiltInFields.ProductID].ToString()));
+            
         }
 
         public override IEnumerable<SPListItem> Get(string queryString) {

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
-  <Module Name="IssueTrackingWebPart" List="113" Url="_catalogs/wp">
-    <File Path="IssueTrackingWebPart.webpart" Url="IssueTrackingWebPart.webpart" Type="GhostableInLibrary" >
-      <Property Name="Group" Value="Issue Tracking" />
-    </File>
-  </Module>
-</Elements>
