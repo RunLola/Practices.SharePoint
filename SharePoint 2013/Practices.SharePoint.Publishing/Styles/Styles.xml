@@ -2,5 +2,6 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Styles" RootWebOnly="True">
     <File Path="Styles\Site.css" Url="Styles/Site.css" />
+    <File Path="Styles\less\checkbox.less" Url="Styles/less/checkbox.less" />
   </Module>
 </Elements>

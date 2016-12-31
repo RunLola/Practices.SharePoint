@@ -94,12 +94,12 @@ namespace Practices.SharePoint.ApplicationPages {
         protected global::Microsoft.SharePoint.WebControls.InputFormTextBox Pso;
         
         /// <summary>
-        /// ButtonSave control.
+        /// BtnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonSave;
+        protected global::System.Web.UI.WebControls.Button BtnSave;
     }
 }

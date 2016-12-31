@@ -4,27 +4,32 @@
 //  https://msdn.microsoft.com/en-us/library/office/ff407303.aspx
 
 ////////////////////////////////////////////////////////////////////////////////
-//  Namespace Practices.IssueTracking
-Type.registerNamespace("Practices.IssueTracking");
+//  Namespace IssueTracking.Ribbon
+Type.registerNamespace("IssueTracking.Ribbon");
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Apps.ActionsActionsPageComponent
-Practices.IssueTracking.ActionsPageComponent = function () {
-    Practices.IssueTracking.ActionsPageComponent.initializeBase(this);
+IssueTracking.Ribbon.ActionsPageComponent = function () {
+    IssueTracking.Ribbon.ActionsPageComponent.initializeBase(this);
     this.registerWithPageManager();
 }
 
-Practices.IssueTracking.ActionsPageComponent.prototype = {
+IssueTracking.Ribbon.ActionsPageComponent.prototype = {
     focusedCommands: null,
     globalCommands: null,
+
+    getId: function () {
+        return 'IssueTrackingActionsPageComponent';
+    },
 
     // Initializes the page component
     init: function () {
         this.focusedCommands = [];
         this.globalCommands = [
-            Practices.IssueTracking.ActionsCommandNames.StartTracking,
-            Practices.IssueTracking.ActionsCommandNames.StartBlaming,
-            Practices.IssueTracking.ActionsCommandNames.StartForfeit
+            IssueTracking.Ribbon.ActionsCommandNames.StartTracking,
+            IssueTracking.Ribbon.ActionsCommandNames.StartBlaming,
+            IssueTracking.Ribbon.ActionsCommandNames.StartForfeit,
+            IssueTracking.Ribbon.ActionsCommandNames.StartSpotCheck
         ];
     },
 
@@ -49,12 +54,14 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
     // Indicates whether the page component can handle the command that was passed to it.
     canHandleCommand: function (commandId) {
         switch (commandId) {
-            case Practices.IssueTracking.ActionsCommandNames.StartTracking:
-                return Practices.IssueTracking.ActionsCommands.StartTrackingEnabled();
-            case Practices.IssueTracking.ActionsCommandNames.StartBlaming:
-                return Practices.IssueTracking.ActionsCommands.StartBlamingEnabled();
-            case Practices.IssueTracking.ActionsCommandNames.StartForfeit:
-                return Practices.IssueTracking.ActionsCommands.StartForfeitEnabled();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartTracking:
+                return IssueTracking.Ribbon.ActionsCommands.StartTrackingEnabled();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartBlaming:
+                return IssueTracking.Ribbon.ActionsCommands.StartBlamingEnabled();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartForfeit:
+                return IssueTracking.Ribbon.ActionsCommands.StartForfeitEnabled();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartSpotCheck:
+                return IssueTracking.Ribbon.ActionsCommands.StartSpotCheckEnabled();
             default:
                 return false;
         }
@@ -63,14 +70,16 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
     // Execute the commands that come from our ribbon button
     handleCommand: function (commandId, properties, sequence) {
         switch (commandId) {
-            case Practices.IssueTracking.ActionsCommandNames.StartTracking:
-                Practices.IssueTracking.ActionsCommands.StartTracking();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartTracking:
+                IssueTracking.Ribbon.ActionsCommands.StartTracking();
                 break;
-            case Practices.IssueTracking.ActionsCommandNames.StartBlaming:
-                Practices.IssueTracking.ActionsCommands.StartBlaming();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartBlaming:
+                IssueTracking.Ribbon.ActionsCommands.StartBlaming();
                 break;
-            case Practices.IssueTracking.ActionsCommandNames.StartForfeit:
-                Practices.IssueTracking.ActionsCommands.StartForfeit();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartForfeit:
+                IssueTracking.Ribbon.ActionsCommands.StartForfeit();
+            case IssueTracking.Ribbon.ActionsCommandNames.StartSpotCheck:
+                IssueTracking.Ribbon.ActionsCommands.StartSpotCheck();
                 break;
             default:
                 break;
@@ -97,18 +106,19 @@ Practices.IssueTracking.ActionsPageComponent.prototype = {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  Practices.IssueTracking.AppActionsCommandNames
-Practices.IssueTracking.ActionsCommandNames = function () {
+//  IssueTracking.Ribbon.AppActionsCommandNames
+IssueTracking.Ribbon.ActionsCommandNames = function () {
 }
-Practices.IssueTracking.ActionsCommandNames.StartTracking = "IssueTracking.Actions.StartTracking";
-Practices.IssueTracking.ActionsCommandNames.StartBlaming = "IssueTracking.Actions.StartBlaming";
-Practices.IssueTracking.ActionsCommandNames.StartForfeit = "IssueTracking.Actions.StartForfeit";
+IssueTracking.Ribbon.ActionsCommandNames.StartTracking = "IssueTracking.Actions.StartTracking";
+IssueTracking.Ribbon.ActionsCommandNames.StartBlaming = "IssueTracking.Actions.StartBlaming";
+IssueTracking.Ribbon.ActionsCommandNames.StartForfeit = "IssueTracking.Actions.StartForfeit";
+IssueTracking.Ribbon.ActionsCommandNames.StartSpotCheck = "IssueTracking.Actions.StartSpotCheck";
 
 ////////////////////////////////////////////////////////////////////////////////
-// Practices.IssueTracking.ActionsCommands
-Practices.IssueTracking.ActionsCommands = function () {
+// IssueTracking.Ribbon.ActionsCommands
+IssueTracking.Ribbon.ActionsCommands = function () {
 }
-Practices.IssueTracking.ActionsCommands.StartTrackingEnabled = function () {
+IssueTracking.Ribbon.ActionsCommands.StartTrackingEnabled = function () {
     if (undefined == window.itemState) {
         window.itemState = [];
     }
@@ -154,7 +164,7 @@ Practices.IssueTracking.ActionsCommands.StartTrackingEnabled = function () {
         return false;
     }
 }
-Practices.IssueTracking.ActionsCommands.StartTracking = function () {
+IssueTracking.Ribbon.ActionsCommands.StartTracking = function () {
     var selectedItems = SP.ListOperation.Selection.getSelectedItems();
     var context = SP.ClientContext.get_current();
     var listId = SP.ListOperation.Selection.getSelectedList();
@@ -185,7 +195,7 @@ Practices.IssueTracking.ActionsCommands.StartTracking = function () {
         }
     }
 }
-Practices.IssueTracking.ActionsCommands.StartBlamingEnabled = function () {
+IssueTracking.Ribbon.ActionsCommands.StartBlamingEnabled = function () {
     var selectedItems = $("#can").find("table[id$='GridView']").getSelectedItems();
     var count = selectedItems.length;
     if (count == 1) {
@@ -194,7 +204,7 @@ Practices.IssueTracking.ActionsCommands.StartBlamingEnabled = function () {
         return false;
     }
 }
-Practices.IssueTracking.ActionsCommands.StartBlaming = function () {
+IssueTracking.Ribbon.ActionsCommands.StartBlaming = function () {
     var selectedItems = $("#can").find("table[id$='GridView']").getSelectedItems();
     var selectedItem = selectedItems[0];
     var webId = selectedItem.WebId;
@@ -251,7 +261,7 @@ Practices.IssueTracking.ActionsCommands.StartBlaming = function () {
     //    console.log("Error: " + args.get_message() + "\n" + args.get_stackTrace());
     //}
 }
-Practices.IssueTracking.ActionsCommands.StartForfeitEnabled = function () {
+IssueTracking.Ribbon.ActionsCommands.StartForfeitEnabled = function () {
     var selectedItems = $("#can").find("table[id$='GridView']").getSelectedItems();
     var count = selectedItems.length;
     if (count == 1) {
@@ -260,7 +270,7 @@ Practices.IssueTracking.ActionsCommands.StartForfeitEnabled = function () {
         return false;
     }
 }
-Practices.IssueTracking.ActionsCommands.StartForfeit = function () {
+IssueTracking.Ribbon.ActionsCommands.StartForfeit = function () {
     var selectedItems = $("#can").find("table[id$='GridView']").getSelectedItems();
     var selectedItem = selectedItems[0];
     var webId = selectedItem.WebId;
@@ -268,6 +278,47 @@ Practices.IssueTracking.ActionsCommands.StartForfeit = function () {
     var itemId = selectedItem.ItemId;
     EnsureScriptFunc("SP.js", "SP.Utilities.Utility", function () {
         var url = SP.Utilities.Utility.getLayoutsPageUrl("IssueTracking/StartForfeit.aspx?WebId=" + webId + "&ListId=" + listId + "&ItemId=" + itemId);
+        //STSNavigate(url);
+        SP.SOD.execute("sp.ui.dialog.js", "SP.UI.ModalDialog.showModalDialog", {
+            title: "进行罚款",
+            width: 750,
+            height: 450,
+            allowMaximize: true,
+            autoSize: true,
+            url: url,
+            dialogReturnValueCallback: onDialogClose
+        });
+    });
+    function onDialogClose(dialogResult, returnValue) {
+        if (dialogResult == SP.UI.DialogResult.OK) {
+            console.log(returnValue);
+            alert('进行罚款已下达!');
+            refreshListView();
+        }
+        if (dialogResult == SP.UI.DialogResult.Cancel) {
+            console.log(returnValue);
+            alert('进行罚款已取消');
+            refreshListView();
+        }
+    }
+}
+IssueTracking.Ribbon.ActionsCommands.StartSpotCheckEnabled = function () {
+    var selectedItems = $("#table[id$='GridView']").getSelectedItems();
+    var count = selectedItems.length;
+    if (count == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+IssueTracking.Ribbon.ActionsCommands.StartSpotCheck = function () {
+    var selectedItems = $("#can").find("table[id$='GridView']").getSelectedItems();
+    var selectedItem = selectedItems[0];
+    var webId = selectedItem.WebId;
+    var listId = selectedItem.ListId;
+    var itemId = selectedItem.ItemId;
+    EnsureScriptFunc("SP.js", "SP.Utilities.Utility", function () {
+        var url = SP.Utilities.Utility.getLayoutsPageUrl("IssueTracking/StartSpotCheck.aspx?WebId=" + webId + "&ListId=" + listId + "&ItemId=" + itemId);
         //STSNavigate(url);
         SP.SOD.execute("sp.ui.dialog.js", "SP.UI.ModalDialog.showModalDialog", {
             title: "进行罚款",
@@ -302,16 +353,16 @@ function refreshListView() {
 
 ////////////////////////////////////////////////////////////////////////////////
 //  RegisterClass
-Practices.IssueTracking.ActionsCommands.registerClass("Practices.IssueTracking.ActionsCommands");
-Practices.IssueTracking.ActionsCommandNames.registerClass("Practices.IssueTracking.ActionsCommandNames");
-Practices.IssueTracking.ActionsPageComponent.registerClass("Practices.IssueTracking.ActionsPageComponent", CUI.Page.PageComponent);
+IssueTracking.Ribbon.ActionsCommands.registerClass("IssueTracking.Ribbon.ActionsCommands");
+IssueTracking.Ribbon.ActionsCommandNames.registerClass("IssueTracking.Ribbon.ActionsCommandNames");
+IssueTracking.Ribbon.ActionsPageComponent.registerClass("IssueTracking.Ribbon.ActionsPageComponent", CUI.Page.PageComponent);
 
 
 ////////////////////////////////////////////////////////////////////////////////
 //  Load Apps.Ribbon.ActionsPageComponent instance.
-Practices.IssueTracking.ActionsPageComponent.instance = null;
-Practices.IssueTracking.ActionsPageComponent.load = function () {
-    Practices.IssueTracking.ActionsPageComponent.instance = new Practices.IssueTracking.ActionsPageComponent();
+IssueTracking.Ribbon.ActionsPageComponent.instance = null;
+IssueTracking.Ribbon.ActionsPageComponent.load = function () {
+    IssueTracking.Ribbon.ActionsPageComponent.instance = new IssueTracking.Ribbon.ActionsPageComponent();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -320,5 +371,5 @@ if (typeof (Sys) != "undefined" && Sys && Sys.Application) {
     Sys.Application.notifyScriptLoaded();
 }
 if (typeof (NotifyScriptLoadedAndExecuteWaitingJobs) != "undefined") {
-    NotifyScriptLoadedAndExecuteWaitingJobs("Practices.IssueTracking.Ribbon.Actionsjs");
+    NotifyScriptLoadedAndExecuteWaitingJobs("IssueTracking.Ribbon.Ribbon.Actions.js");
 }

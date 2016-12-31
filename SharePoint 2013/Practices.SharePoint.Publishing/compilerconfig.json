@@ -22,5 +22,9 @@
   {
     "outputFile": "Styles/StyleSheet1.css",
     "inputFile": "Styles/StyleSheet1.less"
+  },
+  {
+    "outputFile": "Layouts/1033/Styles/font-awesome/4.7.0/font-awesome.css",
+    "inputFile": "Layouts/1033/Styles/font-awesome/4.7.0/font-awesome.less"
   }
 ]

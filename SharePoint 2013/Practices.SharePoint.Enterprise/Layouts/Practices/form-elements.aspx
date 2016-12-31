@@ -19,7 +19,7 @@
 <%@ Register TagPrefix="wssawc" Namespace="Microsoft.SharePoint.WebControls"
     Assembly="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StartTracking.aspx.cs" 
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="form-elements.aspx.cs" 
     Inherits="Practices.SharePoint.ApplicationPages.StartTrackingPage" DynamicMasterPageFile="~masterurl/default.master" %>
 
 <asp:Content ID="PageTitle" ContentPlaceHolderID="PlaceHolderPageTitle" runat="server">
@@ -27,50 +27,9 @@
 </asp:Content>
 
 <asp:Content ID="PageHead" ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
-    <SharePoint:ScriptLink name="Scripts/spworkflow.js" runat="server" LoadAfterUI="true" Localizable="false" />
-    <script>
-        var QueryString = function () {
-            // This function is anonymous, is executed immediately and 
-            // the return value is assigned to QueryString!
-            var query_string = {};
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                // If first entry with this name
-                if (typeof query_string[pair[0]] === "undefined") {
-                    query_string[pair[0]] = decodeURIComponent(pair[1]);
-                    // If second entry with this name
-                } else if (typeof query_string[pair[0]] === "string") {
-                    var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
-                    query_string[pair[0]] = arr;
-                    // If third or later entry with this name
-                } else {
-                    query_string[pair[0]].push(decodeURIComponent(pair[1]));
-                }
-            }
-            return query_string;
-        }();
-
-        function StartTracking() {
-            var clientId = "<%= AssignedTo.ClientID %>_TopSpan";
-            var peoplePicker = SPClientPeoplePicker.SPClientPeoplePickerDict[clientId];
-            var pickerEntities = peoplePicker.GetAllUserInfo();
-            if (pickerEntities.length == 1) {
-                var pickerEntity = pickerEntities[0];
-                if (pickerEntity.EntityData["PrincipalType"] == "SharePointGroup") {
-                    var groupId = pickerEntity.EntityData["SPGroupID"];
-                    var groupName = pickerEntity.EntityData["AccountName"];
-                    var listId = QueryString.ListId;
-                    var itemId = QueryString.ItemId;
-                    var payload = new Object();
-                    payload["Init"] = document.getElementById('<%=TaskType.ClientID%>').value;
-                    payload["FieldName"] = groupName;
-                    StartWorkflow(listId, itemId, "My Tasks", payload);
-                }
-            }
-        }
-    </script>
+    <SharePoint:CssRegistration Name="/_layouts/15/Scripts/plugins/daterangepicker.min.css" runat="server" />
+<SharePoint:ScriptLink Language="javascript" Name="Scripts/plugins/moment.min.js" runat="server" Localizable="false" />
+<SharePoint:ScriptLink Language="javascript" Name="Scripts/plugins/daterangepicker.min.js" runat="server" Localizable="false" />
 </asp:Content>
 
 <asp:Content ID="Main" ContentPlaceHolderID="PlaceHolderMain" runat="server">

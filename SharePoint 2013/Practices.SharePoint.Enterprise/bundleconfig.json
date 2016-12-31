@@ -10,5 +10,17 @@
     "inputFiles": [
       "Layouts/Scripts/fuelux/tree.js"
     ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/plugins/daterangepicker.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/plugins/daterangepicker.js"
+    ]
+  },
+  {
+    "outputFileName": "Layouts/Scripts/plugins/moment.min.js",
+    "inputFiles": [
+      "Layouts/Scripts/plugins/moment.js"
+    ]
   }
 ]

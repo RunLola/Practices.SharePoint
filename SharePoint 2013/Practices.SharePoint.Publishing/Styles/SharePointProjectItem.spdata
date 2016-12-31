@@ -9,5 +9,6 @@
     <ProjectItemFile Source="Site.css" Target="Styles\" Type="ElementFile" />
     <ProjectItemFile Source="Site.min.css" Target="Styles\" Type="ElementFile" />
     <ProjectItemFile Source="less\gridview.less" Target="Styles\less\" Type="ElementFile" />
+    <ProjectItemFile Source="less\checkbox.less" Target="Styles\less\" Type="ElementFile" />
   </Files>
 </ProjectItem>

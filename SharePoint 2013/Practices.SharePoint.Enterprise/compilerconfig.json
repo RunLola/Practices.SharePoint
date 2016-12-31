@@ -10,5 +10,9 @@
   {
     "outputFile": "Layouts/Scripts/fuelux/fuelux.site.css",
     "inputFile": "Layouts/Scripts/fuelux/fuelux.site.less"
+  },
+  {
+    "outputFile": "Layouts/Scripts/plugins/daterangepicker.css",
+    "inputFile": "Layouts/Scripts/plugins/daterangepicker.scss"
   }
 ]

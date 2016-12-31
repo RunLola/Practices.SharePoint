@@ -27,6 +27,7 @@
         });
     });   
 </SharePoint:ScriptBlock>
+
 <SharePoint:SPGridView ID="GridView" runat="server" AutoGenerateColumns="false" CssClass="ms-listviewtable"
     ShowHeaderWhenEmpty="true" Width="100%" BorderWidth="0" BorderStyle="None" CellPadding="1" CellSpacing="-1" GridLines="None">
     <HeaderStyle CssClass="ms-viewheadertr ms-vhltr" />
@@ -71,3 +72,11 @@
 </SharePoint:SPGridView>
 <SharePoint:SPGridViewPager ID="GridViewPager" runat="server" GridViewId="GridView">
 </SharePoint:SPGridViewPager>
+
+<asp:UpdatePanel ID="GridViewPanel" runat="server" ChildrenAsTriggers="true">
+    <ContentTemplate>
+        
+    </ContentTemplate>    
+</asp:UpdatePanel>
+
+

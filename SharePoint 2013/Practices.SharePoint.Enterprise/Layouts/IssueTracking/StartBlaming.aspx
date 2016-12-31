@@ -39,9 +39,7 @@
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
                         <SharePoint:ClientPeoplePicker ID="AssignedTo" runat="server" 
-                            PrincipalAccountType="SPGroup" AllowMultipleEntities="false" Required="true" ValidationEnabled="true" />
-                        <wssawc:InputFormRequiredFieldValidator ControlToValidate="AssignedTo" Runat="server"
-                            Display="Dynamic" SetFocusOnError="true"/>
+                            PrincipalAccountType="User" AllowMultipleEntities="false" Required="true" ValidationEnabled="true" />
 				    </Template_Control>
 			    </wssuc:InputFormControl>
 	        </template_inputformcontrols>
@@ -54,7 +52,7 @@
 				    <Template_Control>
                         <wssawc:InputFormTextBox ID="Reasons" Runat="server" 
                                class="ms-input" TextMode="MultiLine" Columns="66" Rows="5"/>
-                        <wssawc:InputFormRequiredFieldValidator ControlToValidate="InputFormTextBox1" Runat="server"
+                        <wssawc:InputFormRequiredFieldValidator ControlToValidate="Reasons" Runat="server"
                             Display="Dynamic" SetFocusOnError="true"/>
 				    </Template_Control>
 			    </wssuc:InputFormControl>
@@ -68,7 +66,7 @@
 				    <Template_Control>
                         <wssawc:InputFormTextBox ID="Situations" Runat="server" 
                                class="ms-input" TextMode="MultiLine" Columns="66" Rows="5"/>
-                        <wssawc:InputFormRequiredFieldValidator ControlToValidate="InputFormTextBox2" Runat="server"
+                        <wssawc:InputFormRequiredFieldValidator ControlToValidate="Situations" Runat="server"
                             Display="Dynamic" SetFocusOnError="true"/>
 				    </Template_Control>
 			    </wssuc:InputFormControl>
@@ -80,9 +78,7 @@
             <template_inputformcontrols>
 			    <wssuc:InputFormControl runat="server">
 				    <Template_Control>
-                        <SharePoint:DateTimeControl ID="BlameDate" runat="server" DateOnly="true" /> 
-                        <wssawc:InputFormRequiredFieldValidator ControlToValidate="txtDate" Runat="server"
-                            Display="Dynamic" SetFocusOnError="true"/>
+                        <SharePoint:DateTimeControl ID="BlameDate" runat="server" DateOnly="true" />
 				    </Template_Control>
 			    </wssuc:InputFormControl>
 	        </template_inputformcontrols>
@@ -111,10 +107,10 @@
         </wssuc:InputFormSection>
         <wssuc:ButtonSection runat="server">
             <Template_Buttons>
-                <asp:Button runat="server" id="ButtonSave" class="ms-ButtonHeightWidth" 
-                    UseSubmitBehavior="false" OnClick="ButtonSave_Click"                     
-                    Text="<%$Resources:wss,multipages_okbutton_text%>" 
-                    accesskey="<%$Resources:wss,okbutton_accesskey%>" />
+                <Template_Buttons>
+                <asp:Button id="BtnSave" runat="server" Text="<%$Resources:wss,multipages_okbutton_text%>" 
+                    class="ms-ButtonHeightWidth" accesskey="<%$Resources:wss,okbutton_accesskey%>" 
+                    UseSubmitBehavior="false" OnClick="BtnSave_Click" />
 	        </Template_Buttons>
         </wssuc:ButtonSection>
     </table>

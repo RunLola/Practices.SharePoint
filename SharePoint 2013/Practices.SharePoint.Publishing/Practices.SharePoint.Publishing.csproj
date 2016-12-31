@@ -110,10 +110,10 @@
     <None Include="ISAPI\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{75ce5a0d-9f68-488a-8971-19f7a897e525}</SharePointProjectItemId>
     </None>
-    <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.ttf" />
-    <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Layouts\1033\Fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Layouts\1033\Styles\bootstarp\3.3.7\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\alerts.less" />
     <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\badges.less" />
     <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\breadcrumbs.less" />
@@ -186,6 +186,25 @@
     <None Include="Layouts\1033\Styles\bootstarp\3.3.7\less\wells.less" />
     <None Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.less" />
     <None Include="Layouts\1033\Styles\bootstrap.sharepoint.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\font-awesome.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\fonts\fontawesome-webfont.eot" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\fonts\fontawesome-webfont.ttf" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\fonts\fontawesome-webfont.woff" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\fonts\fontawesome-webfont.woff2" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\fonts\FontAwesome.otf" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\animated.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\bordered-pulled.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\core.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\fixed-width.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\icons.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\larger.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\list.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\mixins.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\path.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\rotated-flipped.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\screen-reader.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\stacked.less" />
+    <None Include="Layouts\1033\Styles\font-awesome\4.7.0\less\variables.less" />
     <None Include="Layouts\1033\Styles\Site.less" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4bb77559-e033-4906-b40e-f143755a50d1}</SharePointProjectItemId>
@@ -216,6 +235,7 @@
     <None Include="Scripts\Site.min.js.map">
       <DependentUpon>Site.min.js</DependentUpon>
     </None>
+    <None Include="Styles\less\checkbox.less" />
     <None Include="Styles\less\gridview.less" />
     <None Include="Styles\less\mixins.less" />
     <None Include="Styles\less\variables.less" />
@@ -235,19 +255,26 @@
     <Content Include="Features\Practices.Publishing\Practices.Publishing.Template.xml">
       <DependentUpon>Practices.Publishing.feature</DependentUpon>
     </Content>
-    <Content Include="Layouts\1033\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.css">
       <DependentUpon>bootstrap.less</DependentUpon>
     </Content>
     <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="Layouts\1033\Styles\bootstarp\3.3.7\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.css">
       <DependentUpon>bootstrap.sharepoint.less</DependentUpon>
     </Content>
     <Content Include="Layouts\1033\Styles\bootstrap.sharepoint.min.css">
       <DependentUpon>bootstrap.sharepoint.css</DependentUpon>
     </Content>
+    <Content Include="Layouts\1033\Styles\font-awesome\4.7.0\font-awesome.css">
+      <DependentUpon>font-awesome.less</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\font-awesome\4.7.0\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\1033\Styles\font-awesome\4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Layouts\1033\Styles\Site.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>
@@ -286,7 +313,7 @@
     <Content Include="Layouts\Scripts\underscore\1.8.3\underscore.min.js">
       <DependentUpon>underscore.js</DependentUpon>
     </Content>
-    <Content Include="PageLayouts\WebPartPage.aspx" />
+    <Content Include="PageLayouts\AjaxWebPartPage.aspx" />
     <Content Include="Scripts\Scripts.xml">
       <SubType>Designer</SubType>
     </Content>

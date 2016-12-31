@@ -57,33 +57,25 @@
         public string BuildQueryString() {
             var queryBuilder = new CAMLQueryBuilder();
             switch (view.QueryScope) {
-                case "CanBlaiming":
-                    queryBuilder = queryBuilder
-                        .AddCurrentUser(SPBuiltInFieldName.Author)
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "保存")
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "关闭")
-                        .AddEqual(view.ContentType.Fields["是否追责"].InternalName, false)
-                        .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
-                    break;
                 case "ByBlaming":
                     queryBuilder = queryBuilder
                         .AddCurrentUser(SPBuiltInFieldName.AssignedTo)
                         .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
                     break;
+                case "CanBlaiming":
+                    queryBuilder = queryBuilder
+                        .AddCurrentUser(SPBuiltInFieldName.Author)
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "保存")
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "关闭")
+                        .AddEqual("_x662f__x5426__x8ffd__x8d23_", false)
+                        .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
+                    break;
                 case "HasBlaming":
                     queryBuilder = queryBuilder
                         .AddCurrentUser(SPBuiltInFieldName.Author)
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "保存")
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "关闭")
-                        .AddEqual(view.ContentType.Fields["是否罚款"].InternalName, true)
-                        .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
-                    break;
-                case "CanForfeit":
-                    queryBuilder = queryBuilder
-                        .AddCurrentUser(SPBuiltInFieldName.Author)
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "保存")
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "关闭")
-                        .AddEqual(view.ContentType.Fields["是否罚款"].InternalName, false)
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "保存")
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "关闭")
+                        .AddEqual("_x662f__x5426__x8ffd__x8d23_", true)
                         .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
                     break;
                 case "ByForfeit":
@@ -91,18 +83,26 @@
                         .AddCurrentUser(SPBuiltInFieldName.AssignedTo)
                         .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
                     break;
+                case "CanForfeit":
+                    queryBuilder = queryBuilder
+                        .AddCurrentUser(SPBuiltInFieldName.Author)
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "保存")
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "关闭")
+                        .AddEqual("_x662f__x5426__x7f5a__x6b3e_", false)
+                        .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
+                    break;
                 case "HasForfeit":
                     queryBuilder = queryBuilder
                         .AddCurrentUser(SPBuiltInFieldName.Author)
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "保存")
-                        .AddNotEqual(SPBuiltInFieldName.IssueStatus, "关闭")
-                        .AddEqual(view.ContentType.Fields["是否罚款"].InternalName, true)
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "保存")
+                        .AddNotEqual("_x9690__x60a3__x72b6__x6001_", "关闭")
+                        .AddEqual("_x662f__x5426__x7f5a__x6b3e_", true)
                         .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
                     break;
                 case "CanClosed":
                     queryBuilder = queryBuilder
                         .AddCurrentUser(SPBuiltInFieldName.Author)
-                        .AddEqual(SPBuiltInFieldName.IssueStatus, "销号")
+                        .AddEqual("_x9690__x60a3__x72b6__x6001_", "销号")
                         .AddBeginsWith(SPBuiltInFieldName.ContentTypeId, view.ContentTypeBeginsWithId);
                     break;
                 default:

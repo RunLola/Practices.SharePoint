@@ -194,7 +194,7 @@
         public static readonly string IsQuestion = "IsQuestion";
         public static readonly string IsRootPost = "IsRootPost";
         public static readonly string IsSiteAdmin = "IsSiteAdmin";
-        public static readonly string IssueStatus = "IssueStatus";
+        public static readonly string IssueStatus = "Status";
         public static readonly string Item = "Item";
         public static readonly string ItemChildCount = "ItemChildCount";
         public static readonly string JobTitle = "JobTitle";

@@ -87,6 +87,20 @@
     <Compile Include="CONTROLTEMPLATES\QuoteFieldEditor.ascx.designer.cs">
       <DependentUpon>QuoteFieldEditor.ascx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\IssueTracking\StartSpotCheck.aspx.cs">
+      <DependentUpon>StartSpotCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\IssueTracking\StartSpotCheck.aspx.designer.cs">
+      <DependentUpon>StartSpotCheck.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Layouts\Practices\form-elements.aspx.cs">
+      <DependentUpon>form-elements.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Layouts\Practices\form-elements.aspx.designer.cs">
+      <DependentUpon>form-elements.aspx.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegisterPageComponent\RegisterPageComponentWebPart.cs" />
     <Compile Include="ISAPI\ProfilesCatalog.svc.cs">
       <DependentUpon>ProfilesCatalog.svc</DependentUpon>
@@ -145,6 +159,14 @@
     </Compile>
     <Compile Include="Repositories\OrganizationRepository.cs" />
     <Compile Include="Repositories\SiteUserRepository.cs" />
+    <Compile Include="SiteContentSearchBox\SiteContentSearchBoxWebPart.cs" />
+    <Compile Include="SiteContentSearchBox\SiteContentSearchBoxControl.ascx.cs">
+      <DependentUpon>SiteContentSearchBoxControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteContentSearchBox\SiteContentSearchBoxControl.ascx.designer.cs">
+      <DependentUpon>SiteContentSearchBoxControl.ascx.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkflowTasks\IWorkflowTasksView.cs" />
     <Compile Include="WorkflowTasks\WorkflowTasksControl.ascx.cs">
       <DependentUpon>WorkflowTasksControl.ascx</DependentUpon>
@@ -189,8 +211,12 @@
     <None Include="Features\Practices.Enterprise\Practices.Enterprise.feature">
       <FeatureId>{85813b64-1daf-43ca-815b-a71e61f88a5b}</FeatureId>
     </None>
+    <None Include="Layouts\Scripts\plugins\daterangepicker.scss" />
     <None Include="PageLayouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{b7cf4984-fa42-437e-9e72-610308e27ba4}</SharePointProjectItemId>
+    </None>
+    <None Include="ProvisionedUI1\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1963a0d6-fe60-4e61-ab79-22521ff22833}</SharePointProjectItemId>
     </None>
     <None Include="RegisterPageComponent\RegisterPageComponentWebPart.webpart" />
     <None Include="RegisterPageComponent\SharePointProjectItem.spdata">
@@ -211,6 +237,10 @@
     <None Include="SiteContentByQuery\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{9b935557-e175-4018-9d1f-630ec9a6b631}</SharePointProjectItemId>
     </None>
+    <None Include="SiteContentSearchBox\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4e3299a0-c9b4-4378-a13f-02b4e4f32254}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteContentSearchBox\SiteContentSearchBoxWebPart.webpart" />
     <None Include="WorkflowTasks\WorkflowTasksWebPart.webpart" />
     <None Include="WorkflowTasks\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{5cb38094-a926-443a-b369-d8a6dd40226e}</SharePointProjectItemId>
@@ -240,8 +270,29 @@
     <Content Include="Features\Practices.Enterprise\Practices.Enterprise.Template.xml">
       <DependentUpon>Practices.Enterprise.feature</DependentUpon>
     </Content>
+    <Content Include="Layouts\IssueTracking\StartSpotCheck.aspx" />
+    <Content Include="Layouts\Practices\form-elements.aspx" />
+    <Content Include="Layouts\Scripts\IssueTracking.Ribbon.Actions2.js" />
+    <Content Include="Layouts\Scripts\IssueTracking.Ribbon.Loader2.js" />
+    <Content Include="Layouts\Scripts\plugins\daterangepicker.css">
+      <DependentUpon>daterangepicker.scss</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\plugins\daterangepicker.js" />
+    <Content Include="Layouts\Scripts\plugins\daterangepicker.min.css">
+      <DependentUpon>daterangepicker.css</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\plugins\daterangepicker.min.js">
+      <DependentUpon>daterangepicker.js</DependentUpon>
+    </Content>
+    <Content Include="Layouts\Scripts\plugins\moment.js" />
+    <Content Include="Layouts\Scripts\plugins\moment.min.js">
+      <DependentUpon>moment.js</DependentUpon>
+    </Content>
     <Content Include="PageLayouts\PageLayouts.xml" />
     <Content Include="PageLayouts\WebPartPages.aspx" />
+    <Content Include="ProvisionedUI1\ProvisionedUI1.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="RegisterPageComponent\RegisterPageComponentWebPart.xml" />
     <Content Include="ISAPI\ProfilesCatalog.svc" />
     <Content Include="IssueTrackingWebPart\IssueTrackingWebPart.xml" />
@@ -270,6 +321,8 @@
     <Content Include="Pages\Blaming.aspx" />
     <Content Include="SiteContentByQuery\SiteContentByQueryWebPart.xml" />
     <Content Include="SiteContentByQuery\SiteContentByQueryControl.ascx" />
+    <Content Include="SiteContentSearchBox\SiteContentSearchBoxWebPart.xml" />
+    <Content Include="SiteContentSearchBox\SiteContentSearchBoxControl.ascx" />
     <Content Include="WorkflowTasks\WorkflowTasksWebPart.xml" />
     <Content Include="WorkflowTasks\WorkflowTasksControl.ascx" />
     <Content Include="Layouts\IssueTracking\StartTracking.aspx" />

@@ -100,10 +100,9 @@
         </wssuc:InputFormSection>
         <wssuc:ButtonSection runat="server">
             <template_buttons>
-                <asp:Button runat="server" id="ButtonSave" class="ms-ButtonHeightWidth" 
-                    UseSubmitBehavior="false" OnClientClick="StartTracking();return false;"               
-                    Text="<%$Resources:wss,multipages_okbutton_text%>" 
-                    accesskey="<%$Resources:wss,okbutton_accesskey%>" />
+                <asp:Button id="BtnSave" runat="server" Text="<%$Resources:wss,multipages_okbutton_text%>" 
+                    class="ms-ButtonHeightWidth" accesskey="<%$Resources:wss,okbutton_accesskey%>" 
+                    UseSubmitBehavior="false" OnClientClick="StartTracking();return false;" />
 	        </template_buttons>
         </wssuc:ButtonSection>
     </table>    

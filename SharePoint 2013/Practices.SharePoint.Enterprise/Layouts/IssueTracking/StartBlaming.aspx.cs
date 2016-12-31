@@ -48,7 +48,9 @@
 
         protected void Page_Load(object sender, EventArgs e) {
             if (!Page.IsPostBack) {
-
+                var issue = GetIssue();
+                BlameDate.SelectedDate = DateTime.Now;
+                BlameLocation.Text = issue["检查地点"] as string;
             }
         }
 
